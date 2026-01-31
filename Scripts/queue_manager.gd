@@ -55,7 +55,7 @@ func _process(delta):
 func spawn_customer():
 	if not customer_scene:
 		return
-	
+		
 	var customer = customer_scene.instantiate()
 	customer_counter += 1
 	customer.customer_id = customer_counter
@@ -66,17 +66,30 @@ func spawn_customer():
 		customer.personality = level_config.get_random_customer_personality()
 	else:
 		# 如果沒有關卡配置，使用默認的隨機分配
-		var personalities = [
-			game_manager.CustomerPersonality.FRIENDLY,
-			game_manager.CustomerPersonality.NEUTRAL,
-			game_manager.CustomerPersonality.GRUMPY
-		]
-		customer.personality = personalities[randi() % personalities.size()]
+		if not game_manager:
+			# 如果 game_manager 還沒初始化，延遲獲取
+			game_manager = get_tree().get_first_node_in_group("game_manager")
+		
+		if game_manager:
+			var personalities = [
+				GameManager.CustomerPersonality.FRIENDLY,
+				GameManager.CustomerPersonality.NEUTRAL,
+				GameManager.CustomerPersonality.GRUMPY
+			]
+			customer.personality = personalities[randi() % personalities.size()]
+		else:
+			# 如果還是找不到 game_manager，使用默認值
+			customer.personality = GameManager.CustomerPersonality.NEUTRAL
 	
 	# 設置位置
 	var queue_index = customers.size()
 	if queue_index < queue_positions.size():
 		customer.position = queue_positions[queue_index]
+	else:
+		customer.position = Vector2(270, 270)
+	
+	# 確保 customer 可見
+	customer.visible = true
 	
 	add_child(customer)
 	customers.append(customer)

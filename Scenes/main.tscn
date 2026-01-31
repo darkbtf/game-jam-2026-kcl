@@ -17,22 +17,27 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("11")
 
-[node name="Background" type="Node" parent="."]
+[node name="Background" type="Node2D" parent="."]
+z_index = -100
+z_as_relative = false
 
 [node name="GroundL" type="Sprite2D" parent="Background"]
-z_index = -1
 position = Vector2(642, 359)
 texture = ExtResource("2_jkdf5")
+z_index = -100
+z_as_relative = false
 
 [node name="GroundR" type="Sprite2D" parent="Background"]
-z_index = -1
 position = Vector2(638, 359)
 texture = ExtResource("3_wsu2k")
+z_index = -100
+z_as_relative = false
 
 [node name="Ground" type="Sprite2D" parent="Background"]
-z_index = -1
 position = Vector2(642, 359)
 texture = ExtResource("1_fdnlq")
+z_index = -100
+z_as_relative = false
 
 [node name="GameManager" type="Node" parent="." groups=["GameManager"]]
 script = ExtResource("1")
@@ -43,19 +48,29 @@ position = Vector2(640, 360)
 [node name="Player" parent="." instance=ExtResource("2")]
 position = Vector2(640, 500)
 speed = 300.0
+z_index = 0
+z_as_relative = false
 
-[node name="Kitchen" type="Node" parent="."]
+[node name="Kitchen" type="Node2D" parent="."]
+z_index = 0
+z_as_relative = false
 
 [node name="KitchenStaff1" parent="Kitchen" instance=ExtResource("3")]
 position = Vector2(1203, 399)
+z_index = 0
+z_as_relative = false
 
 [node name="KitchenStaff2" parent="Kitchen" instance=ExtResource("3")]
 position = Vector2(1204, 549)
 staff_id = 2
+z_index = 0
+z_as_relative = false
 
 [node name="QueueManager" type="Node2D" parent="."]
 script = ExtResource("7")
 customer_scene = ExtResource("6")
+z_index = 0
+z_as_relative = false
 
 [node name="InteractionManager" type="Node" parent="." groups=["interactionManager"]]
 script = ExtResource("8")

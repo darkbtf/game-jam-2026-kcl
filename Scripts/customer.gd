@@ -27,19 +27,49 @@ signal order_completed(customer_id, success: bool)
 signal qte_item_changed(item: String)
 
 func _ready():
-	game_manager = get_tree().get_first_node_in_group("GameManager")
+	game_manager = get_tree().get_first_node_in_group("game_manager")
+	if not game_manager:
+		# 如果找不到，也嘗試大寫的 group 名稱（兼容性）
+		game_manager = get_tree().get_first_node_in_group("GameManager")
+	
+	# 確保所有視覺元素可見並設置正確的 z_index
+	if has_node("ColorRect"):
+		var color_rect = $ColorRect
+		color_rect.visible = true
+		color_rect.z_index = 0
+		color_rect.z_as_relative = false
+	
+	if has_node("Label"):
+		var label = $Label
+		label.visible = true
+		label.z_index = 1
+		label.z_as_relative = false
+	
+	if has_node("Bubble"):
+		var bubble = $Bubble
+		bubble.visible = false  # 默認隱藏，需要時再顯示
+		bubble.z_index = 10
+		bubble.z_as_relative = false
+	
+	# 確保 customer 本身可見
+	visible = true
+	z_index = 0
+	z_as_relative = false
 	
 	# 根據個性決定喜歡的表情
 	match personality:
 		GameManager.CustomerPersonality.FRIENDLY:
 			desired_expression = GameManager.MaskType.HAPPY
-			$Bubble/Label.text = "😊"
+			if has_node("Bubble/Label"):
+				$Bubble/Label.text = "😊"
 		GameManager.CustomerPersonality.NEUTRAL:
 			desired_expression = GameManager.MaskType.NEUTRAL
-			$Bubble/Label.text = "😐"
+			if has_node("Bubble/Label"):
+				$Bubble/Label.text = "😐"
 		GameManager.CustomerPersonality.GRUMPY:
 			desired_expression = GameManager.MaskType.SAD
-			$Bubble/Label.text = "😢"
+			if has_node("Bubble/Label"):
+				$Bubble/Label.text = "😢"
 	
 	# 隨機選擇想要的食物（每個客人只會想要一種食物，在生成時決定）
 	var all_foods = [
