@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://do8o2wcdu4k6r"]
+[gd_scene load_steps=3 format=3 uid="uid://do8o2wcdu4k6r"]
 
 [ext_resource type="Script" uid="uid://bnaenlgmdnc4w" path="res://Scripts/qte_ui.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dyku6ljnlmsqe" path="res://Assets/cloud.png" id="2_4g8ka"]
 
 [node name="QTEUI" type="Control"]
 layout_mode = 3
@@ -24,14 +25,8 @@ offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="Bubble"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.9)
+[node name="Background" type="Sprite2D" parent="Bubble"]
+texture = ExtResource("2_4g8ka")
 
 [node name="Label" type="Label" parent="Bubble"]
 layout_mode = 1
@@ -40,10 +35,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -15.0
-offset_right = 60.0
-offset_bottom = 15.0
+offset_left = -159.0
+offset_top = -65.0
+offset_right = -39.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.15307656, 0.15307653, 0.15307653, 1)

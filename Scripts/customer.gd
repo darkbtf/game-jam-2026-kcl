@@ -36,24 +36,11 @@ func _ready():
 	set_customer_texture()
 	
 	# 確保所有視覺元素可見並設置正確的 z_index
-	if has_node("ColorRect"):
-		var color_rect = $ColorRect
-		color_rect.visible = true
-		color_rect.z_index = 0
-		color_rect.z_as_relative = false
 	
 	if has_node("Sprite2D"):
 		var sprite = $Sprite2D
 		sprite.z_index = 3
 		sprite.z_as_relative = false
-	
-	if has_node("Label"):
-		var label = $Label
-		label.visible = true
-		label.z_index = 2
-		label.z_as_relative = false
-		# 根據 personality 設置對應的名稱
-		label.text = get_customer_name()
 	
 	if has_node("Bubble"):
 		var bubble = $Bubble
@@ -84,11 +71,12 @@ func _ready():
 	# 隨機選擇想要的食物（每個客人只會想要一種食物，在生成時決定）
 	var all_foods = [
 		GameManager.FoodType.BEEF_NOODLE,
-		GameManager.FoodType.STINKY_TOFU,
-		GameManager.FoodType.PEARL_MILK_TEA,
-		GameManager.FoodType.OYSTER_OMELETTE,
-		GameManager.FoodType.BRAISED_PORK
+		GameManager.FoodType.RedTea,
+		GameManager.FoodType.FriedRice,
+		GameManager.FoodType.BraisedRice,
+		GameManager.FoodType.BubbleMilkTea
 	]
+	
 	desired_food = all_foods[randi() % all_foods.size()]
 	
 	# 準備 QTE 物品列表（混合 emoji 和食物）
@@ -189,34 +177,19 @@ func get_customer_name() -> String:
 
 func set_customer_texture():
 	# 根據 personality 設置對應的圖片
-	if not has_node("Sprite2D"):
-		print("Customer: Sprite2D 節點不存在")
-		return
-	
-	var sprite = $Sprite2D
-	var texture_path: String = ""
+	var sprite = $AnimatedCustomer
 	
 	match personality:
 		GameManager.CustomerPersonality.LOCAL_AUNTIE:
-			texture_path = "res://Assets/customer_local_aunt.png"
+			sprite.sprite_frames = load("res://Assets/SpriteFrames/一般.tres")
+			sprite.play("Right")
 		GameManager.CustomerPersonality.SHY_STUDENT:
-			texture_path = "res://Assets/customer_shy_student.png"
+			sprite.sprite_frames = load("res://Assets/SpriteFrames/害羞.tres")
+			sprite.play("Right")
 		GameManager.CustomerPersonality.RUSHED_OFFICE:
-			texture_path = "res://Assets/customer_salary_man.jpeg"
+			sprite.sprite_frames = load("res://Assets/SpriteFrames/奧客.tres")
+			sprite.play("Right")
 		_:
 			# 其他 personality 類型保持默認（不設置圖片或使用默認圖片）
-			texture_path = ""
-	
-	if texture_path != "":
-		var texture = load(texture_path)
-		if texture:
-			sprite.texture = texture
-			sprite.visible = true
-			print("Customer: 成功載入圖片 ", texture_path, " personality: ", personality)
-		else:
-			print("Customer: 無法載入圖片: ", texture_path)
-			sprite.visible = false
-	else:
-		sprite.visible = false
-		print("Customer: 無對應圖片，personality: ", personality)
-	
+			sprite.sprite_frames = load("res://Assets/SpriteFrames/一般.tres")
+			print("personality")

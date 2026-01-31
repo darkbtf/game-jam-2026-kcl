@@ -28,13 +28,16 @@ func _physics_process(delta):
 	else:
 		run_status = false
 	if input_dir.x > 0:
-		$AnimatedSprite2D.play("Left")
+		$AnimatedSprite2D.play("WalkLeft")
 		$AnimatedSprite2D.flip_h = true
 	elif input_dir.x < 0:
-		$AnimatedSprite2D.play("Left")
+		$AnimatedSprite2D.play("WalkLeft")
 		$AnimatedSprite2D.flip_h = false
 	elif input_dir.y < 0:
-		$AnimatedSprite2D.play("Up")
+		$AnimatedSprite2D.play("WalkUp")
+		$AnimatedSprite2D.flip_h = false
+	elif input_dir.y > 0:
+		$AnimatedSprite2D.play("WalkDown")
 		$AnimatedSprite2D.flip_h = false
 	else:
 		$AnimatedSprite2D.play("Down")

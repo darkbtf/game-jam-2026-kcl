@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://3xvvl7es6sv"]
+
+[ext_resource type="Texture2D" uid="uid://vaiadqqhhyo8" path="res://Assets/Role/crazy_1.png" id="1_goqms"]
+[ext_resource type="Texture2D" uid="uid://s25jiuqn2vx1" path="res://Assets/Role/crazy_7.png" id="2_mnojp"]
+[ext_resource type="Texture2D" uid="uid://gceebg8fbwcx" path="res://Assets/Role/crazy_2.png" id="3_m1bny"]
+[ext_resource type="Texture2D" uid="uid://8ffd52fb1evs" path="res://Assets/Role/crazy_3.png" id="4_4i0p5"]
+[ext_resource type="Texture2D" uid="uid://dnjlho0o1acug" path="res://Assets/Role/crazy_4.png" id="5_wy4xw"]
+[ext_resource type="Texture2D" uid="uid://bx6khycs8pyc3" path="res://Assets/Role/crazy_5.png" id="6_ws2ys"]
+[ext_resource type="Texture2D" uid="uid://hb8m81yytfmh" path="res://Assets/Role/crazy_6.png" id="7_av00c"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_goqms")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mnojp")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_goqms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m1bny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4i0p5")
+}],
+"loop": true,
+"name": &"WalkDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wy4xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ws2ys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_av00c")
+}],
+"loop": true,
+"name": &"WalkUp",
+"speed": 5.0
+}]

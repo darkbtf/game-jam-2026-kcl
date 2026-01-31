@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://da8jfrljaqafx"]
+
+[ext_resource type="Texture2D" uid="uid://dg3qr8srsmm88" path="res://Assets/Role/shy_7.png" id="1_v6ikh"]
+[ext_resource type="Texture2D" uid="uid://deg7ucbp5rey0" path="res://Assets/Role/shy_1.png" id="2_2njkg"]
+[ext_resource type="Texture2D" uid="uid://cjgch05menoje" path="res://Assets/Role/shy_2.png" id="3_mjlmj"]
+[ext_resource type="Texture2D" uid="uid://bk0erqv4qxoc2" path="res://Assets/Role/shy_3.png" id="4_us73c"]
+[ext_resource type="Texture2D" uid="uid://u8nb8sqihrua" path="res://Assets/Role/shy_4.png" id="5_otdem"]
+[ext_resource type="Texture2D" uid="uid://c5m4shdvjqens" path="res://Assets/Role/shy_5.png" id="6_o4vf3"]
+[ext_resource type="Texture2D" uid="uid://cxpin27kmxwkn" path="res://Assets/Role/shy_6.png" id="7_p4ffb"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v6ikh")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2njkg")
+}],
+"loop": true,
+"name": &"Stay",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2njkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mjlmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_us73c")
+}],
+"loop": true,
+"name": &"WalkDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_otdem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o4vf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p4ffb")
+}],
+"loop": true,
+"name": &"WalkUp",
+"speed": 5.0
+}]

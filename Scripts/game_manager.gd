@@ -24,11 +24,11 @@ var max_satisfaction: float = 100.0
 
 # 食物類型（台灣在地風格）
 enum FoodType {
-	BEEF_NOODLE,      # 牛肉麵
-	STINKY_TOFU,      # 臭豆腐
-	PEARL_MILK_TEA,   # 珍珠奶茶
-	OYSTER_OMELETTE,  # 蚵仔煎
-	BRAISED_PORK      # 滷肉飯
+	BEEF_NOODLE,
+	RedTea,
+	FriedRice,
+	BraisedRice,
+	BubbleMilkTea
 }
 
 # 表情類型
@@ -56,20 +56,16 @@ enum KitchenStaffType {
 	KASUMI    # KASUMI
 }
 
-# 內場人員
-var kitchen_staff_1_food: Array[FoodType] = [FoodType.BEEF_NOODLE, FoodType.STINKY_TOFU, FoodType.PEARL_MILK_TEA]
-var kitchen_staff_2_food: Array[FoodType] = [FoodType.OYSTER_OMELETTE, FoodType.BRAISED_PORK]
-
 # 食物名稱
 var food_names = {
-	FoodType.BEEF_NOODLE: "牛肉麵",
-	FoodType.STINKY_TOFU: "臭豆腐",
-	FoodType.PEARL_MILK_TEA: "珍珠奶茶",
-	FoodType.OYSTER_OMELETTE: "蚵仔煎",
-	FoodType.BRAISED_PORK: "滷肉飯"
+	FoodType.BEEF_NOODLE: "湯麵",
+	FoodType.RedTea: "紅茶",
+	FoodType.FriedRice: "炒飯",
+	FoodType.BraisedRice : "滷肉飯",
+	FoodType.BubbleMilkTea: "珍珠奶茶"
 }
 
-# 表情名稱
+# 表情名稱 
 var expression_names = {
 	MaskType.HAPPY: "開心",
 	MaskType.NEUTRAL: "中性",
@@ -93,8 +89,6 @@ var current_level_config: LevelConfig = null
 
 func _ready():
 	add_to_group("game_manager")
-	# 初始化五種食物
-	initialize_foods()
 	# 初始化三種表情
 	initialize_masks()
 	# 初始化三種客人
@@ -102,46 +96,6 @@ func _ready():
 	# 初始化內場人員
 	initialize_kitchen_staffs()
 
-func initialize_foods():
-	# 牛肉麵
-	foods[FoodType.BEEF_NOODLE] = Food.new(
-		"香濃的牛肉湯配上Q彈的麵條，是台灣經典美食",  # description
-		5.0,  # cook_time (秒)
-		15.0,  # sanity_recover
-		200.0  # throw_distance (像素)
-	)
-	
-	# 臭豆腐
-	foods[FoodType.STINKY_TOFU] = Food.new(
-		"外酥內嫩的臭豆腐，搭配泡菜和醬汁，風味獨特",  # description
-		3.0,  # cook_time (秒)
-		10.0,  # sanity_recover
-		150.0  # throw_distance (像素)
-	)
-	
-	# 珍珠奶茶
-	foods[FoodType.PEARL_MILK_TEA] = Food.new(
-		"濃郁的奶茶配上Q彈的珍珠，是台灣最具代表性的飲品",  # description
-		2.0,  # cook_time (秒)
-		8.0,  # sanity_recover
-		300.0  # throw_distance (像素)
-	)
-	
-	# 蚵仔煎
-	foods[FoodType.OYSTER_OMELETTE] = Food.new(
-		"新鮮的蚵仔配上蛋液和地瓜粉，煎至金黃酥脆",  # description
-		4.0,  # cook_time (秒)
-		12.0,  # sanity_recover
-		180.0  # throw_distance (像素)
-	)
-	
-	# 滷肉飯
-	foods[FoodType.BRAISED_PORK] = Food.new(
-		"肥瘦相間的滷肉配上白飯，是台灣最受歡迎的平民美食",  # description
-		3.5,  # cook_time (秒)
-		13.0,  # sanity_recover
-		170.0  # throw_distance (像素)
-	)
 
 func get_food(food_type: FoodType) -> Food:
 	return foods.get(food_type, null)
@@ -186,18 +140,19 @@ func _parse_mask_string(mask_str: String) -> Variant:
 
 func _parse_food_string(food_str: String) -> FoodType:
 	match food_str:
-		"魯肉飯", "滷肉飯":
-			return FoodType.BRAISED_PORK
-		"蚵仔煎":
-			return FoodType.OYSTER_OMELETTE
+		"滷肉飯":
+			return FoodType.BraisedRice
+		"紅茶":
+			return FoodType.RedTea
 		"珍珠奶茶":
-			return FoodType.PEARL_MILK_TEA
-		"臭豆腐":
-			return FoodType.STINKY_TOFU
-		"牛肉麵":
+			return FoodType.BubbleMilkTea
+		"炒飯":
+			return FoodType.FriedRice
+		"湯麵":
 			return FoodType.BEEF_NOODLE
 		_:
 			return FoodType.BEEF_NOODLE  # 默認值
+
 
 func _parse_dishes_string(dishes_str: String) -> Array[FoodType]:
 	var dishes: Array[FoodType] = []

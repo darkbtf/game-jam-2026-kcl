@@ -81,7 +81,7 @@ func cook_finish():
 	$CookTimer.stop()
 	emit_signal("order_status_change", take_order_number, "finish")
 	cooking_status = false
-	print("煮好了")
+	print("煮好了", food_name)
 
 	food.texture = load("res://Assets/Q版齊絨趴趴.png")
 	
