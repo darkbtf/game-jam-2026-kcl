@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4tqhctx47flw"
-path="res://.godot/imported/81702BBA-5C42-41A4-B635-AF13D5EF7699.png-77af811a932c612d1f7ff5d2ff5178eb.ctex"
+uid="uid://bmwopu7r4twjt"
+path="res://.godot/imported/door_close.PNG-87c78df42a0ebcf93609e6db332f39ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/81702BBA-5C42-41A4-B635-AF13D5EF7699.png"
-dest_files=["res://.godot/imported/81702BBA-5C42-41A4-B635-AF13D5EF7699.png-77af811a932c612d1f7ff5d2ff5178eb.ctex"]
+source_file="res://Assets/door_close.PNG"
+dest_files=["res://.godot/imported/door_close.PNG-87c78df42a0ebcf93609e6db332f39ce.ctex"]
 
 [params]
 

@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://main"]
+[gd_scene load_steps=14 format=3 uid="uid://main"]
 
 [ext_resource type="Script" uid="uid://ckxy2xylkxwo8" path="res://Scripts/game_manager.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cce8m6bwh75x7" path="res://Assets/ground.PNG" id="1_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://bn4k6oj1f21om" path="res://Objects/player.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://dtc7hnjg4pmp" path="res://Assets/ground_L.PNG" id="2_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://ddtjcxw0mdh0e" path="res://Objects/kitchen_staff.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://bhelgyk0nhs0m" path="res://Assets/ground_R.PNG" id="3_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://ui" path="res://Scenes/ui.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://do8o2wcdu4k6r" path="res://Scenes/qte_ui.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://customer" path="res://Objects/customer.tscn" id="6"]
@@ -13,7 +16,22 @@
 
 [node name="Main" type="Node2D"]
 
+[node name="Background" type="Node" parent="."]
+
+[node name="GroundL" type="Sprite2D" parent="Background"]
+position = Vector2(642, 359)
+texture = ExtResource("2_jkdf5")
+
+[node name="GroundR" type="Sprite2D" parent="Background"]
+position = Vector2(638, 359)
+texture = ExtResource("3_wsu2k")
+
+[node name="Ground" type="Sprite2D" parent="Background"]
+position = Vector2(642, 359)
+texture = ExtResource("1_fdnlq")
+
 [node name="草圖" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(641, 359)
 texture = ExtResource("9_ynf5e")
 
