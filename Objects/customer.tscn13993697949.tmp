@@ -1,22 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddtjcxw0mdh0e"]
+[gd_scene load_steps=3 format=3 uid="uid://customer"]
 
-[ext_resource type="Script" uid="uid://ddlexjuqv2ta0" path="res://Scripts/kitchen_staff.gd" id="1"]
+[ext_resource type="Script" uid="uid://b0pvbksoqukj8" path="res://Scripts/customer.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(75, 75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx80r"]
-size = Vector2(133, 126)
-
-[node name="KitchenStaff" type="CharacterBody2D"]
+[node name="Customer" type="CharacterBody2D"]
 script = ExtResource("1")
+satisfaction = null
+max_satisfaction = null
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -37.5
 offset_top = -37.5
 offset_right = 37.5
 offset_bottom = 37.5
-color = Color(0.8, 0.8, 1, 1)
+color = Color(1, 0.8, 0.8, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1")
@@ -28,15 +27,7 @@ offset_right = 32.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 theme_override_font_sizes/font_size = 32
-text = "內場"
-
-[node name="CookTimer" type="Timer" parent="."]
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_rx80r")
+text = "客人"
 
 [node name="Bubble" type="Control" parent="."]
 layout_mode = 3
@@ -79,6 +70,3 @@ theme_override_font_sizes/font_size = 30
 text = "😊"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="timeout" from="CookTimer" to="." method="cook_finish"]
-[connection signal="area_entered" from="Area2D" to="." method="player_nearby_staff"]

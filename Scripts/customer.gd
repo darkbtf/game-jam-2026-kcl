@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # 客人腳本
-@export var personality: GameManager.CustomerPersonality = GameManager.CustomerPersonality.NEUTRAL
+var personality
 @export var satisfaction: float = 50.0
 @export var max_satisfaction: float = 100.0
 

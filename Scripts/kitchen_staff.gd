@@ -12,8 +12,19 @@ var is_preparing: bool = false
 var prepare_timer: float = 0.0
 var prepare_time: float = 2.0
 
+# 分配個性
+var personalities
+var personality = ""
+
 func _ready():
 	game_manager = get_tree().get_first_node_in_group("game_manager")
+	personalities = [
+		GameManager.CustomerPersonality.FRIENDLY,
+		GameManager.CustomerPersonality.NEUTRAL,
+		GameManager.CustomerPersonality.GRUMPY
+	]
+	
+	random_personality()
 	
 
 func start_preparing(food_type: GameManager.FoodType):
@@ -27,6 +38,24 @@ func receive_expression(expression: GameManager.ExpressionType):
 	else:
 		mood = max(0, mood - 5)
 
+func random_personality():
+	personality = personalities[randi() % personalities.size()]
+	match personality:
+		GameManager.CustomerPersonality.FRIENDLY:
+			desired_expression = GameManager.ExpressionType.HAPPY
+			$Bubble/Label.text = "😊"
+		GameManager.CustomerPersonality.NEUTRAL:
+			desired_expression = GameManager.ExpressionType.NEUTRAL
+			$Bubble/Label.text = "😐"
+		GameManager.CustomerPersonality.GRUMPY:
+			desired_expression = GameManager.ExpressionType.SAD
+			$Bubble/Label.text = "😢"
+			
 func cook_finish():
 	print("煮好了")
 	return
+
+
+func player_nearby_staff(area: Area2D) -> void:
+	print("接觸")
+	pass # Replace with function body.

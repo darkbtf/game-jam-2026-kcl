@@ -48,9 +48,9 @@ func spawn_customer():
 	
 	# 隨機分配個性
 	var personalities = [
-		GameManager.CustomerPersonality.FRIENDLY,
-		GameManager.CustomerPersonality.NEUTRAL,
-		GameManager.CustomerPersonality.GRUMPY
+		game_manager.CustomerPersonality.FRIENDLY,
+		game_manager.CustomerPersonality.NEUTRAL,
+		game_manager.CustomerPersonality.GRUMPY
 	]
 	customer.personality = personalities[randi() % personalities.size()]
 	
