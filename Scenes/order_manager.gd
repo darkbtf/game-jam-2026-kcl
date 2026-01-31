@@ -49,3 +49,16 @@ func update_prepare_status(number, status):
 		"del":
 			Orders_Array[number].get_node("AnimatedSprite2D").play("stay")
 			make_number -= 1
+
+# 清空所有訂單
+func clear_orders():
+	order_text_array.clear()
+	order_number = 0
+	make_number = 0
+	# 重置所有訂單顯示
+	for order_control in Orders_Array:
+		if order_control and order_control.has_node("Meal"):
+			order_control.get_node("Meal").texture = null
+		if order_control and order_control.has_node("AnimatedSprite2D"):
+			order_control.get_node("AnimatedSprite2D").play("stay")
+	print("已清空訂單")

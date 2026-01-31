@@ -111,3 +111,12 @@ func rearrange_customers():
 	for i in range(customers.size()):
 		if i < queue_positions.size():
 			customers[i].position = queue_positions[i]
+
+# 清空隊列（移除所有客人）
+func clear_queue():
+	for customer in customers:
+		if is_instance_valid(customer):
+			customer.queue_free()
+	customers.clear()
+	spawn_timer = 0.0
+	satisfaction_update_timer = 0.0
