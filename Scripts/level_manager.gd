@@ -45,7 +45,7 @@ func _ready():
 	# 如果之後有 MenuScene，可以在 MenuScene 中手動調用 start_level(0)
 	var current_scene = get_tree().current_scene
 	if current_scene and current_scene.scene_file_path == "res://Scenes/main.tscn":
-		start_level(1)
+		start_level(0)
 
 # 初始化所有關卡配置
 func initialize_levels():
@@ -211,6 +211,7 @@ func restart_current_level():
 
 # 設置關卡狀態
 func set_level_state(new_state: LevelState):
+	print(new_state)
 	if current_state != new_state:
 		current_state = new_state
 		level_state_changed.emit(current_state)
@@ -255,7 +256,7 @@ func _process(delta):
 			level_timer = level_duration
 			level_time_up.emit()
 			# 可以選擇自動完成關卡或失敗
-			# complete_level()  # 或者 fail_level()
+			complete_level()  # 或者 fail_level()
 
 # 獲取關卡剩餘時間
 func get_remaining_time() -> float:

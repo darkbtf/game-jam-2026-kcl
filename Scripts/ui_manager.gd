@@ -17,12 +17,18 @@ func _ready():
 	# 設置 UI 在暫停時仍能處理輸入
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	# 連接 LevelManager 的信號以更新 level 顯示
+	# 連接 LevelManager 的信號以更新 level 顯示和時間
 	if LevelManager:
 		if not LevelManager.level_changed.is_connected(_on_level_changed):
 			LevelManager.level_changed.connect(_on_level_changed)
+		if not LevelManager.level_time_updated.is_connected(_on_level_time_updated):
+			LevelManager.level_time_updated.connect(_on_level_time_updated)
 		# 初始化顯示當前 level
 		update_level_display()
+		# 初始化顯示當前時間
+		if LevelManager.get_level_duration() > 0:
+			var remaining_time = LevelManager.get_remaining_time()
+			_on_level_time_updated(remaining_time)
 	
 	# 延遲獲取 game_manager，確保場景已載入
 	call_deferred("find_game_manager")
@@ -36,12 +42,9 @@ func find_game_manager():
 			game_manager.san_changed.connect(_on_san_changed)
 		if not game_manager.game_over.is_connected(_on_game_over):
 			game_manager.game_over.connect(_on_game_over)
-		if not game_manager.time_changed.is_connected(_on_time_changed):
-			game_manager.time_changed.connect(_on_time_changed)
 		
 		# 初始化顯示
 		_on_san_changed(100)
-		_on_time_changed(100)
 	
 	# 延遲獲取 player，因為可能還沒創建
 	call_deferred("find_player")
@@ -83,9 +86,15 @@ func _on_san_changed(new_value: float):
 	if san_bar:
 		san_bar.value = new_value
 
-func _on_time_changed(new_value: float):
-	if time_bar:
-		time_bar.value = new_value
+func _on_level_time_updated(remaining_time: float):
+	if time_bar and LevelManager:
+		var level_duration = LevelManager.get_level_duration()
+		if level_duration > 0:
+			# 計算剩餘時間的百分比（0-100）
+			var percentage = (remaining_time / level_duration) * 100.0
+			time_bar.value = percentage
+		else:
+			time_bar.value = 0
 
 func set_player(player_node: Node):
 	player = player_node
