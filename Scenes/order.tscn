@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bl5u6esx6xmus" path="res://Scenes/order_manager.gd" id="1_70v6w"]
 
-[node name="Order" type="Control" node_paths=PackedStringArray("Orders_Array")]
+[node name="Order" type="Control" node_paths=PackedStringArray("Orders_Array") groups=["orderManager"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,7 +54,7 @@ offset_left = 13.0
 offset_right = 53.0
 offset_bottom = 40.0
 
-[node name="Label2" type="Label" parent="HBoxContainer/Order 1"]
+[node name="StatusLabel" type="Label" parent="HBoxContainer/Order 1"]
 layout_mode = 0
 offset_left = 13.0
 offset_right = 53.0
@@ -97,7 +97,7 @@ offset_left = 113.0
 offset_right = 153.0
 offset_bottom = 40.0
 
-[node name="Label2" type="Label" parent="HBoxContainer/Order 2"]
+[node name="StatusLabel" type="Label" parent="HBoxContainer/Order 2"]
 layout_mode = 0
 offset_left = 113.0
 offset_right = 153.0
@@ -140,7 +140,7 @@ offset_left = 226.0
 offset_right = 266.0
 offset_bottom = 40.0
 
-[node name="Label2" type="Label" parent="HBoxContainer/Order 3"]
+[node name="StatusLabel" type="Label" parent="HBoxContainer/Order 3"]
 layout_mode = 0
 offset_left = 226.0
 offset_right = 266.0

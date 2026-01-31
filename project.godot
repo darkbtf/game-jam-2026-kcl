@@ -24,6 +24,9 @@ window/size/viewport_height=720
 
 interactionManager=""
 GameManager=""
+player=""
+orderManager=""
+staff=""
 
 [input]
 

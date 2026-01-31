@@ -12,7 +12,6 @@ var is_using_expression: bool = false
 var game_manager: Node
 
 func _ready():
-	add_to_group("player")
 	game_manager = get_tree().get_first_node_in_group("GameManager")
 
 func _physics_process(delta):
