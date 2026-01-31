@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # 玩家腳本
 @export var speed: float = 200.0
-@export var expression_drain_rate: float = 5.0  # 每秒掉多少 san
+@export var expression_drain_rate: float = 1.0  # 每秒掉多少 san
 
 var current_expression: GameManager.ExpressionType = GameManager.ExpressionType.NEUTRAL
 var is_using_expression: bool = false
@@ -27,21 +27,19 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("move_up"):
 		input_vector.y -= 2
-	if Input.is_action_pressed("move_down"):
+	elif Input.is_action_pressed("move_down"):
 		input_vector.y += 2
+		
 	if Input.is_action_pressed("move_left"):
 		input_vector.x -= 2
-	if Input.is_action_pressed("move_right"):
+	elif Input.is_action_pressed("move_right"):
 		input_vector.x += 2
 	
 	input_vector = input_vector.normalized()
 	velocity = input_vector * speed
 	move_and_slide()
 	
-	# 表情控制
-	var was_using_expression = is_using_expression
-	is_using_expression = false
-	
+	# 表情控制	
 	if Input.is_action_pressed("expression_happy"):
 		current_expression = GameManager.ExpressionType.HAPPY
 		is_using_expression = true
@@ -53,6 +51,7 @@ func _physics_process(delta):
 		is_using_expression = true
 	else:
 		current_expression = GameManager.ExpressionType.NEUTRAL
+		is_using_expression = false
 	
 	# 如果正在使用表情，持續掉 san
 	if is_using_expression and game_manager:
