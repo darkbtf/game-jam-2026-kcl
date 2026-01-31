@@ -45,7 +45,7 @@ func _ready():
 	# 如果之後有 MenuScene，可以在 MenuScene 中手動調用 start_level(0)
 	var current_scene = get_tree().current_scene
 	if current_scene and current_scene.scene_file_path == "res://Scenes/main.tscn":
-		start_level(0)
+		start_level(1)
 
 # 初始化所有關卡配置
 func initialize_levels():
@@ -226,7 +226,7 @@ func fail_level():
 func get_current_level_config() -> LevelConfig:
 	return current_level_config
 
-# 獲取指定索引的關卡配置
+# 獲取指定索引的關卡配置s
 func get_level_config(level_index: int) -> LevelConfig:
 	if level_index >= 0 and level_index < levels.size():
 		return levels[level_index]
