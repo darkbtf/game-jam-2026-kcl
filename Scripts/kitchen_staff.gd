@@ -20,6 +20,9 @@ var prepare_time: float = 3.0
 signal order_status_change(number, status)
 var take_order_number
 var cooking_status = false
+var food_name
+
+@export var food: Sprite2D
 
 func _ready():
 	game_manager = get_tree().get_first_node_in_group("game_manager")
@@ -55,6 +58,8 @@ func receive_expression(expression: GameManager.MaskType):
 	if order_manager.check_order_cook_status(take_order_number) != "not ready":
 		print("沒有尚未製作的餐點")
 		return
+	else:
+		food_name = order_manager.order_text_array[take_order_number][0]
 	
 	start_preparing()
 
@@ -77,11 +82,9 @@ func cook_finish():
 	emit_signal("order_status_change", take_order_number, "finish")
 	cooking_status = false
 	print("煮好了")
-	
-	
-	
-	return
 
+	food.texture = load("res://Assets/Q版齊絨趴趴.png")
+	
 
 func player_nearby_staff(body: Node2D) -> void:
 	if body.is_in_group("player") and !cooking_status:
