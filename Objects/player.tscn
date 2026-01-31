@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bn4k6oj1f21om"]
+[gd_scene load_steps=19 format=3 uid="uid://bn4k6oj1f21om"]
 
 [ext_resource type="Script" uid="uid://dcxpn0p8mrvml" path="res://Scripts/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dpv8j7uuatryy" path="res://Assets/texture.png" id="2_3y5cq"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bmpevh3jm5lh8" path="res://Assets/Role/player_4.png" id="9_eq7mc"]
 [ext_resource type="Texture2D" uid="uid://dpt1vmwv5qegy" path="res://Assets/Role/player_5.png" id="10_cfctp"]
 [ext_resource type="Texture2D" uid="uid://0qvraot1hqhl" path="res://Assets/Role/player_6.png" id="11_kl1fw"]
+[ext_resource type="Texture2D" uid="uid://cl87qnd0nwkqt" path="res://Assets/Foods/tray-bottom.png" id="12_3ye7n"]
+[ext_resource type="Texture2D" uid="uid://did45t6pyiwb7" path="res://Assets/Foods/tray-top.png" id="13_xxqss"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3y5cq"]
 atlas = ExtResource("2_3y5cq")
@@ -102,8 +104,34 @@ script = ExtResource("1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0ar0x")
 animation = &"WalkLeft"
-frame_progress = 0.49704692
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3.5, 40)
 shape = SubResource("RectangleShape2D_1")
+
+[node name="Tray_left" type="Node2D" parent="."]
+visible = false
+
+[node name="Bottom" type="Sprite2D" parent="Tray_left"]
+position = Vector2(-54.25, 16)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_3ye7n")
+
+[node name="Top" type="Sprite2D" parent="Tray_left"]
+position = Vector2(-54, 6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_xxqss")
+
+[node name="Tray_right" type="Node2D" parent="."]
+visible = false
+position = Vector2(112, 0)
+
+[node name="Bottom" type="Sprite2D" parent="Tray_right"]
+position = Vector2(-54.25, 16)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12_3ye7n")
+
+[node name="Top" type="Sprite2D" parent="Tray_right"]
+position = Vector2(-54, 6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("13_xxqss")

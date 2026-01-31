@@ -11,6 +11,8 @@ var current_expression: GameManager.MaskType = GameManager.MaskType.NEUTRAL
 var is_using_expression: bool = false
 var game_manager: Node
 
+var take_status = false
+
 func _ready():
 	game_manager = get_tree().get_first_node_in_group("GameManager")
 
@@ -30,18 +32,30 @@ func _physics_process(delta):
 	if input_dir.x > 0:
 		$AnimatedSprite2D.play("WalkLeft")
 		$AnimatedSprite2D.flip_h = true
+		if take_status:
+			$Tray_left.visible = false
+			$Tray_right.visible = true
 	elif input_dir.x < 0:
 		$AnimatedSprite2D.play("WalkLeft")
 		$AnimatedSprite2D.flip_h = false
+		if take_status:
+			$Tray_left.visible = true
+			$Tray_right.visible = false
 	elif input_dir.y < 0:
 		$AnimatedSprite2D.play("WalkUp")
 		$AnimatedSprite2D.flip_h = false
+		$Tray_left.visible = false
+		$Tray_right.visible = false
 	elif input_dir.y > 0:
 		$AnimatedSprite2D.play("WalkDown")
 		$AnimatedSprite2D.flip_h = false
+		$Tray_left.visible = false
+		$Tray_right.visible = false
 	else:
 		$AnimatedSprite2D.play("Down")
 		$AnimatedSprite2D.flip_h = false
+		$Tray_left.visible = false
+		$Tray_right.visible = false
 	
 	input_dir = input_dir.normalized()
 	if run_status:
@@ -73,3 +87,7 @@ func get_current_expression() -> GameManager.MaskType:
 
 func is_expressing() -> bool:
 	return is_using_expression
+
+func take_it(food_name):
+	print("玩家拿到", food_name)
+	take_status = true

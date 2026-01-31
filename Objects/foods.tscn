@@ -3,18 +3,17 @@
 [ext_resource type="Script" uid="uid://dmljk8vt6kxmb" path="res://Objects/foods.gd" id="1_risfm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87plw"]
-size = Vector2(655.0001, 255.00003)
+size = Vector2(118.00007, 66.00004)
 
 [node name="Food" type="Sprite2D"]
 z_index = 1
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_risfm")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Foods"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-32.499977, 37.49999)
-scale = Vector2(0.9999997, 0.9999997)
+position = Vector2(-20, -0.99999934)
+scale = Vector2(0.9999994, 0.9999994)
 shape = SubResource("RectangleShape2D_87plw")
 
 [connection signal="body_entered" from="Area2D" to="." method="take_food"]
