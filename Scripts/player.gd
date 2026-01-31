@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
 # 玩家腳本
-@export var speed: float = 200.0
+@export var speed: float
 @export var expression_drain_rate: float = 1.0  # 每秒掉多少 san
+
+var run_status: bool = false
+var run_direction
 
 var current_expression: GameManager.ExpressionType = GameManager.ExpressionType.NEUTRAL
 var is_using_expression: bool = false
@@ -22,23 +25,21 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		return
 	
-	# 移動控制
-	var input_vector = Vector2.ZERO
-	
-	if Input.is_action_pressed("move_up"):
-		input_vector.y -= 2
-	elif Input.is_action_pressed("move_down"):
-		input_vector.y += 2
+	## 移動控制
+	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		
-	if Input.is_action_pressed("move_left"):
-		input_vector.x -= 2
-	elif Input.is_action_pressed("move_right"):
-		input_vector.x += 2
+	if Input.is_action_just_pressed("run"):
+		run_status = true
+	else:
+		run_status = false
 	
-	input_vector = input_vector.normalized()
-	velocity = input_vector * speed
+	input_dir = input_dir.normalized()
+	if run_status:
+		velocity = input_dir * speed * 10
+	else:
+		velocity = input_dir * speed
+	
 	move_and_slide()
-	
 	# 表情控制	
 	if Input.is_action_pressed("expression_happy"):
 		current_expression = GameManager.ExpressionType.HAPPY
