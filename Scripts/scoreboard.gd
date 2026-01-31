@@ -7,6 +7,8 @@ extends Control
 @onready var lose_content: Control = $LoseContent
 @onready var level_digit1_label: Label = $WinContent/LevelDigit1Label
 @onready var level_digit2_label: Label = $WinContent/LevelDigit2Label
+@onready var good_count_label: Label = $WinContent/GoodCountLabel
+@onready var bad_count_label: Label = $WinContent/BadCountLabel
 
 func _ready():
 	# 設置 UI 在暫停時仍能處理輸入
@@ -38,6 +40,7 @@ func show_scoreboard():
 	# 根據是否成功過關來顯示對應的 Content
 	if LevelManager:
 		update_content_visibility()
+		update_customer_counts()
 	# 可以選擇暫停遊戲
 	# get_tree().paused = true
 
@@ -72,3 +75,10 @@ func update_content_visibility():
 			win_content.visible = is_success
 		if lose_content:
 			lose_content.visible = not is_success
+
+func update_customer_counts():
+	if LevelManager:
+		if good_count_label:
+			good_count_label.text = str(LevelManager.customers_served_successfully)
+		if bad_count_label:
+			bad_count_label.text = str(LevelManager.customers_unserved)
