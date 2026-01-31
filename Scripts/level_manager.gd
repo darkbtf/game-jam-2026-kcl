@@ -73,6 +73,10 @@ func initialize_levels():
 	level1.max_customers = 3
 	level1.duration = 120.0
 	
+	var shy_student_config = CustomerSpawnConfig.new(
+		GameManager.CustomerPersonality.SHY_STUDENT,
+		1.0
+	)
 	var friendly_config = CustomerSpawnConfig.new(
 		GameManager.CustomerPersonality.FRIENDLY,
 		1.0
@@ -85,9 +89,8 @@ func initialize_levels():
 		GameManager.CustomerPersonality.GRUMPY,
 		1.0
 	)
-	level1.customer_spawn_configs.append(friendly_config)
-	level1.customer_spawn_configs.append(neutral_config)
-	level1.customer_spawn_configs.append(grumpy_config)
+	level1.customer_spawn_configs.append(auntie_config)
+	level1.customer_spawn_configs.append(shy_student_config)
 	levels.append(level1)
 	
 	# Level 2: 進階關卡（包含所有客人類型，不同頻率）- 120秒
