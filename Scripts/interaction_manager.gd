@@ -79,6 +79,7 @@ func complete_interaction():
 	var player_expression = player.get_current_expression()
 	var success = current_customer.check_qte_success()
 	
+	
 	if success:
 		# QTE 成功，完成訂單
 		current_customer.complete_order(player_expression)
