@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0yxxjt12x7bm"]
+[gd_scene load_steps=7 format=3 uid="uid://b0yxxjt12x7bm"]
 
 [ext_resource type="Script" uid="uid://7dwkht3nun7x" path="res://Scripts/scoreboard.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://1ae4vi6pid6i" path="res://Assets/scoreboard/Setting.PNG" id="2"]
+[ext_resource type="Texture2D" uid="uid://dbckwsa8odshr" path="res://Assets/scoreboard/good list.PNG" id="3_o0w4a"]
+[ext_resource type="Texture2D" uid="uid://dwjlqydsq32rp" path="res://Assets/scoreboard/good.PNG" id="4_3nr3b"]
+[ext_resource type="Texture2D" uid="uid://cjlhdp3dgtfjd" path="res://Assets/scoreboard/bad list.PNG" id="5_mohfg"]
+[ext_resource type="Texture2D" uid="uid://cselggd1vp5ut" path="res://Assets/scoreboard/Next.PNG" id="6_d7tm3"]
 
 [node name="Scoreboard" type="Control"]
 visible = false
@@ -31,3 +35,165 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2")
 stretch_mode = 5
+
+[node name="WinContent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GoodIcon" type="TextureRect" parent="WinContent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_o0w4a")
+stretch_mode = 5
+
+[node name="Result" type="TextureRect" parent="WinContent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3nr3b")
+stretch_mode = 5
+
+[node name="BadIcon" type="TextureRect" parent="WinContent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_mohfg")
+stretch_mode = 5
+
+[node name="NextIcon" type="TextureRect" parent="WinContent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_d7tm3")
+stretch_mode = 5
+
+[node name="LevelDigit1Label" type="Label" parent="WinContent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.526
+anchor_top = 0.5
+anchor_right = 0.526
+anchor_bottom = 0.5
+offset_left = -8.280029
+offset_top = -304.0
+offset_right = 21.71997
+offset_bottom = -249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelDigit2Label" type="Label" parent="WinContent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.584
+anchor_top = 0.5
+anchor_right = 0.584
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -300.0
+offset_right = 50.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+theme_override_font_sizes/font_size = 40
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextLabel" type="Label" parent="WinContent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.54
+anchor_top = 0.87
+anchor_right = 0.54
+anchor_bottom = 0.87
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+theme_override_font_sizes/font_size = 40
+text = "[press N]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoseContent" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="LoseContent"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+theme_override_font_sizes/font_size = 72
+text = "GameOver"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverMessageLabel" type="Label" parent="LoseContent"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+theme_override_font_sizes/font_size = 48
+text = "YOU ARE FIRED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryLabel" type="Label" parent="LoseContent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.54
+anchor_top = 0.87
+anchor_right = 0.54
+anchor_bottom = 0.87
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+theme_override_font_sizes/font_size = 40
+text = "[Press R to Retry]"
+horizontal_alignment = 1
+vertical_alignment = 1
