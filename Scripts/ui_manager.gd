@@ -4,9 +4,8 @@ extends Control
 @onready var san_bar: TextureProgressBar = $SanBar
 @onready var time_bar: TextureProgressBar = $timeBar
 @onready var game_over_panel: Control = $GameOverPanel
-@onready var player_face_label: Label = $PlayerFacePanel/Label
 @onready var player_face_panel: Control = $PlayerFacePanel
-@onready var player_face_texture: TextureRect = $PlayerFacePanel/TextureRect
+@onready var player_face: Sprite2D = $PlayerFacePanel/Face
 
 var show_viewport_border: bool = true
 
@@ -148,30 +147,27 @@ func get_expression_emoji(expr: GameManager.MaskType) -> String:
 			return "😐"
 
 func update_player_face_texture(expr: GameManager.MaskType, is_expressing: bool):
-	if not player_face_texture:
-		return
-	
 	var texture_path: String = ""
 	
 	# 如果沒做表情，顯示 idle
 	if not is_expressing:
-		texture_path = "res://Assets/player_idle.png"
+		texture_path = "res://Assets/face_normal.png"
 	else:
 		# 根據表情顯示對應的圖片
 		match expr:
 			GameManager.MaskType.HAPPY:
-				texture_path = "res://Assets/player_smile.png"
+				texture_path = "res://Assets/face_happy.png"
 			GameManager.MaskType.NEUTRAL:
-				texture_path = "res://Assets/player_professional.png"
+				texture_path = "res://Assets/face_normal.png"
 			GameManager.MaskType.SAD:
-				texture_path = "res://Assets/player_sorry.png"
+				texture_path = "res://Assets/face_sad.png"
 			_:
-				texture_path = "res://Assets/player_idle.png"
+				texture_path = "res://Assets/face_normal.png"
 	
 	if texture_path != "":
 		var texture = load(texture_path)
 		if texture:
-			player_face_texture.texture = texture
+			player_face.texture = texture
 		else:
 			print("無法載入玩家表情圖片: ", texture_path)
 
@@ -205,27 +201,3 @@ func find_nearby_target() -> Node:
 				closest_target = staff
 	
 	return closest_target
-
-func _draw():
-	# 繪製 viewport 邊界框線
-	if show_viewport_border:
-		var viewport_size = get_viewport_rect().size
-		var border_color = Color.YELLOW
-		var border_width = 2.0
-		
-		# 繪製四條邊
-		# 上邊
-		draw_line(Vector2(0, 0), Vector2(viewport_size.x, 0), border_color, border_width)
-		# 下邊
-		draw_line(Vector2(0, viewport_size.y), Vector2(viewport_size.x, viewport_size.y), border_color, border_width)
-		# 左邊
-		draw_line(Vector2(0, 0), Vector2(0, viewport_size.y), border_color, border_width)
-		# 右邊
-		draw_line(Vector2(viewport_size.x, 0), Vector2(viewport_size.x, viewport_size.y), border_color, border_width)
-		
-		# 繪製中心線（可選，幫助定位）
-		var center_color = Color.YELLOW.lerp(Color.TRANSPARENT, 0.5)
-		# 垂直中心線
-		draw_line(Vector2(viewport_size.x / 2, 0), Vector2(viewport_size.x / 2, viewport_size.y), center_color, 1.0)
-		# 水平中心線
-		draw_line(Vector2(0, viewport_size.y / 2), Vector2(viewport_size.x, viewport_size.y / 2), center_color, 1.0)

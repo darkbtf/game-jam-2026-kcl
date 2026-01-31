@@ -9,26 +9,24 @@ size = Vector2(75, 75)
 script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_as_relative = false
 offset_left = -37.5
 offset_top = -37.5
 offset_right = 37.5
 offset_bottom = 37.5
 color = Color(1, 0.8, 0.8, 1)
-z_index = 0
-z_as_relative = false
-show_behind_parent = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-offset = Vector2(0, 0)
-flip_h = true
-visible = true
 z_index = 3
 z_as_relative = false
+flip_h = true
 
 [node name="Label" type="Label" parent="."]
+z_index = 2
+z_as_relative = false
 offset_left = -32.0
 offset_top = -23.0
 offset_right = 32.0
@@ -36,11 +34,11 @@ offset_bottom = 23.0
 theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 theme_override_font_sizes/font_size = 32
 text = "客人"
-z_index = 2
-z_as_relative = false
-show_behind_parent = false
 
 [node name="Bubble" type="Control" parent="."]
+visible = false
+z_index = 10
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,10 +51,6 @@ offset_right = -20.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-z_index = 10
-z_as_relative = false
-show_behind_parent = false
-visible = false
 
 [node name="Background" type="ColorRect" parent="Bubble"]
 layout_mode = 1
