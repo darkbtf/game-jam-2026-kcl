@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://customer" path="res://Objects/customer.tscn" id="6"]
 [ext_resource type="Script" uid="uid://c6okgrq53tosf" path="res://Scripts/queue_manager.gd" id="7"]
 [ext_resource type="Script" uid="uid://dhbhyk1b5myta" path="res://Scripts/interaction_manager.gd" id="8"]
-[ext_resource type="PackedScene" uid="uid://updf3qvx4bkt" path="res://Objects/foods.tscn" id="8_jkdf5"]
+[ext_resource type="PackedScene" path="res://Objects/foods.tscn" id="8_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]
-[ext_resource type="Script" path="res://Scripts/main.gd" id="11"]
+[ext_resource type="Script" uid="uid://dyla3ok2qxlpt" path="res://Scripts/main.gd" id="11"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkdf5"]
 size = Vector2(150, 411)
