@@ -1,11 +1,11 @@
 extends Control
 
 # UI 管理器
-@onready var san_bar: TextureProgressBar = $SanBar
-@onready var time_bar: TextureProgressBar = $timeBar
+@onready var san_bar: TextureProgressBar = $TopRightUI/SanBar
+@onready var time_bar: TextureProgressBar = $BottomLeftUI/timeBar
 @onready var game_over_panel: Control = $GameOverPanel
-@onready var player_face_panel: Control = $PlayerFacePanel
-@onready var player_face: Sprite2D = $PlayerFacePanel/Face
+@onready var player_face_panel: Control = $TopRightUI/PlayerFacePanel
+@onready var player_face: Sprite2D = $TopRightUI/PlayerFacePanel/Face
 
 var show_viewport_border: bool = true
 
