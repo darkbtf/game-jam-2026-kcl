@@ -168,9 +168,14 @@ func start_level(level_index: int):
 		print("錯誤: 無效的關卡索引: ", level_index)
 		return false
 	
+	# 重設關卡狀態
+	current_state = LevelState.LOADING
+	
+	# 清空隊列和訂單
+	reset_game_state()
+	
 	current_level_index = level_index
 	current_level_config = levels[level_index]
-	current_state = LevelState.LOADING
 	
 	# 設置關卡計時器
 	level_duration = current_level_config.duration
@@ -187,6 +192,39 @@ func start_level(level_index: int):
 	level_state_changed.emit(current_state)
 	
 	return true
+
+# 重設遊戲狀態（清空隊列和訂單）
+func reset_game_state():
+	var main_scene = get_tree().current_scene
+	if not main_scene:
+		return
+	
+	# 獲取 QueueManager 並清空隊列
+	var queue_manager = main_scene.get_node_or_null("QueueManager")
+	if queue_manager and queue_manager.has_method("clear_queue"):
+		queue_manager.clear_queue()
+		print("已清空隊列")
+	
+	# 獲取 OrderManager 並清空訂單
+	var order_manager = main_scene.get_node_or_null("CanvasLayer/Order")
+	if order_manager and order_manager.has_method("clear_orders"):
+		order_manager.clear_orders()
+		print("已清空訂單")
+	
+	# 重置玩家位置到初始位置
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.position = Vector2(640, 500)  # 初始位置
+		player.velocity = Vector2.ZERO  # 重置速度
+		print("已重置玩家位置")
+	
+	# 重置玩家 sanity
+	var game_manager = get_tree().get_first_node_in_group("game_manager")
+	if game_manager:
+		game_manager.player_san = game_manager.max_san
+		game_manager.is_game_over = false
+		game_manager.san_changed.emit(game_manager.player_san)
+		print("已重置玩家 sanity")
 
 # 切換到下一個關卡
 func next_level():
@@ -257,6 +295,7 @@ func _process(delta):
 			level_time_up.emit()
 			# 可以選擇自動完成關卡或失敗
 			complete_level()  # 或者 fail_level()
+	
 
 # 獲取關卡剩餘時間
 func get_remaining_time() -> float:
@@ -271,3 +310,13 @@ func get_elapsed_time() -> float:
 # 獲取關卡總時長
 func get_level_duration() -> float:
 	return level_duration if current_level_config else 0.0
+
+# 處理關卡完成/失敗後的按鍵輸入
+func _input(event: InputEvent):
+	if event is InputEventKey and event.pressed:
+		if current_state == LevelState.COMPLETED and event.keycode == KEY_N:
+			next_level()
+			get_viewport().set_input_as_handled()
+		elif current_state == LevelState.FAILED and event.keycode == KEY_R:
+			restart_current_level()
+			get_viewport().set_input_as_handled()

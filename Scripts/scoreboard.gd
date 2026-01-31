@@ -28,9 +28,10 @@ func _ready():
 
 func _on_level_state_changed(state):
 	# 當關卡狀態變為完成或失敗時顯示 scoreboard
-	print('triggered ', state)
 	if state == LevelManager.LevelState.COMPLETED or state == LevelManager.LevelState.FAILED:
 		show_scoreboard()
+	else:
+		hide_scoreboard()
 
 func show_scoreboard():
 	visible = true
