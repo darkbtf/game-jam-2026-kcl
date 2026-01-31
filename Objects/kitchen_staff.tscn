@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn4k6oj1f21om"]
+[gd_scene load_steps=3 format=3 uid="uid://ddtjcxw0mdh0e"]
 
-[ext_resource type="Script" uid="uid://dcxpn0p8mrvml" path="res://Scripts/player.gd" id="1"]
+[ext_resource type="Script" uid="uid://ddlexjuqv2ta0" path="res://Scripts/kitchen_staff.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(75, 75)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="KitchenStaff" type="CharacterBody2D"]
 script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -13,16 +13,16 @@ offset_left = -37.5
 offset_top = -37.5
 offset_right = 37.5
 offset_bottom = 37.5
-color = Color(1, 1, 0.8, 1)
+color = Color(0.8, 0.8, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -32.0
-offset_top = -24.0
+offset_top = -23.0
 offset_right = 32.0
-offset_bottom = 22.0
-theme_override_colors/font_color = Color(0.101867564, 0.10186755, 0.10186755, 1)
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 theme_override_font_sizes/font_size = 32
-text = "玩家"
+text = "內場"
