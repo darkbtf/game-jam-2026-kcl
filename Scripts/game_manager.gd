@@ -84,6 +84,9 @@ var customer_data: Dictionary = {}
 # 內場人員資料字典（KitchenStaffType -> KitchenStaffData 資源）
 var kitchen_staff_data: Dictionary = {}
 
+# 當前關卡配置
+var current_level_config: LevelConfig = null
+
 func _ready():
 	add_to_group("game_manager")
 	# 初始化五種食物
