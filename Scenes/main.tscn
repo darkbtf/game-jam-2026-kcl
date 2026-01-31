@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://main"]
+[gd_scene load_steps=13 format=3 uid="uid://main"]
 
 [ext_resource type="Script" uid="uid://ckxy2xylkxwo8" path="res://Scripts/game_manager.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cce8m6bwh75x7" path="res://Assets/ground.PNG" id="1_fdnlq"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://customer" path="res://Objects/customer.tscn" id="6"]
 [ext_resource type="Script" uid="uid://c6okgrq53tosf" path="res://Scripts/queue_manager.gd" id="7"]
 [ext_resource type="Script" uid="uid://dhbhyk1b5myta" path="res://Scripts/interaction_manager.gd" id="8"]
-[ext_resource type="Texture2D" uid="uid://dg5anq8d60r0c" path="res://Assets/草圖.jpg" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]
 
 [node name="Main" type="Node2D"]
@@ -19,21 +18,19 @@
 [node name="Background" type="Node" parent="."]
 
 [node name="GroundL" type="Sprite2D" parent="Background"]
+z_index = -1
 position = Vector2(642, 359)
 texture = ExtResource("2_jkdf5")
 
 [node name="GroundR" type="Sprite2D" parent="Background"]
+z_index = -1
 position = Vector2(638, 359)
 texture = ExtResource("3_wsu2k")
 
 [node name="Ground" type="Sprite2D" parent="Background"]
+z_index = -1
 position = Vector2(642, 359)
 texture = ExtResource("1_fdnlq")
-
-[node name="草圖" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(641, 359)
-texture = ExtResource("9_ynf5e")
 
 [node name="GameManager" type="Node" parent="." groups=["GameManager"]]
 script = ExtResource("1")

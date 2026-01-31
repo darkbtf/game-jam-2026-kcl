@@ -27,8 +27,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -19.0
 offset_right = 68.0
-offset_bottom = 26.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
@@ -36,29 +37,31 @@ color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
 [node name="Meal" type="TextureRect" parent="HBoxContainer/Order 1"]
 layout_mode = 0
 offset_left = 13.0
-offset_top = 48.0
+offset_top = 29.0
 offset_right = 53.0
-offset_bottom = 88.0
+offset_bottom = 69.0
 
 [node name="MealLabel" type="Label" parent="HBoxContainer/Order 1"]
 layout_mode = 0
 offset_left = 13.0
-offset_top = 48.0
+offset_top = 29.0
 offset_right = 53.0
-offset_bottom = 71.0
+offset_bottom = 52.0
 text = "餐點"
 
 [node name="Status" type="TextureRect" parent="HBoxContainer/Order 1"]
 layout_mode = 0
 offset_left = 13.0
+offset_top = -19.0
 offset_right = 53.0
-offset_bottom = 40.0
+offset_bottom = 21.0
 
 [node name="StatusLabel" type="Label" parent="HBoxContainer/Order 1"]
 layout_mode = 0
 offset_left = 13.0
+offset_top = -19.0
 offset_right = 53.0
-offset_bottom = 23.0
+offset_bottom = 4.0
 text = "狀態"
 
 [node name="Order 2" type="Control" parent="HBoxContainer"]
@@ -70,8 +73,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 100.0
+offset_top = -19.0
 offset_right = 168.0
-offset_bottom = 26.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
@@ -79,29 +83,31 @@ color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
 [node name="Meal" type="TextureRect" parent="HBoxContainer/Order 2"]
 layout_mode = 0
 offset_left = 113.0
-offset_top = 48.0
+offset_top = 29.0
 offset_right = 153.0
-offset_bottom = 88.0
+offset_bottom = 69.0
 
 [node name="MealLabel" type="Label" parent="HBoxContainer/Order 2"]
 layout_mode = 0
 offset_left = 113.0
-offset_top = 48.0
+offset_top = 29.0
 offset_right = 153.0
-offset_bottom = 71.0
+offset_bottom = 52.0
 text = "餐點"
 
 [node name="Status" type="TextureRect" parent="HBoxContainer/Order 2"]
 layout_mode = 0
 offset_left = 113.0
+offset_top = -19.0
 offset_right = 153.0
-offset_bottom = 40.0
+offset_bottom = 21.0
 
 [node name="StatusLabel" type="Label" parent="HBoxContainer/Order 2"]
 layout_mode = 0
 offset_left = 113.0
+offset_top = -19.0
 offset_right = 153.0
-offset_bottom = 23.0
+offset_bottom = 4.0
 text = "狀態"
 
 [node name="Order 3" type="Control" parent="HBoxContainer"]
@@ -113,8 +119,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 213.0
+offset_top = -19.0
 offset_right = 281.0
-offset_bottom = 26.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
@@ -122,27 +129,29 @@ color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
 [node name="Meal" type="TextureRect" parent="HBoxContainer/Order 3"]
 layout_mode = 0
 offset_left = 226.0
-offset_top = 48.0
+offset_top = 29.0
 offset_right = 266.0
-offset_bottom = 88.0
+offset_bottom = 69.0
 
 [node name="MealLabel" type="Label" parent="HBoxContainer/Order 3"]
 layout_mode = 0
 offset_left = 226.0
-offset_top = 48.0
+offset_top = 29.0
 offset_right = 266.0
-offset_bottom = 71.0
+offset_bottom = 52.0
 text = "餐點"
 
 [node name="Status" type="TextureRect" parent="HBoxContainer/Order 3"]
 layout_mode = 0
 offset_left = 226.0
+offset_top = -19.0
 offset_right = 266.0
-offset_bottom = 40.0
+offset_bottom = 21.0
 
 [node name="StatusLabel" type="Label" parent="HBoxContainer/Order 3"]
 layout_mode = 0
 offset_left = 226.0
+offset_top = -19.0
 offset_right = 266.0
-offset_bottom = 23.0
+offset_bottom = 4.0
 text = "狀態"

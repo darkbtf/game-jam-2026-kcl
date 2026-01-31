@@ -22,11 +22,23 @@ func _physics_process(delta):
 	
 	## 移動控制
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		
+	
 	if Input.is_action_just_pressed("run"):
 		run_status = true
 	else:
 		run_status = false
+	if input_dir.x > 0:
+		$AnimatedSprite2D.play("Left")
+		$AnimatedSprite2D.flip_h = true
+	elif input_dir.x < 0:
+		$AnimatedSprite2D.play("Left")
+		$AnimatedSprite2D.flip_h = false
+	elif input_dir.y < 0:
+		$AnimatedSprite2D.play("Up")
+		$AnimatedSprite2D.flip_h = false
+	else:
+		$AnimatedSprite2D.play("Down")
+		$AnimatedSprite2D.flip_h = false
 	
 	input_dir = input_dir.normalized()
 	if run_status:

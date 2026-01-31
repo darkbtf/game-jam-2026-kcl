@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var mood: float = 50.0
 @export var max_mood: float = 100.0
 @export var desired_mask: GameManager.MaskType = GameManager.MaskType.NEUTRAL
+var desired_food: GameManager.FoodType
 
 var personalities: Array[GameManager.CustomerPersonality] = []
 var personality: GameManager.CustomerPersonality
@@ -76,6 +77,9 @@ func cook_finish():
 	emit_signal("order_status_change", take_order_number, "finish")
 	cooking_status = false
 	print("煮好了")
+	
+	
+	
 	return
 
 
