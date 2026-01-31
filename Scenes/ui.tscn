@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://ui"]
 
 [ext_resource type="Script" uid="uid://dge7yvkxru2xr" path="res://Scripts/ui_manager.gd" id="1"]
-[ext_resource type="Script" uid="uid://b6ajxgim7sstu" path="res://Scripts/face_panel.gd" id="2"]
+[ext_resource type="Script" path="res://Scripts/face_panel.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://ctkje7j2njh5t" path="res://Assets/san.png" id="2_smcll"]
 [ext_resource type="Texture2D" uid="uid://bsbwfxcikp7qy" path="res://Assets/san_progress.png" id="3_nt8jn"]
 [ext_resource type="Texture2D" uid="uid://bcmyrob25k7l6" path="res://Assets/time.png" id="3_ryf15"]
@@ -197,7 +197,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.101867564, 0.10186755, 0.10186755, 1)
 theme_override_font_sizes/font_size = 32
-text = "Level 1"
+text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
