@@ -6,18 +6,16 @@ var qte_ui: Node
 var current_customer: Node = null
 var is_interacting: bool = false
 
+signal create_order(meal_name)
+
+
 func _ready():
 	# 延遲獲取節點，確保場景已載入
 	call_deferred("setup_nodes")
 
 func setup_nodes():
-	player = get_node("../Player")
-	if not player:
-		player = get_tree().get_first_node_in_group("player")
-	
-	qte_ui = get_node("../QTEUI")
-	if not qte_ui:
-		qte_ui = get_tree().get_first_node_in_group("qte_ui")
+	player = get_tree().get_first_node_in_group("player")
+	qte_ui = get_tree().get_first_node_in_group("qte_ui")
 
 func _process(delta):
 	if not player:
@@ -83,6 +81,7 @@ func complete_interaction():
 	if success:
 		# QTE 成功，完成訂單
 		current_customer.complete_order(player_expression)
+		emit_signal("create_order", current_customer.desired_food_name)
 	else:
 		# QTE 失敗，降低滿意度
 		current_customer.satisfaction = max(0, current_customer.satisfaction - 10)

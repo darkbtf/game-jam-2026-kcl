@@ -1,0 +1,148 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2h0hj5weqvw1"]
+
+[ext_resource type="Script" uid="uid://bl5u6esx6xmus" path="res://Scenes/order_manager.gd" id="1_70v6w"]
+
+[node name="Order" type="Control" node_paths=PackedStringArray("Orders_Array")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_70v6w")
+Orders_Array = [NodePath("HBoxContainer/Order 1"), NodePath("HBoxContainer/Order 2"), NodePath("HBoxContainer/Order 3")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 946.0
+offset_top = 626.0
+offset_right = 1275.0
+offset_bottom = 703.0
+
+[node name="Order 1" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Background" type="ColorRect" parent="HBoxContainer/Order 1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 68.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
+
+[node name="Meal" type="TextureRect" parent="HBoxContainer/Order 1"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 48.0
+offset_right = 53.0
+offset_bottom = 88.0
+
+[node name="MealLabel" type="Label" parent="HBoxContainer/Order 1"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 48.0
+offset_right = 53.0
+offset_bottom = 71.0
+text = "餐點"
+
+[node name="Status" type="TextureRect" parent="HBoxContainer/Order 1"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 53.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="HBoxContainer/Order 1"]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 53.0
+offset_bottom = 23.0
+text = "狀態"
+
+[node name="Order 2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Background" type="ColorRect" parent="HBoxContainer/Order 2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_right = 168.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
+
+[node name="Meal" type="TextureRect" parent="HBoxContainer/Order 2"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 48.0
+offset_right = 153.0
+offset_bottom = 88.0
+
+[node name="MealLabel" type="Label" parent="HBoxContainer/Order 2"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 48.0
+offset_right = 153.0
+offset_bottom = 71.0
+text = "餐點"
+
+[node name="Status" type="TextureRect" parent="HBoxContainer/Order 2"]
+layout_mode = 0
+offset_left = 113.0
+offset_right = 153.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="HBoxContainer/Order 2"]
+layout_mode = 0
+offset_left = 113.0
+offset_right = 153.0
+offset_bottom = 23.0
+text = "狀態"
+
+[node name="Order 3" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Background" type="ColorRect" parent="HBoxContainer/Order 3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 213.0
+offset_right = 281.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
+
+[node name="Meal" type="TextureRect" parent="HBoxContainer/Order 3"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 48.0
+offset_right = 266.0
+offset_bottom = 88.0
+
+[node name="MealLabel" type="Label" parent="HBoxContainer/Order 3"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 48.0
+offset_right = 266.0
+offset_bottom = 71.0
+text = "餐點"
+
+[node name="Status" type="TextureRect" parent="HBoxContainer/Order 3"]
+layout_mode = 0
+offset_left = 226.0
+offset_right = 266.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="HBoxContainer/Order 3"]
+layout_mode = 0
+offset_left = 226.0
+offset_right = 266.0
+offset_bottom = 23.0
+text = "狀態"

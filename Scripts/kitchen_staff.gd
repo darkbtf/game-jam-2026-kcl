@@ -13,11 +13,7 @@ var prepare_timer: float = 0.0
 var prepare_time: float = 2.0
 
 func _ready():
-	game_manager = get_node("/root/GameManager")
-	if not game_manager:
-		game_manager = get_node("/root/Main/GameManager")
-	if not game_manager:
-		game_manager = get_tree().get_first_node_in_group("game_manager")
+	game_manager = get_tree().get_first_node_in_group("game_manager")
 	
 	# 根據 staff_id 設置可用食物
 	if staff_id == 1:

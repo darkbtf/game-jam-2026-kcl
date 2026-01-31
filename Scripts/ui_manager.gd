@@ -26,15 +26,7 @@ func _ready():
 	call_deferred("find_game_manager")
 
 func find_game_manager():
-	# UI 在 CanvasLayer 下，CanvasLayer 在 Main 下
-	# 所以路徑應該是 ../../GameManager
-	game_manager = get_node("/root/GameManager")
-	if not game_manager:
-		game_manager = get_node("../../GameManager")
-	if not game_manager:
-		game_manager = get_node("../GameManager")
-	if not game_manager:
-		game_manager = get_tree().get_first_node_in_group("game_manager")
+	game_manager = get_tree().get_first_node_in_group("game_manager")
 	
 	if game_manager:
 		# 連接信號（如果還沒連接）

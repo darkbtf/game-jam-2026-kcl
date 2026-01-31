@@ -13,11 +13,7 @@ var game_manager: Node
 
 func _ready():
 	add_to_group("player")
-	game_manager = get_node("/root/GameManager")
-	if not game_manager:
-		game_manager = get_node("/root/Main/GameManager")
-	if not game_manager:
-		game_manager = get_tree().get_first_node_in_group("game_manager")
+	game_manager = get_tree().get_first_node_in_group("GameManager")
 
 func _physics_process(delta):
 	# 檢查遊戲結束

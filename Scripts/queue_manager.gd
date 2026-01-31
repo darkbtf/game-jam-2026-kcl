@@ -21,11 +21,7 @@ func _ready():
 		queue_positions.append(Vector2(270, 270 + i * 120))
 	
 	# 獲取遊戲管理器
-	game_manager = get_node("/root/GameManager")
-	if not game_manager:
-		game_manager = get_node("../GameManager")
-	if not game_manager:
-		game_manager = get_tree().get_first_node_in_group("game_manager")
+	game_manager = get_tree().get_first_node_in_group("game_manager")
 
 func _process(delta):
 	spawn_timer += delta

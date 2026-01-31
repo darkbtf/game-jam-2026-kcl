@@ -9,6 +9,7 @@ var customer_id: int
 # 客人想要的食物（在生成時隨機決定，之後不會改變）
 var desired_food: GameManager.FoodType
 var desired_expression: GameManager.ExpressionType
+var desired_food_name
 var is_ordering: bool = false
 var order_timer: float = 0.0
 var order_time_limit: float = 3.0  # 點單時間限制
@@ -26,11 +27,7 @@ signal order_completed(customer_id, success: bool)
 signal qte_item_changed(item: String)
 
 func _ready():
-	game_manager = get_node("/root/GameManager")
-	if not game_manager:
-		game_manager = get_node("/root/Main/GameManager")
-	if not game_manager:
-		game_manager = get_tree().get_first_node_in_group("game_manager")
+	game_manager = get_tree().get_first_node_in_group("GameManager")
 	
 	# 根據個性決定喜歡的表情
 	match personality:
@@ -63,7 +60,7 @@ func prepare_qte_items():
 	
 	# QTE 只包含客人想要的食物 + 隨機 emoji
 	var random_emojis = ["🔥", "❤️", "👀", "💀", "🚗", "🐂", "🔫", "⭐", "💎", "🎯", "🎲", "🎪"]
-	var desired_food_name = game_manager.get_food_name(desired_food)
+	desired_food_name = game_manager.get_food_name(desired_food)
 	
 	qte_items = random_emojis.duplicate()
 	qte_items.append(desired_food_name)
