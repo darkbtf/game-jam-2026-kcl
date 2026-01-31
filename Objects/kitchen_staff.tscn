@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddtjcxw0mdh0e"]
+[gd_scene load_steps=7 format=3 uid="uid://ddtjcxw0mdh0e"]
 
 [ext_resource type="Script" uid="uid://ddlexjuqv2ta0" path="res://Scripts/kitchen_staff.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://0hmslmu0opki" path="res://Assets/Role/cooker.png" id="2_cbj7r"]
@@ -17,6 +17,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rx80r"]
 size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbj7r"]
+size = Vector2(22, 80)
 
 [node name="KitchenStaff" type="CharacterBody2D" groups=["staff"]]
 script = ExtResource("1")
@@ -69,6 +72,10 @@ theme_override_font_sizes/font_size = 30
 text = "😊"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 30)
+shape = SubResource("RectangleShape2D_cbj7r")
 
 [connection signal="timeout" from="CookTimer" to="." method="cook_finish"]
 [connection signal="body_entered" from="Area2D" to="." method="player_nearby_staff"]

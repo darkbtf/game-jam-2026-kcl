@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://main"]
+[gd_scene load_steps=22 format=3 uid="uid://main"]
 
 [ext_resource type="Script" uid="uid://ckxy2xylkxwo8" path="res://Scripts/game_manager.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cce8m6bwh75x7" path="res://Assets/ground.PNG" id="1_fdnlq"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://updf3qvx4bkt" path="res://Objects/foods.tscn" id="8_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="11"]
-[ext_resource type="PackedScene" uid="uid://b1nsg7t1ub42f" path="res://Scenes/scoreboard.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://b0yxxjt12x7bm" path="res://Scenes/scoreboard.tscn" id="12"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkdf5"]
 size = Vector2(150, 411)
@@ -30,6 +30,9 @@ size = Vector2(52.5, 605)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b3802"]
 size = Vector2(1099, 72.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fevyy"]
+size = Vector2(148, 102.5)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("11")
@@ -75,12 +78,12 @@ z_as_relative = false
 
 [node name="KitchenStaff1" parent="Kitchen" node_paths=PackedStringArray("food") instance=ExtResource("3")]
 z_as_relative = false
-position = Vector2(1203, 399)
+position = Vector2(1173, 399)
 food = NodePath("../../Foods/Food")
 
 [node name="KitchenStaff2" parent="Kitchen" node_paths=PackedStringArray("food") instance=ExtResource("3")]
 z_as_relative = false
-position = Vector2(1204, 549)
+position = Vector2(1174, 549)
 staff_id = 2
 food = NodePath("../../Foods/Food2")
 
@@ -115,6 +118,10 @@ shape = SubResource("RectangleShape2D_h1bgf")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls/StaticBody2D"]
 position = Vector2(810.5, 758.75)
 shape = SubResource("RectangleShape2D_b3802")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1204, 669.75)
+shape = SubResource("RectangleShape2D_fevyy")
 
 [node name="QueueManager" type="Node2D" parent="."]
 z_as_relative = false
