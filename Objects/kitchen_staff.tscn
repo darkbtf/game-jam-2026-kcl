@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddtjcxw0mdh0e"]
+[gd_scene load_steps=5 format=3 uid="uid://ddtjcxw0mdh0e"]
 
 [ext_resource type="Script" uid="uid://ddlexjuqv2ta0" path="res://Scripts/kitchen_staff.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dyku6ljnlmsqe" path="res://Assets/cloud.png" id="2_jedw8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(75, 75)
@@ -51,15 +52,9 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="Bubble"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 49.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.9)
+[node name="Background" type="Sprite2D" parent="Bubble"]
+position = Vector2(54, 23)
+texture = ExtResource("2_jedw8")
 
 [node name="Label" type="Label" parent="Bubble"]
 layout_mode = 1
@@ -68,10 +63,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -21.0
-offset_right = 60.0
-offset_bottom = 21.0
+offset_left = -85.0
+offset_top = -48.0
+offset_right = -15.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.15307656, 0.15307653, 0.15307653, 1)

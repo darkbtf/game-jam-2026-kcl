@@ -23,11 +23,9 @@ LevelManager="*res://Scripts/level_manager.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/mode=2
-window/size/resizable=true
+window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
-window/dpi/allow_hidpi=true
 
 [global_group]
 

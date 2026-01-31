@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://customer"]
+[gd_scene load_steps=4 format=3 uid="uid://customer"]
 
 [ext_resource type="Script" uid="uid://b0pvbksoqukj8" path="res://Scripts/customer.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dyku6ljnlmsqe" path="res://Assets/cloud.png" id="2_q7x7l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(75, 75)
@@ -36,7 +37,6 @@ theme_override_font_sizes/font_size = 32
 text = "客人"
 
 [node name="Bubble" type="Control" parent="."]
-visible = false
 z_index = 10
 z_as_relative = false
 layout_mode = 3
@@ -52,14 +52,18 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="Bubble"]
+[node name="Background" type="TextureRect" parent="Bubble"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -21.0
+offset_right = -13.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0.9)
+texture = ExtResource("2_q7x7l")
 
 [node name="Label" type="Label" parent="Bubble"]
 layout_mode = 1
@@ -68,10 +72,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -15.0
-offset_right = 60.0
-offset_bottom = 15.0
+offset_left = -111.0
+offset_top = -45.0
+offset_right = 9.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.15307656, 0.15307653, 0.15307653, 1)
