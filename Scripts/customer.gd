@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var max_satisfaction: float = 100.0
 
 var customer_id: int
+# 客人想要的食物（在生成時隨機決定，之後不會改變）
 var desired_food: GameManager.FoodType
 var desired_expression: GameManager.ExpressionType
 var is_ordering: bool = false
@@ -18,7 +19,7 @@ var qte_emojis: Array[String] = ["😊", "😐", "😢", "🍜", "🍢", "🧋",
 var qte_items: Array = []
 var qte_current_item: String = ""
 var qte_timer: float = 0.0
-var qte_switch_interval: float = 0.3  # 每0.3秒切換一次
+var qte_switch_interval: float = 0.5  # 每0.5秒切換一次
 
 signal order_started(customer_id)
 signal order_completed(customer_id, success: bool)
@@ -40,7 +41,7 @@ func _ready():
 		GameManager.CustomerPersonality.GRUMPY:
 			desired_expression = GameManager.ExpressionType.SAD
 	
-	# 隨機選擇想要的食物
+	# 隨機選擇想要的食物（每個客人只會想要一種食物，在生成時決定）
 	var all_foods = [
 		GameManager.FoodType.BEEF_NOODLE,
 		GameManager.FoodType.STINKY_TOFU,
@@ -57,14 +58,12 @@ func prepare_qte_items():
 	if not game_manager:
 		return
 	
-	qte_items = [
-		"😊", "😐", "😢",
-		game_manager.get_food_name(GameManager.FoodType.BEEF_NOODLE),
-		game_manager.get_food_name(GameManager.FoodType.STINKY_TOFU),
-		game_manager.get_food_name(GameManager.FoodType.PEARL_MILK_TEA),
-		game_manager.get_food_name(GameManager.FoodType.OYSTER_OMELETTE),
-		game_manager.get_food_name(GameManager.FoodType.BRAISED_PORK)
-	]
+	# QTE 只包含客人想要的食物 + 隨機 emoji
+	var random_emojis = ["🔥", "❤️", "👀", "💀", "🚗", "🐂", "🔫", "⭐", "💎", "🎯", "🎲", "🎪"]
+	var desired_food_name = game_manager.get_food_name(desired_food)
+	
+	qte_items = random_emojis.duplicate()
+	qte_items.append(desired_food_name)
 
 func _process(delta):
 	if qte_active:

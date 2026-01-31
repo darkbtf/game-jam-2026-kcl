@@ -5,7 +5,7 @@ extends Node2D
 @export var spawn_interval: float = 5.0
 @export var max_customers: int = 5
 
-var spawn_timer: float = 0.0
+var spawn_timer: float = 3.5
 var customers: Array[Node] = []
 var customer_counter: int = 0
 var queue_positions: Array[Vector2] = []
