@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://main"]
+[gd_scene load_steps=19 format=3 uid="uid://main"]
 
 [ext_resource type="Script" uid="uid://ckxy2xylkxwo8" path="res://Scripts/game_manager.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cce8m6bwh75x7" path="res://Assets/ground.PNG" id="1_fdnlq"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://updf3qvx4bkt" path="res://Objects/foods.tscn" id="8_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="11"]
+[ext_resource type="PackedScene" uid="uid://scoreboard" path="res://Scenes/scoreboard.tscn" id="12"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkdf5"]
 size = Vector2(150, 411)
@@ -133,6 +134,8 @@ grow_horizontal = 1
 [node name="QTEUI" parent="CanvasLayer" instance=ExtResource("5")]
 
 [node name="Order" parent="CanvasLayer" instance=ExtResource("10_hptm8")]
+
+[node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("12")]
 
 [connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
 
