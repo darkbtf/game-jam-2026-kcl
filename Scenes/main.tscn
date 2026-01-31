@@ -1,15 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://main"]
+[gd_scene load_steps=10 format=3 uid="uid://main"]
 
 [ext_resource type="Script" uid="uid://ckxy2xylkxwo8" path="res://Scripts/game_manager.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bn4k6oj1f21om" path="res://Objects/player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://ddtjcxw0mdh0e" path="res://Objects/kitchen_staff.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://ui" path="res://Scenes/ui.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Scenes/qte_ui.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://do8o2wcdu4k6r" path="res://Scenes/qte_ui.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://customer" path="res://Objects/customer.tscn" id="6"]
 [ext_resource type="Script" uid="uid://c6okgrq53tosf" path="res://Scripts/queue_manager.gd" id="7"]
 [ext_resource type="Script" uid="uid://dhbhyk1b5myta" path="res://Scripts/interaction_manager.gd" id="8"]
+[ext_resource type="Texture2D" uid="uid://dg5anq8d60r0c" path="res://Assets/草圖.jpg" id="9_ynf5e"]
 
 [node name="Main" type="Node2D"]
+
+[node name="草圖" type="Sprite2D" parent="."]
+position = Vector2(641, 359)
+texture = ExtResource("9_ynf5e")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1")
@@ -19,13 +24,15 @@ position = Vector2(640, 360)
 
 [node name="Player" parent="." instance=ExtResource("2")]
 position = Vector2(640, 500)
+speed = 300.0
 
-[node name="KitchenStaff1" parent="." instance=ExtResource("3")]
-position = Vector2(160, 250)
-staff_id = 1
+[node name="Kitchen" type="Node" parent="."]
 
-[node name="KitchenStaff2" parent="." instance=ExtResource("3")]
-position = Vector2(160, 450)
+[node name="KitchenStaff1" parent="Kitchen" instance=ExtResource("3")]
+position = Vector2(1203, 399)
+
+[node name="KitchenStaff2" parent="Kitchen" instance=ExtResource("3")]
+position = Vector2(1204, 549)
 staff_id = 2
 
 [node name="QueueManager" type="Node2D" parent="."]
