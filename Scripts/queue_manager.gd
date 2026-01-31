@@ -98,6 +98,13 @@ func spawn_customer():
 	customer.order_completed.connect(_on_customer_order_completed)
 
 func _on_customer_order_completed(customer_id: int, success: bool):
+	# 更新統計數據
+	if LevelManager:
+		if success:
+			LevelManager.record_customer_served_successfully()
+		else:
+			LevelManager.record_customer_unserved()
+	
 	# 移除完成的客人
 	for i in range(customers.size()):
 		if customers[i].customer_id == customer_id:
@@ -111,6 +118,10 @@ func rearrange_customers():
 	for i in range(customers.size()):
 		if i < queue_positions.size():
 			customers[i].position = queue_positions[i]
+
+# 獲取當前客人數量
+func get_customer_count() -> int:
+	return customers.size()
 
 # 清空隊列（移除所有客人）
 func clear_queue():

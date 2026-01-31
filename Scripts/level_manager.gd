@@ -34,6 +34,10 @@ var current_state: LevelState = LevelState.NOT_STARTED
 var level_timer: float = 0.0
 var level_duration: float = 0.0
 
+# 關卡統計
+var customers_served_successfully: int = 0  # 成功服務的客人數量
+var customers_unserved: int = 0  # 未服務的客人數量
+
 func _ready():
 	# 初始化時載入所有關卡配置
 	initialize_levels()
@@ -57,7 +61,7 @@ func initialize_levels():
 	level0.level_name = "教學關卡"
 	level0.spawn_interval = 8.0
 	level0.max_customers = 2
-	level0.duration = 90.0
+	level0.duration = 60.0
 	
 	var auntie_config = CustomerSpawnConfig.new(
 		GameManager.CustomerPersonality.LOCAL_AUNTIE,
@@ -174,6 +178,10 @@ func start_level(level_index: int):
 	# 清空隊列和訂單
 	reset_game_state()
 	
+	# 重置統計數據
+	customers_served_successfully = 0
+	customers_unserved = 0
+	
 	current_level_index = level_index
 	current_level_config = levels[level_index]
 	
@@ -258,6 +266,8 @@ func set_level_state(new_state: LevelState):
 func complete_level():
 	set_level_state(LevelState.COMPLETED)
 	print("關卡完成: ", current_level_config.level_name if current_level_config else "未知")
+	# 計算未服務的客人（關卡結束時還在隊列中的客人）
+	calculate_unserved_customers()
 
 # 失敗當前關卡
 func fail_level():
@@ -310,6 +320,25 @@ func get_elapsed_time() -> float:
 # 獲取關卡總時長
 func get_level_duration() -> float:
 	return level_duration if current_level_config else 0.0
+
+# 記錄成功服務的客人
+func record_customer_served_successfully():
+	customers_served_successfully += 1
+
+# 記錄未服務的客人
+func record_customer_unserved():
+	customers_unserved += 1
+
+# 計算未服務的客人（關卡結束時還在隊列中的客人）
+func calculate_unserved_customers():
+	var main_scene = get_tree().current_scene
+	if not main_scene:
+		return
+	
+	var queue_manager = main_scene.get_node_or_null("QueueManager")
+	if queue_manager and queue_manager.has_method("get_customer_count"):
+		var remaining_customers = queue_manager.get_customer_count()
+		customers_unserved += remaining_customers
 
 # 處理關卡完成/失敗後的按鍵輸入
 func _input(event: InputEvent):
