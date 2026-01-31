@@ -162,6 +162,16 @@ offset_bottom = -539.0
 grow_vertical = 0
 script = ExtResource("2")
 
+[node name="TextureRect" type="TextureRect" parent="PlayerFacePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Label" type="Label" parent="PlayerFacePanel"]
 layout_mode = 1
 anchors_preset = 8
@@ -178,6 +188,7 @@ grow_vertical = 2
 text = "😐"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible = false
 
 [node name="TitleLabel" type="Label" parent="PlayerFacePanel"]
 layout_mode = 1

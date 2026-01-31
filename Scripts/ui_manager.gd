@@ -6,6 +6,7 @@ extends Control
 @onready var game_over_panel: Control = $GameOverPanel
 @onready var player_face_label: Label = $PlayerFacePanel/Label
 @onready var player_face_panel: Control = $PlayerFacePanel
+@onready var player_face_texture: TextureRect = $PlayerFacePanel/TextureRect
 
 var show_viewport_border: bool = true
 
@@ -49,9 +50,11 @@ func find_player():
 		player = get_node("../Player")
 	if not player:
 		player = get_tree().get_first_node_in_group("player")
-	if player:
-		# 確保 player 有 get_current_expression 方法
-		pass
+	if player and game_manager:
+		# 初始化玩家表情顯示
+		var expr = player.get_current_expression()
+		var is_expressing = player.is_expressing()
+		update_player_face_texture(expr, is_expressing)
 
 
 func _process(delta):
@@ -64,11 +67,10 @@ func _process(delta):
 	if player and game_manager:
 		var expr = player.get_current_expression()
 		var expr_name = game_manager.get_expression_name(expr)
+		var is_expressing = player.is_expressing()
 		
-		# 更新玩家表情顯示（左下）
-		if player_face_label:
-			var emoji = get_expression_emoji(expr)
-			player_face_label.text = emoji
+		# 更新玩家表情顯示（使用圖片）
+		update_player_face_texture(expr, is_expressing)
 	elif not game_manager:
 		# 如果 game_manager 還沒找到，嘗試重新獲取
 		call_deferred("find_game_manager")
@@ -144,6 +146,34 @@ func get_expression_emoji(expr: GameManager.MaskType) -> String:
 			return "😢"
 		_:
 			return "😐"
+
+func update_player_face_texture(expr: GameManager.MaskType, is_expressing: bool):
+	if not player_face_texture:
+		return
+	
+	var texture_path: String = ""
+	
+	# 如果沒做表情，顯示 idle
+	if not is_expressing:
+		texture_path = "res://Assets/player_idle.png"
+	else:
+		# 根據表情顯示對應的圖片
+		match expr:
+			GameManager.MaskType.HAPPY:
+				texture_path = "res://Assets/player_smile.png"
+			GameManager.MaskType.NEUTRAL:
+				texture_path = "res://Assets/player_professional.png"
+			GameManager.MaskType.SAD:
+				texture_path = "res://Assets/player_sorry.png"
+			_:
+				texture_path = "res://Assets/player_idle.png"
+	
+	if texture_path != "":
+		var texture = load(texture_path)
+		if texture:
+			player_face_texture.texture = texture
+		else:
+			print("無法載入玩家表情圖片: ", texture_path)
 
 func find_nearby_target() -> Node:
 	if not player:

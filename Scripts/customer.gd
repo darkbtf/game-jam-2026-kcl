@@ -32,6 +32,9 @@ func _ready():
 		# 如果找不到，也嘗試大寫的 group 名稱（兼容性）
 		game_manager = get_tree().get_first_node_in_group("GameManager")
 	
+	# 設置客戶圖片
+	set_customer_texture()
+	
 	# 確保所有視覺元素可見並設置正確的 z_index
 	if has_node("ColorRect"):
 		var color_rect = $ColorRect
@@ -39,11 +42,18 @@ func _ready():
 		color_rect.z_index = 0
 		color_rect.z_as_relative = false
 	
+	if has_node("Sprite2D"):
+		var sprite = $Sprite2D
+		sprite.z_index = 3
+		sprite.z_as_relative = false
+	
 	if has_node("Label"):
 		var label = $Label
 		label.visible = true
-		label.z_index = 1
+		label.z_index = 2
 		label.z_as_relative = false
+		# 根據 personality 設置對應的名稱
+		label.text = get_customer_name()
 	
 	if has_node("Bubble"):
 		var bubble = $Bubble
@@ -154,4 +164,59 @@ func show_customer_bubble():
 
 func hide_customer_bubble():
 	$Bubble.visible = false
+
+func get_customer_name() -> String:
+	# 根據 personality 返回對應的名稱
+	match personality:
+		GameManager.CustomerPersonality.FRIENDLY:
+			return "友善"
+		GameManager.CustomerPersonality.NEUTRAL:
+			return "中性"
+		GameManager.CustomerPersonality.GRUMPY:
+			return "暴躁"
+		GameManager.CustomerPersonality.LOCAL_AUNTIE:
+			return "地方阿姨"
+		GameManager.CustomerPersonality.SHY_STUDENT:
+			return "害羞學生"
+		GameManager.CustomerPersonality.RUSHED_OFFICE:
+			return "趕時間上班族"
+		GameManager.CustomerPersonality.VLOGGER:
+			return "奇怪的 vlogger"
+		GameManager.CustomerPersonality.RUSHED_DELIVERY:
+			return "飆車外送員"
+		_:
+			return "客人"
+
+func set_customer_texture():
+	# 根據 personality 設置對應的圖片
+	if not has_node("Sprite2D"):
+		print("Customer: Sprite2D 節點不存在")
+		return
+	
+	var sprite = $Sprite2D
+	var texture_path: String = ""
+	
+	match personality:
+		GameManager.CustomerPersonality.LOCAL_AUNTIE:
+			texture_path = "res://Assets/customer_local_aunt.png"
+		GameManager.CustomerPersonality.SHY_STUDENT:
+			texture_path = "res://Assets/customer_shy_student.png"
+		GameManager.CustomerPersonality.RUSHED_OFFICE:
+			texture_path = "res://Assets/customer_salary_man.jpeg"
+		_:
+			# 其他 personality 類型保持默認（不設置圖片或使用默認圖片）
+			texture_path = ""
+	
+	if texture_path != "":
+		var texture = load(texture_path)
+		if texture:
+			sprite.texture = texture
+			sprite.visible = true
+			print("Customer: 成功載入圖片 ", texture_path, " personality: ", personality)
+		else:
+			print("Customer: 無法載入圖片: ", texture_path)
+			sprite.visible = false
+	else:
+		sprite.visible = false
+		print("Customer: 無對應圖片，personality: ", personality)
 	
