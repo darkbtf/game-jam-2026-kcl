@@ -17,7 +17,7 @@ func _ready():
 		k.order_status_change.connect(update_prepare_status)
 
 func add_meal(meal_name):
-	order_text_array.append([meal_name, false])
+	order_text_array.append([meal_name, "not ready"])
 	for i in range(len(order_text_array)):
 		if i >= max_order:
 			break
@@ -26,24 +26,25 @@ func add_meal(meal_name):
 func del_meal():
 	return
 
-func check_order__cook_status(number):
-	if order_text_array[number][1]:
-		return false
-	else:
-		order_text_array[number][1] = true
-		return true
+func check_order_cook_status(number):
+	if number >= len(order_text_array):
+		return "no order"
+	return order_text_array[number][1]
+
 	
 func update_prepare_status(number, status):
-	if make_number >= make_number:
-		make_number = make_number
+	if make_number >= max_order -1:
+		make_number = max_order - 1
 	elif make_number < 0:
 		make_number = 0
 	
 	match status:
 		"prepare":
 			Orders_Array[number].get_node("StatusLabel").text = status
+			order_text_array[number][1] = "cooking"
 			make_number +=1
 		"finish":
 			Orders_Array[number].get_node("StatusLabel").text = status
+			order_text_array[number][1] = "finish"
 		"del":
 			make_number -= 1

@@ -51,7 +51,7 @@ func receive_expression(expression: GameManager.MaskType):
 		
 	# 取得訂單編號
 	take_order_number = order_manager.make_number
-	if !order_manager.check_order__cook_status(take_order_number):
+	if order_manager.check_order_cook_status(take_order_number) != "not ready":
 		print("沒有尚未製作的餐點")
 		return
 	
