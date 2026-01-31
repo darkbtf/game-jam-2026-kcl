@@ -6,7 +6,6 @@ extends Control
 @onready var game_over_panel: Control = $GameOverPanel
 @onready var player_face_panel: Control = $TopRightUI/PlayerFacePanel
 @onready var player_face: Sprite2D = $TopRightUI/PlayerFacePanel/Face
-@onready var level_label: Label = $BottomLeftUI/Date/LevelLabel
 
 var show_viewport_border: bool = true
 
@@ -18,14 +17,7 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	# 設置所有Label的字體大小為2.5倍
-	# call_deferred("scale_all_labels")
-	
-	# 連接 LevelManager 的信號以更新 level 顯示
-	if LevelManager:
-		if not LevelManager.level_changed.is_connected(_on_level_changed):
-			LevelManager.level_changed.connect(_on_level_changed)
-		# 初始化顯示當前 level
-		update_level_display()
+	call_deferred("scale_all_labels")
 	
 	# 延遲獲取 game_manager，確保場景已載入
 	call_deferred("find_game_manager")
@@ -209,14 +201,3 @@ func find_nearby_target() -> Node:
 				closest_target = staff
 	
 	return closest_target
-
-func _on_level_changed(level_index: int, level_config: LevelConfig):
-	update_level_display()
-
-func update_level_display():
-	if level_label and LevelManager:
-		var current_level = LevelManager.current_level_index
-		if current_level >= 0:
-			level_label.text = str(current_level + 1)
-		else:
-			level_label.text = ""

@@ -16,7 +16,7 @@ func _ready():
 
 func _process(delta):
 	if is_active and customer:
-		var offset = Vector2(-130, -80)  # 上方 10px
+		var offset = Vector2(-170, -100)  # 上方 10px
 		bubble.position = customer.position + offset
 
 func show_qte(target_customer: Node):

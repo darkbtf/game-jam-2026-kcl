@@ -95,10 +95,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -345.0
-offset_top = 44.0
-offset_right = 79.0
-offset_bottom = 81.0
+offset_left = -423.0
+offset_top = 46.0
+offset_right = 1.0
+offset_bottom = 83.0
 grow_horizontal = 0
 value = 100.0
 texture_under = ExtResource("2_smcll")
@@ -139,11 +139,15 @@ position = Vector2(100, 90)
 texture = ExtResource("8_4vbiv")
 
 [node name="SanIcon" type="Control" parent="TopRightUI"]
-anchors_preset = 0
-offset_left = 163.0
-offset_top = 378.0
-offset_right = 163.0
-offset_bottom = 378.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 96.0
+offset_top = 387.0
+offset_right = 100.0
+offset_bottom = 387.0
+grow_horizontal = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="TopRightUI/SanIcon"]
 position = Vector2(2, 2)
