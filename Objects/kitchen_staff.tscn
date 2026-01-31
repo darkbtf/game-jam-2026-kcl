@@ -19,7 +19,7 @@ animations = [{
 size = Vector2(72, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbj7r"]
-size = Vector2(22, 80)
+size = Vector2(22, 68)
 
 [node name="KitchenStaff" type="CharacterBody2D" groups=["staff"]]
 script = ExtResource("1")
@@ -74,7 +74,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, 30)
+position = Vector2(-5, 36)
 shape = SubResource("RectangleShape2D_cbj7r")
 
 [connection signal="timeout" from="CookTimer" to="." method="cook_finish"]

@@ -65,7 +65,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -329.0
 offset_top = -94.0
-offset_right = 0.0
 offset_bottom = -17.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -85,21 +84,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_y3t5d")
 
-[node name="Meal" type="TextureRect" parent="HBoxContainer/Order 1"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 29.0
-offset_right = 53.0
-offset_bottom = 69.0
-
-[node name="MealLabel" type="Label" parent="HBoxContainer/Order 1"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 29.0
-offset_right = 44.0
-offset_bottom = 52.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "餐點"
+[node name="Meal" type="Sprite2D" parent="HBoxContainer/Order 1"]
+position = Vector2(33, 33)
+scale = Vector2(0.7, 0.7)
 
 [node name="Status" type="TextureRect" parent="HBoxContainer/Order 1"]
 layout_mode = 0
@@ -130,21 +117,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_y3t5d")
 
-[node name="Meal" type="TextureRect" parent="HBoxContainer/Order 2"]
-layout_mode = 0
-offset_left = 113.0
-offset_top = 29.0
-offset_right = 153.0
-offset_bottom = 69.0
-
-[node name="MealLabel" type="Label" parent="HBoxContainer/Order 2"]
-layout_mode = 0
-offset_left = 101.0
-offset_top = 31.0
-offset_right = 141.0
-offset_bottom = 54.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "餐點"
+[node name="Meal" type="Sprite2D" parent="HBoxContainer/Order 2"]
+position = Vector2(135, 33)
+scale = Vector2(0.7, 0.7)
 
 [node name="Status" type="TextureRect" parent="HBoxContainer/Order 2"]
 layout_mode = 0
@@ -174,21 +149,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_y3t5d")
 
-[node name="Meal" type="TextureRect" parent="HBoxContainer/Order 3"]
-layout_mode = 0
-offset_left = 226.0
-offset_top = 29.0
-offset_right = 266.0
-offset_bottom = 69.0
-
-[node name="MealLabel" type="Label" parent="HBoxContainer/Order 3"]
-layout_mode = 0
-offset_left = 213.0
-offset_top = 33.0
-offset_right = 253.0
-offset_bottom = 56.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "餐點"
+[node name="Meal" type="Sprite2D" parent="HBoxContainer/Order 3"]
+position = Vector2(247.99998, 33)
+scale = Vector2(0.7, 0.7)
 
 [node name="Status" type="TextureRect" parent="HBoxContainer/Order 3"]
 layout_mode = 0

@@ -89,5 +89,11 @@ func is_expressing() -> bool:
 	return is_using_expression
 
 func take_it(food_name):
-	print("玩家拿到", food_name)
-	take_status = true
+	if food_name != "":
+		print("玩家拿到", food_name)
+		take_status = true
+		
+func to_customer():
+	print("送餐完畢")
+	take_status = false
+	

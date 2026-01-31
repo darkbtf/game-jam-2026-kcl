@@ -21,7 +21,7 @@ func add_meal(meal_name):
 	for i in range(len(order_text_array)):
 		if i >= max_order:
 			break
-		Orders_Array[i].get_node("MealLabel").text = order_text_array[i][0]
+		Orders_Array[i].get_node("Meal").texture = load("res://Assets/Foods/" + order_text_array[i][0] + ".png")
 
 func del_meal():
 	return

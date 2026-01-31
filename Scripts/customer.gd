@@ -25,6 +25,7 @@ var qte_switch_interval: float = 0.5  # 每0.5秒切換一次
 signal order_started(customer_id)
 signal order_completed(customer_id, success: bool)
 signal qte_item_changed(item: String)
+signal get_order()
 
 func _ready():
 	game_manager = get_tree().get_first_node_in_group("game_manager")
@@ -193,3 +194,11 @@ func set_customer_texture():
 			# 其他 personality 類型保持默認（不設置圖片或使用默認圖片）
 			sprite.sprite_frames = load("res://Assets/SpriteFrames/一般.tres")
 			print("personality")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		if body.take_status:
+			print("玩家有餐")
+			emit_signal("get_order")
+			body.to_customer()
