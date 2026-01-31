@@ -80,23 +80,35 @@ layout_mode = 2
 text = "難過表情: L"
 
 [node name="SanBar" type="TextureProgressBar" parent="."]
-layout_mode = 0
-offset_left = 627.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -212.0
 offset_top = 20.0
-offset_right = 1051.0
+offset_right = 212.0
 offset_bottom = 57.0
-size_flags_horizontal = 3
+grow_horizontal = 2
+grow_vertical = 0
 value = 100.0
 texture_under = ExtResource("2_smcll")
 texture_progress = ExtResource("3_nt8jn")
 
 [node name="timeBar" type="TextureProgressBar" parent="."]
-layout_mode = 0
-offset_left = 175.0
-offset_top = 647.0
-offset_right = 775.0
-offset_bottom = 693.0
-size_flags_horizontal = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -73.0
+offset_right = 300.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
 value = 100.0
 texture_under = ExtResource("3_ryf15")
 texture_progress = ExtResource("5_g0wmg")
@@ -151,42 +163,108 @@ text = "按 R 鍵重新開始"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FacePlayer" type="Sprite2D" parent="."]
-position = Vector2(641, 359)
+[node name="FacePlayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="FacePlayer"]
+position = Vector2(1, 1)
 texture = ExtResource("7_smcll")
 
 [node name="PlayerFacePanel" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1080.0
-offset_top = -719.0
-offset_right = 1280.0
-offset_bottom = -539.0
+offset_left = -200.0
+offset_top = -180.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("2")
 
 [node name="Face" type="Sprite2D" parent="PlayerFacePanel"]
-position = Vector2(92, 81)
+position = Vector2(100, 90)
 texture = ExtResource("8_4vbiv")
 
-[node name="Date" type="Sprite2D" parent="."]
-position = Vector2(644, 357)
+[node name="Date" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Date"]
+position = Vector2(1, 1)
 texture = ExtResource("6_mmixe")
 
 [node name="Setting" type="TextureButton" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 211.0
 offset_top = 12.0
 offset_right = 287.0
 offset_bottom = 86.0
+grow_horizontal = 0
+grow_vertical = 0
 texture_normal = ExtResource("8_ryf15")
 
-[node name="SanIcon" type="Sprite2D" parent="."]
-position = Vector2(638, 362)
+[node name="SanIcon" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="SanIcon"]
+position = Vector2(2, 2)
 texture = ExtResource("8_mmixe")
 
-[node name="TimeIcon" type="Sprite2D" parent="."]
-position = Vector2(639, 359)
+[node name="TimeIcon" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -361.0
+offset_right = 1.0
+offset_bottom = -361.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="TimeIcon"]
+position = Vector2(1, 1)
 texture = ExtResource("9_mmixe")

@@ -57,11 +57,18 @@ script = ExtResource("1_70v6w")
 Orders_Array = [NodePath("HBoxContainer/Order 1"), NodePath("HBoxContainer/Order 2"), NodePath("HBoxContainer/Order 3")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 946.0
-offset_top = 626.0
-offset_right = 1275.0
-offset_bottom = 703.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -164.5
+offset_top = -94.0
+offset_right = 164.5
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Order 1" type="Control" parent="HBoxContainer"]
 layout_mode = 2
