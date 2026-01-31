@@ -1,6 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2h0hj5weqvw1"]
+[gd_scene load_steps=8 format=3 uid="uid://b2h0hj5weqvw1"]
 
 [ext_resource type="Script" uid="uid://bl5u6esx6xmus" path="res://Scenes/order_manager.gd" id="1_70v6w"]
+[ext_resource type="Texture2D" uid="uid://b2c0mplxpks3t" path="res://Assets/list.png" id="2_y3t5d"]
+[ext_resource type="Texture2D" uid="uid://dg3s1hyn7pqli" path="res://Assets/cooking1.png" id="3_edq7g"]
+[ext_resource type="Texture2D" uid="uid://d3n2drmnrv0cm" path="res://Assets/cooking2.png" id="4_bpdd6"]
+[ext_resource type="Texture2D" uid="uid://cv2ub77yykqxw" path="res://Assets/cooking3.png" id="5_b0mbr"]
+[ext_resource type="Texture2D" uid="uid://golofre8lbpt" path="res://Assets/cook_finish.png" id="6_lx1g4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bj6i8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_edq7g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bpdd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b0mbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bpdd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_edq7g")
+}],
+"loop": true,
+"name": &"cooking",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_lx1g4")
+}],
+"loop": true,
+"name": &"finish",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"stay",
+"speed": 5.0
+}]
 
 [node name="Order" type="Control" node_paths=PackedStringArray("Orders_Array") groups=["orderManager"]]
 layout_mode = 3
@@ -22,7 +66,7 @@ offset_bottom = 703.0
 [node name="Order 1" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Background" type="ColorRect" parent="HBoxContainer/Order 1"]
+[node name="Background" type="TextureRect" parent="HBoxContainer/Order 1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +76,7 @@ offset_right = 68.0
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
+texture = ExtResource("2_y3t5d")
 
 [node name="Meal" type="TextureRect" parent="HBoxContainer/Order 1"]
 layout_mode = 0
@@ -43,10 +87,11 @@ offset_bottom = 69.0
 
 [node name="MealLabel" type="Label" parent="HBoxContainer/Order 1"]
 layout_mode = 0
-offset_left = 13.0
+offset_left = 4.0
 offset_top = 29.0
-offset_right = 53.0
+offset_right = 44.0
 offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "餐點"
 
 [node name="Status" type="TextureRect" parent="HBoxContainer/Order 1"]
@@ -56,18 +101,16 @@ offset_top = -19.0
 offset_right = 53.0
 offset_bottom = 21.0
 
-[node name="StatusLabel" type="Label" parent="HBoxContainer/Order 1"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = -19.0
-offset_right = 53.0
-offset_bottom = 4.0
-text = "狀態"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Order 1"]
+position = Vector2(3, -20)
+sprite_frames = SubResource("SpriteFrames_bj6i8")
+animation = &"stay"
+frame_progress = 0.3871553
 
 [node name="Order 2" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Background" type="ColorRect" parent="HBoxContainer/Order 2"]
+[node name="Background" type="TextureRect" parent="HBoxContainer/Order 2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,7 +121,7 @@ offset_right = 168.0
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
+texture = ExtResource("2_y3t5d")
 
 [node name="Meal" type="TextureRect" parent="HBoxContainer/Order 2"]
 layout_mode = 0
@@ -89,10 +132,11 @@ offset_bottom = 69.0
 
 [node name="MealLabel" type="Label" parent="HBoxContainer/Order 2"]
 layout_mode = 0
-offset_left = 113.0
-offset_top = 29.0
-offset_right = 153.0
-offset_bottom = 52.0
+offset_left = 101.0
+offset_top = 31.0
+offset_right = 141.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "餐點"
 
 [node name="Status" type="TextureRect" parent="HBoxContainer/Order 2"]
@@ -102,18 +146,15 @@ offset_top = -19.0
 offset_right = 153.0
 offset_bottom = 21.0
 
-[node name="StatusLabel" type="Label" parent="HBoxContainer/Order 2"]
-layout_mode = 0
-offset_left = 113.0
-offset_top = -19.0
-offset_right = 153.0
-offset_bottom = 4.0
-text = "狀態"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Order 2"]
+position = Vector2(102, -20)
+sprite_frames = SubResource("SpriteFrames_bj6i8")
+animation = &"stay"
 
 [node name="Order 3" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Background" type="ColorRect" parent="HBoxContainer/Order 3"]
+[node name="Background" type="TextureRect" parent="HBoxContainer/Order 3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,7 +165,7 @@ offset_right = 281.0
 offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.47007585, 0.47007585, 0.47007585, 0.9019608)
+texture = ExtResource("2_y3t5d")
 
 [node name="Meal" type="TextureRect" parent="HBoxContainer/Order 3"]
 layout_mode = 0
@@ -135,10 +176,11 @@ offset_bottom = 69.0
 
 [node name="MealLabel" type="Label" parent="HBoxContainer/Order 3"]
 layout_mode = 0
-offset_left = 226.0
-offset_top = 29.0
-offset_right = 266.0
-offset_bottom = 52.0
+offset_left = 213.0
+offset_top = 33.0
+offset_right = 253.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "餐點"
 
 [node name="Status" type="TextureRect" parent="HBoxContainer/Order 3"]
@@ -148,10 +190,7 @@ offset_top = -19.0
 offset_right = 266.0
 offset_bottom = 21.0
 
-[node name="StatusLabel" type="Label" parent="HBoxContainer/Order 3"]
-layout_mode = 0
-offset_left = 226.0
-offset_top = -19.0
-offset_right = 266.0
-offset_bottom = 4.0
-text = "狀態"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Order 3"]
+position = Vector2(214, -20)
+sprite_frames = SubResource("SpriteFrames_bj6i8")
+animation = &"stay"

@@ -40,11 +40,12 @@ func update_prepare_status(number, status):
 	
 	match status:
 		"prepare":
-			Orders_Array[number].get_node("StatusLabel").text = status
+			Orders_Array[number].get_node("AnimatedSprite2D").play("cooking")
 			order_text_array[number][1] = "cooking"
 			make_number +=1
 		"finish":
-			Orders_Array[number].get_node("StatusLabel").text = status
+			Orders_Array[number].get_node("AnimatedSprite2D").play("finish")
 			order_text_array[number][1] = "finish"
 		"del":
+			Orders_Array[number].get_node("AnimatedSprite2D").play("stay")
 			make_number -= 1
