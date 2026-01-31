@@ -144,13 +144,13 @@ func _set_label_font_size(node: Node):
 	for child in node.get_children():
 		_set_label_font_size(child)
 
-func get_expression_emoji(expr: GameManager.ExpressionType) -> String:
+func get_expression_emoji(expr: GameManager.MaskType) -> String:
 	match expr:
-		GameManager.ExpressionType.HAPPY:
+		GameManager.MaskType.HAPPY:
 			return "😊"
-		GameManager.ExpressionType.NEUTRAL:
+		GameManager.MaskType.NEUTRAL:
 			return "😐"
-		GameManager.ExpressionType.SAD:
+		GameManager.MaskType.SAD:
 			return "😢"
 		_:
 			return "😐"

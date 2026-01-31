@@ -8,7 +8,7 @@ var personality
 var customer_id: int
 # 客人想要的食物（在生成時隨機決定，之後不會改變）
 var desired_food: GameManager.FoodType
-var desired_expression: GameManager.ExpressionType
+var desired_expression: GameManager.MaskType
 var desired_food_name
 var is_ordering: bool = false
 var order_timer: float = 0.0
@@ -32,13 +32,13 @@ func _ready():
 	# 根據個性決定喜歡的表情
 	match personality:
 		GameManager.CustomerPersonality.FRIENDLY:
-			desired_expression = GameManager.ExpressionType.HAPPY
+			desired_expression = GameManager.MaskType.HAPPY
 			$Bubble/Label.text = "😊"
 		GameManager.CustomerPersonality.NEUTRAL:
-			desired_expression = GameManager.ExpressionType.NEUTRAL
+			desired_expression = GameManager.MaskType.NEUTRAL
 			$Bubble/Label.text = "😐"
 		GameManager.CustomerPersonality.GRUMPY:
-			desired_expression = GameManager.ExpressionType.SAD
+			desired_expression = GameManager.MaskType.SAD
 			$Bubble/Label.text = "😢"
 	
 	# 隨機選擇想要的食物（每個客人只會想要一種食物，在生成時決定）
@@ -96,7 +96,7 @@ func check_qte_success() -> bool:
 	# 檢查是否在正確的食物上鬆開
 	return qte_current_item == game_manager.get_food_name(desired_food)
 
-func complete_order(player_expression: GameManager.ExpressionType) -> bool:
+func complete_order(player_expression: GameManager.MaskType) -> bool:
 	is_ordering = false
 	qte_active = false
 	
@@ -113,7 +113,7 @@ func complete_order(player_expression: GameManager.ExpressionType) -> bool:
 func get_desired_food() -> GameManager.FoodType:
 	return desired_food
 
-func get_desired_expression() -> GameManager.ExpressionType:
+func get_desired_expression() -> GameManager.MaskType:
 	return desired_expression
 
 func get_personality() -> GameManager.CustomerPersonality:
