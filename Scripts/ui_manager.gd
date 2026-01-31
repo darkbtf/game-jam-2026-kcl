@@ -1,8 +1,8 @@
 extends Control
 
 # UI 管理器
-@onready var san_bar: ProgressBar = $SanBar
-@onready var satisfaction_bar: ProgressBar = $SatisfactionBar
+@onready var san_bar: TextureProgressBar = $SanBar
+@onready var time_bar: TextureProgressBar = $timeBar
 @onready var game_over_panel: Control = $GameOverPanel
 @onready var player_face_label: Label = $PlayerFacePanel/Label
 @onready var player_face_panel: Control = $PlayerFacePanel
@@ -19,9 +19,6 @@ func _ready():
 	# 設置所有Label的字體大小為2.5倍
 	call_deferred("scale_all_labels")
 	
-	# 設置 ProgressBar 的顏色
-	call_deferred("setup_bar_colors")
-	
 	# 延遲獲取 game_manager，確保場景已載入
 	call_deferred("find_game_manager")
 
@@ -34,12 +31,12 @@ func find_game_manager():
 			game_manager.san_changed.connect(_on_san_changed)
 		if not game_manager.game_over.is_connected(_on_game_over):
 			game_manager.game_over.connect(_on_game_over)
-		if not game_manager.overall_satisfaction_changed.is_connected(_on_satisfaction_changed):
-			game_manager.overall_satisfaction_changed.connect(_on_satisfaction_changed)
+		if not game_manager.time_changed.is_connected(_on_time_changed):
+			game_manager.time_changed.connect(_on_time_changed)
 		
 		# 初始化顯示
-		_on_san_changed(game_manager.player_san)
-		_on_satisfaction_changed(game_manager.overall_satisfaction)
+		_on_san_changed(100)
+		_on_time_changed(100)
 	
 	# 延遲獲取 player，因為可能還沒創建
 	call_deferred("find_player")
@@ -80,9 +77,9 @@ func _on_san_changed(new_value: float):
 	if san_bar:
 		san_bar.value = new_value
 
-func _on_satisfaction_changed(new_value: float):
-	if satisfaction_bar:
-		satisfaction_bar.value = new_value
+func _on_time_changed(new_value: float):
+	if time_bar:
+		time_bar.value = new_value
 
 func set_player(player_node: Node):
 	player = player_node
@@ -104,13 +101,6 @@ func restart_game():
 	get_tree().paused = false
 	# 重新載入場景
 	get_tree().reload_current_scene()
-
-func setup_bar_colors():
-	# 設置 ProgressBar 的填充顏色
-	if san_bar:
-		san_bar.add_theme_color_override("fill", Color(0.2, 0.8, 0.2))  # 綠色
-	if satisfaction_bar:
-		satisfaction_bar.add_theme_color_override("fill", Color(0.8, 0.2, 0.2))  # 紅色
 
 func scale_all_labels():
 	# 遞歸設置所有Label的字體大小

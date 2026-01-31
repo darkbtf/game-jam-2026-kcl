@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://updf3qvx4bkt"]
+[gd_scene load_steps=3 format=3 uid="uid://updf3qvx4bkt"]
+
+[ext_resource type="Script" uid="uid://dmljk8vt6kxmb" path="res://Objects/foods.gd" id="1_risfm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87plw"]
 size = Vector2(655.0001, 255.00003)
@@ -6,6 +8,7 @@ size = Vector2(655.0001, 255.00003)
 [node name="Food" type="Sprite2D"]
 z_index = 1
 scale = Vector2(0.2, 0.2)
+script = ExtResource("1_risfm")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Foods"]]
 
@@ -13,3 +16,5 @@ scale = Vector2(0.2, 0.2)
 position = Vector2(-32.499977, 37.49999)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_87plw")
+
+[connection signal="body_entered" from="Area2D" to="." method="take_food"]

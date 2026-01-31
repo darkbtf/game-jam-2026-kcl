@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg5anq8d60r0c"
-path="res://.godot/imported/草圖.jpg-ec0fffd242920374b7f60b8107ce9503.ctex"
+uid="uid://ctkje7j2njh5t"
+path="res://.godot/imported/san.png-d31633433ab69f2d810a160214c50cf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/草圖.jpg"
-dest_files=["res://.godot/imported/草圖.jpg-ec0fffd242920374b7f60b8107ce9503.ctex"]
+source_file="res://Assets/san.png"
+dest_files=["res://.godot/imported/san.png-d31633433ab69f2d810a160214c50cf4.ctex"]
 
 [params]
 

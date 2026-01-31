@@ -13,6 +13,10 @@ var player_san: float = 100.0
 var max_san: float = 100.0
 var san_drain_rate: float = 2.0  # 每秒掉多少 san
 var is_game_over: bool = false
+var init_time: float = 100
+var game_time: float = 100
+
+signal time_changed(game_time)
 
 # 全局滿意度
 var overall_satisfaction: float = 50.0
@@ -377,3 +381,11 @@ func update_overall_satisfaction(customers: Array):
 		overall_satisfaction = clamp(overall_satisfaction, 0, max_satisfaction)
 	
 	overall_satisfaction_changed.emit(overall_satisfaction)
+
+
+func _on_timer_timeout() -> void:
+	game_time -= 1
+	emit_signal("time_changed", 100 * (game_time/init_time))
+	
+	if game_time <= 0:
+		print("Game Over")

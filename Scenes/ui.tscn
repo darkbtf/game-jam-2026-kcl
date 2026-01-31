@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ui"]
+[gd_scene load_steps=12 format=3 uid="uid://ui"]
 
 [ext_resource type="Script" uid="uid://dge7yvkxru2xr" path="res://Scripts/ui_manager.gd" id="1"]
 [ext_resource type="Script" uid="uid://b6ajxgim7sstu" path="res://Scripts/face_panel.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://ctkje7j2njh5t" path="res://Assets/san.png" id="2_smcll"]
+[ext_resource type="Texture2D" uid="uid://bsbwfxcikp7qy" path="res://Assets/san_progress.png" id="3_nt8jn"]
+[ext_resource type="Texture2D" uid="uid://bcmyrob25k7l6" path="res://Assets/time.png" id="3_ryf15"]
+[ext_resource type="Texture2D" uid="uid://cwv7ivyi1xl70" path="res://Assets/timer_high.png" id="5_g0wmg"]
+[ext_resource type="Texture2D" uid="uid://18u0cjfrgryl" path="res://Assets/date.PNG" id="6_mmixe"]
+[ext_resource type="Texture2D" uid="uid://du6guwl63u351" path="res://Assets/face_player.PNG" id="7_smcll"]
+[ext_resource type="Texture2D" uid="uid://ces1crln8frug" path="res://Assets/san_icon.PNG" id="8_mmixe"]
+[ext_resource type="Texture2D" uid="uid://dr7owlh4waayc" path="res://Assets/setting.png" id="8_ryf15"]
+[ext_resource type="Texture2D" uid="uid://doesrvdyg6ygh" path="res://Assets/time_icon.PNG" id="9_mmixe"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -69,24 +78,27 @@ text = "中性表情: K"
 layout_mode = 2
 text = "難過表情: L"
 
-[node name="SanBar" type="ProgressBar" parent="."]
+[node name="SanBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
 offset_left = 627.0
-offset_top = 35.0
-offset_right = 1048.0
-offset_bottom = 72.0
+offset_top = 20.0
+offset_right = 1051.0
+offset_bottom = 57.0
 size_flags_horizontal = 3
-min_value = 100.0
 value = 100.0
+texture_under = ExtResource("2_smcll")
+texture_progress = ExtResource("3_nt8jn")
 
-[node name="SatisfactionBar" type="ProgressBar" parent="."]
+[node name="timeBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
 offset_left = 175.0
 offset_top = 647.0
-offset_right = 903.0
+offset_right = 775.0
 offset_bottom = 693.0
 size_flags_horizontal = 3
-value = 50.0
+value = 100.0
+texture_under = ExtResource("3_ryf15")
+texture_progress = ExtResource("5_g0wmg")
 
 [node name="GameOverPanel" type="Control" parent="."]
 visible = false
@@ -182,3 +194,28 @@ grow_vertical = 0
 text = "玩家"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Date" type="Sprite2D" parent="."]
+position = Vector2(644, 357)
+texture = ExtResource("6_mmixe")
+
+[node name="FacePlayer" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(641, 359)
+texture = ExtResource("7_smcll")
+
+[node name="Setting" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 12.0
+offset_right = 287.0
+offset_bottom = 86.0
+texture_normal = ExtResource("8_ryf15")
+
+[node name="SanIcon" type="Sprite2D" parent="."]
+position = Vector2(638, 362)
+texture = ExtResource("8_mmixe")
+
+[node name="TimeIcon" type="Sprite2D" parent="."]
+position = Vector2(639, 359)
+texture = ExtResource("9_mmixe")

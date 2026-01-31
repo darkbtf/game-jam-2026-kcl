@@ -43,6 +43,9 @@ texture = ExtResource("1_fdnlq")
 [node name="GameManager" type="Node" parent="." groups=["GameManager"]]
 script = ExtResource("1")
 
+[node name="Timer" type="Timer" parent="GameManager"]
+autostart = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)
 
@@ -88,3 +91,7 @@ script = ExtResource("8")
 [node name="QTEUI" parent="CanvasLayer" instance=ExtResource("5")]
 
 [node name="Order" parent="CanvasLayer" instance=ExtResource("10_hptm8")]
+
+[connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
+
+[editable path="CanvasLayer/UI"]
