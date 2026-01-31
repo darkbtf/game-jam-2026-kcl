@@ -3,7 +3,7 @@ extends Node2D
 # 排隊管理器
 @export var customer_scene: PackedScene
 @export var spawn_interval: float = 5.0
-@export var max_customers: int = 5
+@export var max_customers: int = 3
 
 var spawn_timer: float = 3.5
 var customers: Array[Node] = []
@@ -14,11 +14,11 @@ var satisfaction_update_interval: float = 0.5  # 每0.5秒更新一次滿意度
 var game_manager: Node
 
 func _ready():
-	# 設置排隊位置（右側1/4，從上到下）
+	# 設置排隊位置（左側1/4，從上到下）
 	# 窗口大小1280x720，右邊1/4是960-1280
 	# 使用x=1120（右邊1/4的中間位置）
 	for i in range(max_customers):
-		queue_positions.append(Vector2(1120, 150 + i * 120))
+		queue_positions.append(Vector2(270, 270 + i * 120))
 	
 	# 獲取遊戲管理器
 	game_manager = get_node("/root/GameManager")
