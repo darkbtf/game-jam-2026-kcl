@@ -1,18 +1,11 @@
 extends Control
 
 # UI 管理器
-@onready var san_bar: ProgressBar = $HBoxContainer/SanColumn/SanBar
-@onready var san_label: Label = $HBoxContainer/SanColumn/SanLabel
-@onready var expression_label: Label = $HBoxContainer/OtherColumn/ExpressionLabel
-@onready var time_label: Label = $HBoxContainer/OtherColumn/TimeLabel
-@onready var satisfaction_bar: ProgressBar = $HBoxContainer/SatisfactionColumn/SatisfactionBar
-@onready var satisfaction_label: Label = $HBoxContainer/SatisfactionColumn/SatisfactionLabel
+@onready var san_bar: ProgressBar = $SanBar
+@onready var satisfaction_bar: ProgressBar = $SatisfactionBar
 @onready var game_over_panel: Control = $GameOverPanel
 @onready var player_face_label: Label = $PlayerFacePanel/Label
 @onready var player_face_panel: Control = $PlayerFacePanel
-@onready var target_face_label: Label = $TargetFacePanel/Label
-@onready var target_face_panel: Control = $TargetFacePanel
-@onready var target_title_label: Label = $TargetFacePanel/TitleLabel
 
 var show_viewport_border: bool = true
 
@@ -74,9 +67,6 @@ func find_player():
 
 func _process(delta):
 	# 更新當前時間（秒數）
-	if time_label:
-		var current_time = Time.get_ticks_msec() / 1000.0
-		time_label.text = "時間: %.1fs" % current_time
 	
 	# 如果需要顯示 viewport 邊界，每幀重繪
 	if show_viewport_border:
@@ -85,7 +75,6 @@ func _process(delta):
 	if player and game_manager:
 		var expr = player.get_current_expression()
 		var expr_name = game_manager.get_expression_name(expr)
-		expression_label.text = "目前表情: " + expr_name
 		
 		# 更新玩家表情顯示（左下）
 		if player_face_label:
@@ -98,14 +87,10 @@ func _process(delta):
 func _on_san_changed(new_value: float):
 	if san_bar:
 		san_bar.value = new_value
-	if san_label and game_manager:
-		san_label.text = "SAN: %.0f/%.0f" % [new_value, game_manager.max_san]
 
 func _on_satisfaction_changed(new_value: float):
 	if satisfaction_bar:
 		satisfaction_bar.value = new_value
-	if satisfaction_label and game_manager:
-		satisfaction_label.text = "滿意度: %.0f/%.0f" % [new_value, game_manager.max_satisfaction]
 
 func set_player(player_node: Node):
 	player = player_node
