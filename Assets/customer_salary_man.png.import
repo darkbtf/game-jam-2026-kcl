@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b26xim3khkva4"
-path="res://.godot/imported/customer_salary_man.jpeg-7c1fc9a99abcf9f846d6062c1d78848e.ctex"
+uid="uid://de3q01yeabq71"
+path="res://.godot/imported/customer_salary_man.png-2f3992a0d405c947e7bc86c0920ca422.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/customer_salary_man.jpeg"
-dest_files=["res://.godot/imported/customer_salary_man.jpeg-7c1fc9a99abcf9f846d6062c1d78848e.ctex"]
+source_file="res://Assets/customer_salary_man.png"
+dest_files=["res://.godot/imported/customer_salary_man.png-2f3992a0d405c947e7bc86c0920ca422.ctex"]
 
 [params]
 
