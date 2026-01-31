@@ -20,7 +20,7 @@ var prepare_time: float = 3.0
 signal order_status_change(number, status)
 var take_order_number
 var cooking_status = false
-var food_order_name
+var food_name
 
 @export var food: Sprite2D
 
@@ -59,7 +59,7 @@ func receive_expression(expression: GameManager.MaskType):
 		print("沒有尚未製作的餐點")
 		return
 	else:
-		food_order_name = order_manager.order_text_array[take_order_number][0]
+		food_name = order_manager.order_text_array[take_order_number][0]
 	
 	start_preparing()
 
@@ -84,7 +84,6 @@ func cook_finish():
 	print("煮好了")
 
 	food.texture = load("res://Assets/Q版齊絨趴趴.png")
-	food.food_name = food_order_name
 	
 
 func player_nearby_staff(body: Node2D) -> void:

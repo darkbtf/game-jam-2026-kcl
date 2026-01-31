@@ -11,8 +11,6 @@ var current_expression: GameManager.MaskType = GameManager.MaskType.NEUTRAL
 var is_using_expression: bool = false
 var game_manager: Node
 
-var take_which_food = ""
-
 func _ready():
 	game_manager = get_tree().get_first_node_in_group("GameManager")
 
@@ -72,7 +70,3 @@ func get_current_expression() -> GameManager.MaskType:
 
 func is_expressing() -> bool:
 	return is_using_expression
-
-func take_food(food_name):
-	print("拿到了", food_name)
-	return
