@@ -13,8 +13,10 @@
 [ext_resource type="Script" uid="uid://dhbhyk1b5myta" path="res://Scripts/interaction_manager.gd" id="8"]
 [ext_resource type="Texture2D" uid="uid://dg5anq8d60r0c" path="res://Assets/草圖.jpg" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]
+[ext_resource type="Script" uid="uid://dyla3ok2qxlpt" path="res://Scripts/main.gd" id="11"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("11")
 
 [node name="Background" type="Node" parent="."]
 
