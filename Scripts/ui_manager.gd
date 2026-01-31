@@ -94,9 +94,6 @@ func _process(delta):
 	elif not game_manager:
 		# 如果 game_manager 還沒找到，嘗試重新獲取
 		call_deferred("find_game_manager")
-	
-	# 更新互動對象表情顯示（右下）
-	update_target_face()
 
 func _on_san_changed(new_value: float):
 	if san_bar:
@@ -180,41 +177,6 @@ func get_expression_emoji(expr: GameManager.ExpressionType) -> String:
 			return "😢"
 		_:
 			return "😐"
-
-func update_target_face():
-	if not player or not target_face_label:
-		return
-	
-	var nearby_target = find_nearby_target()
-	
-	if nearby_target:
-		target_face_panel.visible = true
-		var emoji = ""
-		var title_text = "目標"
-		var desired_expr: GameManager.ExpressionType
-		
-		# 判斷是客人還是內場人員
-		if nearby_target.has_method("get_desired_expression"):
-			# 是客人
-			desired_expr = nearby_target.get_desired_expression()
-			emoji = get_expression_emoji(desired_expr)
-			title_text = "客人"
-		elif "desired_expression" in nearby_target:
-			# 內場人員
-			desired_expr = nearby_target.desired_expression
-			emoji = get_expression_emoji(desired_expr)
-			if "staff_id" in nearby_target:
-				title_text = "內場" + str(nearby_target.staff_id)
-			else:
-				title_text = "內場"
-		else:
-			emoji = "😐"
-		
-		target_face_label.text = emoji
-		if target_title_label:
-			target_title_label.text = title_text
-	else:
-		target_face_panel.visible = false
 
 func find_nearby_target() -> Node:
 	if not player:

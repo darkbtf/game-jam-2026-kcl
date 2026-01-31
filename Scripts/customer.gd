@@ -36,10 +36,13 @@ func _ready():
 	match personality:
 		GameManager.CustomerPersonality.FRIENDLY:
 			desired_expression = GameManager.ExpressionType.HAPPY
+			$Bubble/Label.text = "😊"
 		GameManager.CustomerPersonality.NEUTRAL:
 			desired_expression = GameManager.ExpressionType.NEUTRAL
+			$Bubble/Label.text = "😐"
 		GameManager.CustomerPersonality.GRUMPY:
 			desired_expression = GameManager.ExpressionType.SAD
+			$Bubble/Label.text = "😢"
 	
 	# 隨機選擇想要的食物（每個客人只會想要一種食物，在生成時決定）
 	var all_foods = [
@@ -118,3 +121,10 @@ func get_desired_expression() -> GameManager.ExpressionType:
 
 func get_personality() -> GameManager.CustomerPersonality:
 	return personality
+	
+func show_customer_bubble():
+	$Bubble.visible = true
+
+func hide_customer_bubble():
+	$Bubble.visible = false
+	
