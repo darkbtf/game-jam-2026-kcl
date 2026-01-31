@@ -7,7 +7,7 @@ extends CharacterBody2D
 var run_status: bool = false
 var run_direction
 
-var current_expression: GameManager.ExpressionType = GameManager.ExpressionType.NEUTRAL
+var current_expression: GameManager.MaskType = GameManager.MaskType.NEUTRAL
 var is_using_expression: bool = false
 var game_manager: Node
 
@@ -37,23 +37,23 @@ func _physics_process(delta):
 	move_and_slide()
 	# 表情控制	
 	if Input.is_action_pressed("expression_happy"):
-		current_expression = GameManager.ExpressionType.HAPPY
+		current_expression = GameManager.MaskType.HAPPY
 		is_using_expression = true
 	elif Input.is_action_pressed("expression_neutral"):
-		current_expression = GameManager.ExpressionType.NEUTRAL
+		current_expression = GameManager.MaskType.NEUTRAL
 		is_using_expression = true
 	elif Input.is_action_pressed("expression_sad"):
-		current_expression = GameManager.ExpressionType.SAD
+		current_expression = GameManager.MaskType.SAD
 		is_using_expression = true
 	else:
-		current_expression = GameManager.ExpressionType.NEUTRAL
+		current_expression = GameManager.MaskType.NEUTRAL
 		is_using_expression = false
 	
 	# 如果正在使用表情，持續掉 san
 	if is_using_expression and game_manager:
 		game_manager.drain_san(expression_drain_rate * delta)
 
-func get_current_expression() -> GameManager.ExpressionType:
+func get_current_expression() -> GameManager.MaskType:
 	return current_expression
 
 func is_expressing() -> bool:
