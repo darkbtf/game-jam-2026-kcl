@@ -177,6 +177,34 @@ grow_vertical = 0
 position = Vector2(638, -151)
 texture = ExtResource("6_mmixe")
 
+[node name="DayLabel" type="Label" parent="BottomLeftUI/Date"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 119.0
+offset_right = 132.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0.103743516, 0.10374353, 0.103743516, 1)
+text = "Day"
+
+[node name="LevelLabel" type="Label" parent="BottomLeftUI/Date"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = 49.0
+offset_right = 58.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.101867564, 0.10186755, 0.10186755, 1)
+theme_override_font_sizes/font_size = 32
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TimeIcon" type="Control" parent="BottomLeftUI"]
 layout_mode = 1
 anchors_preset = 2
