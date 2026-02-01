@@ -16,8 +16,8 @@ var order_time_limit: float = 3.0  # 點單時間限制
 var game_manager: Node
 var qte_active: bool = false
 var qte_food_index: int = 0
-var qte_emojis: Array[String] = ["😊", "😐", "😢", "🍜", "🍢", "🧋", "🦪", "🍚"]
-var qte_items: Array = []
+@export var qte_emojis_texture : Array[String]
+var qte_items: Array
 var qte_current_item: String = ""
 var qte_timer: float = 0.0
 var qte_switch_interval: float = 0.5  # 每0.5秒切換一次
@@ -55,15 +55,15 @@ func _ready():
 		GameManager.CustomerPersonality.FRIENDLY:
 			desired_expression = GameManager.MaskType.HAPPY
 			if has_node("Bubble/Label"):
-				$Bubble/Label.text = "😊"
+				$Bubble/emoji.texture = load("res://Assets/Emoji/crazy_sign.PNG")
 		GameManager.CustomerPersonality.NEUTRAL:
 			desired_expression = GameManager.MaskType.NEUTRAL
 			if has_node("Bubble/Label"):
-				$Bubble/Label.text = "😐"
+				$Bubble/emoji.texture = load("res://Assets/Emoji/normal_sign.PNG")
 		GameManager.CustomerPersonality.GRUMPY:
 			desired_expression = GameManager.MaskType.SAD
 			if has_node("Bubble/Label"):
-				$Bubble/Label.text = "😢"
+				$Bubble/emoji.texture = load("res://Assets/Emoji/shy_sign.PNG")
 	
 	# 隨機選擇想要的食物（每個客人只會想要一種食物，在生成時決定）
 	var all_foods = [
@@ -84,10 +84,22 @@ func prepare_qte_items():
 		return
 	
 	# QTE 只包含客人想要的食物 + 隨機 emoji
-	var random_emojis = ["🔥", "❤️", "👀", "💀", "🚗", "🐂", "🔫", "⭐", "💎", "🎯", "🎲", "🎪"]
 	desired_food_name = game_manager.get_food_name(desired_food)
 	
-	qte_items = random_emojis.duplicate()
+	qte_items = qte_emojis_texture.duplicate()
+	
+	match desired_food_name:
+		"湯麵":
+			qte_items.append("res://Assets/Foods/湯麵.png")
+		"滷肉飯":
+			qte_items.append("res://Assets/Foods/滷肉飯.png")
+		"炒飯":
+			qte_items.append("res://Assets/Foods/炒飯.png")
+		"珍珠奶茶":
+			qte_items.append("res://Assets/Foods/珍珠奶茶.png")
+		"紅茶":
+			qte_items.append("res://Assets/Foods/紅茶.png")
+	
 	qte_items.append(desired_food_name)
 
 func _process(delta):
