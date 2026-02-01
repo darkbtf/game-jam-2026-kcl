@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 # 玩家腳本
 @export var speed: float
-@export var expression_drain_rate: float = 1.0  # 每秒掉多少 san
+var expression_drain_rate: float = 5.0  # 每秒掉多少 san
 
 var run_status: bool = false
 var run_direction
@@ -18,7 +18,7 @@ func _ready():
 
 func _physics_process(delta):
 	# 檢查遊戲結束
-	if game_manager and game_manager.is_game_over:
+	if LevelManager and LevelManager.is_ended():
 		velocity = Vector2.ZERO
 		return
 	
@@ -67,12 +67,15 @@ func _physics_process(delta):
 	# 表情控制	
 	if Input.is_action_pressed("expression_happy"):
 		current_expression = GameManager.MaskType.HAPPY
+		expression_drain_rate = 2.0
 		is_using_expression = true
 	elif Input.is_action_pressed("expression_neutral"):
 		current_expression = GameManager.MaskType.NEUTRAL
+		expression_drain_rate = 5.0
 		is_using_expression = true
 	elif Input.is_action_pressed("expression_sad"):
 		current_expression = GameManager.MaskType.SAD
+		expression_drain_rate = 10.0
 		is_using_expression = true
 	else:
 		current_expression = GameManager.MaskType.NEUTRAL

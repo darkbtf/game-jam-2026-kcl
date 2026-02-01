@@ -17,6 +17,7 @@ signal level_changed(level_index: int, level_config: LevelConfig)
 signal level_state_changed(state: LevelState)
 signal level_time_updated(remaining_time: float)  # 關卡剩餘時間更新
 signal level_time_up()  # 關卡時間到
+signal game_over()  # 遊戲結束（san 值歸零時觸發）
 
 # 所有關卡配置列表（在初始化時載入）
 var levels: Array[LevelConfig] = []
@@ -44,6 +45,9 @@ func _ready():
 	
 	# 等待一幀，確保場景樹完全載入
 	await get_tree().process_frame
+	
+	# 連接 game_manager 的 san_changed 信號
+	call_deferred("connect_game_manager_signals")
 	
 	# 如果直接進入 MainScene，自動載入 level 0
 	# 如果之後有 MenuScene，可以在 MenuScene 中手動調用 start_level(0)
@@ -148,6 +152,32 @@ func initialize_levels():
 	
 	print("已初始化 ", levels.size(), " 個關卡配置")
 
+# 連接 game_manager 的信號
+func connect_game_manager_signals():
+	var game_manager = get_tree().get_first_node_in_group("game_manager")
+	if game_manager:
+		if not game_manager.san_changed.is_connected(_on_san_changed):
+			game_manager.san_changed.connect(_on_san_changed)
+		print("已連接 game_manager 的 san_changed 信號")
+	else:
+		# 如果 game_manager 還沒載入，延遲重試（最多重試 10 次）
+		for i in range(10):
+			await get_tree().process_frame
+			game_manager = get_tree().get_first_node_in_group("game_manager")
+			if game_manager:
+				if not game_manager.san_changed.is_connected(_on_san_changed):
+					game_manager.san_changed.connect(_on_san_changed)
+				print("已連接 game_manager 的 san_changed 信號")
+				return
+		print("警告: 無法找到 game_manager，san_changed 信號未連接")
+
+# 處理 san 值變更
+func _on_san_changed(new_value: float):
+	# 當 san 值歸零時，觸發關卡失敗
+	if new_value <= 0 and current_state == LevelState.PLAYING:
+		fail_level()
+		game_over.emit()
+
 # 輔助函數：根據關卡索引自動設置 duration
 func create_level_with_duration(level_index: int, level_name: String, spawn_interval: float, max_customers: int, customer_configs: Array[CustomerSpawnConfig]) -> LevelConfig:
 	var level = LevelConfig.new()
@@ -230,7 +260,6 @@ func reset_game_state():
 	var game_manager = get_tree().get_first_node_in_group("game_manager")
 	if game_manager:
 		game_manager.player_san = game_manager.max_san
-		game_manager.is_game_over = false
 		game_manager.san_changed.emit(game_manager.player_san)
 		print("已重置玩家 sanity")
 
@@ -271,6 +300,8 @@ func complete_level():
 
 # 失敗當前關卡
 func fail_level():
+	if current_state == LevelState.FAILED:
+		return  # 已經失敗了，避免重複觸發
 	set_level_state(LevelState.FAILED)
 	print("關卡失敗: ", current_level_config.level_name if current_level_config else "未知")
 
@@ -349,3 +380,6 @@ func _input(event: InputEvent):
 		elif current_state == LevelState.FAILED and event.keycode == KEY_R:
 			restart_current_level()
 			get_viewport().set_input_as_handled()
+
+func is_ended():
+	return current_state in [LevelState.COMPLETED, LevelState.FAILED]

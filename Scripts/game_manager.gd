@@ -5,14 +5,11 @@ extends Node
 signal san_changed(new_value)
 signal customer_satisfaction_changed(customer_id, new_value)
 signal order_completed(customer_id, success: bool)
-signal game_over()
 signal overall_satisfaction_changed(new_value)
 
 # 遊戲狀態
 var player_san: float = 100.0
 var max_san: float = 100.0
-var san_drain_rate: float = 2.0  # 每秒掉多少 san
-var is_game_over: bool = false
 
 # 全局滿意度
 var overall_satisfaction: float = 50.0
@@ -290,16 +287,8 @@ func get_kitchen_staff_data(staff_type: KitchenStaffType) -> KitchenStaffData:
 	return kitchen_staff_data.get(staff_type, null)
 
 func drain_san(amount: float):
-	if is_game_over:
-		return
-	
 	player_san = max(0, player_san - amount)
 	san_changed.emit(player_san)
-	
-	# 檢查遊戲結束
-	if player_san <= 0 and not is_game_over:
-		is_game_over = true
-		game_over.emit()
 
 func restore_san(amount: float):
 	player_san = min(max_san, player_san + amount)

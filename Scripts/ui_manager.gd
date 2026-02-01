@@ -3,7 +3,6 @@ extends Control
 # UI 管理器
 @onready var san_bar: TextureProgressBar = $TopRightUI/SanBar
 @onready var time_bar: TextureProgressBar = $BottomLeftUI/timeBar
-@onready var game_over_panel: Control = $GameOverPanel
 @onready var player_face_panel: Control = $TopRightUI/PlayerFacePanel
 @onready var player_face: Sprite2D = $TopRightUI/PlayerFacePanel/Face
 @onready var level_label: Label = $BottomLeftUI/Date/LevelLabel
@@ -40,8 +39,6 @@ func find_game_manager():
 		# 連接信號（如果還沒連接）
 		if not game_manager.san_changed.is_connected(_on_san_changed):
 			game_manager.san_changed.connect(_on_san_changed)
-		if not game_manager.game_over.is_connected(_on_game_over):
-			game_manager.game_over.connect(_on_game_over)
 		
 		# 初始化顯示
 		_on_san_changed(100)
@@ -98,24 +95,6 @@ func _on_level_time_updated(remaining_time: float):
 
 func set_player(player_node: Node):
 	player = player_node
-
-func _on_game_over():
-	if game_over_panel:
-		game_over_panel.visible = true
-	# 暫停遊戲
-	get_tree().paused = true
-
-func _input(event):
-	# 遊戲結束後按 R 鍵重新開始
-	if game_over_panel and game_over_panel.visible:
-		if event.is_action_pressed("ui_accept") or (event is InputEventKey and event.pressed and event.keycode == KEY_R):
-			restart_game()
-
-func restart_game():
-	# 取消暫停
-	get_tree().paused = false
-	# 重新載入場景
-	get_tree().reload_current_scene()
 
 func scale_all_labels():
 	# 遞歸設置所有Label的字體大小
