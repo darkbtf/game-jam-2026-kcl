@@ -51,7 +51,7 @@ func receive_expression(expression: GameManager.MaskType):
 	if expression == desired_mask:
 		prepare_time = max(2, prepare_time -1)
 	else:
-		prepare_time = min(10, prepare_time +1)
+		prepare_time = prepare_time +1
 		
 	# 取得訂單編號
 	take_order_number = order_manager.check_order_cook_status()

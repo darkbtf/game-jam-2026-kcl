@@ -16,6 +16,13 @@ script = ExtResource("1")
 position = Vector2(27.75, 35)
 shape = SubResource("RectangleShape2D_dj6k5")
 
+[node name="AnimatedCustomer" type="AnimatedSprite2D" parent="Area2D"]
+z_index = 3
+z_as_relative = false
+sprite_frames = ExtResource("2_7mhha")
+animation = &"WalkDown"
+flip_h = true
+
 [node name="AnimatedCustomer" type="AnimatedSprite2D" parent="."]
 z_index = 3
 z_as_relative = false

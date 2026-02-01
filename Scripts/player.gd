@@ -104,3 +104,5 @@ func to_customer():
 	print("送餐完畢" ,take_food)
 	emit_signal("take_meal_to_customer", take_food)
 	take_status = false
+	$Tray_left.visible = false
+	$Tray_right.visible = false

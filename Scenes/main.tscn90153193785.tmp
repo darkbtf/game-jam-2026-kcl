@@ -1,0 +1,158 @@
+[gd_scene load_steps=22 format=3 uid="uid://main"]
+
+[ext_resource type="Script" uid="uid://ckxy2xylkxwo8" path="res://Scripts/game_manager.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cce8m6bwh75x7" path="res://Assets/ground.PNG" id="1_fdnlq"]
+[ext_resource type="PackedScene" uid="uid://bn4k6oj1f21om" path="res://Objects/player.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://dtc7hnjg4pmp" path="res://Assets/ground_L.PNG" id="2_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://ddtjcxw0mdh0e" path="res://Objects/kitchen_staff.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://bhelgyk0nhs0m" path="res://Assets/ground_R.PNG" id="3_wsu2k"]
+[ext_resource type="PackedScene" uid="uid://ui" path="res://Scenes/ui.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://do8o2wcdu4k6r" path="res://Scenes/qte_ui.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://customer" path="res://Objects/customer.tscn" id="6"]
+[ext_resource type="Script" uid="uid://c6okgrq53tosf" path="res://Scripts/queue_manager.gd" id="7"]
+[ext_resource type="Script" uid="uid://dhbhyk1b5myta" path="res://Scripts/interaction_manager.gd" id="8"]
+[ext_resource type="PackedScene" uid="uid://updf3qvx4bkt" path="res://Objects/foods.tscn" id="8_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="11"]
+[ext_resource type="PackedScene" uid="uid://b0yxxjt12x7bm" path="res://Scenes/scoreboard.tscn" id="12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkdf5"]
+size = Vector2(150, 411)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsu2k"]
+size = Vector2(71, 753)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k12tt"]
+size = Vector2(1148, 139)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1bgf"]
+size = Vector2(27, 605)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3802"]
+size = Vector2(1099, 72.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fevyy"]
+size = Vector2(148, 102.5)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("11")
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -100
+z_as_relative = false
+
+[node name="GroundL" type="Sprite2D" parent="Background"]
+z_index = -100
+z_as_relative = false
+position = Vector2(642, 359)
+texture = ExtResource("2_jkdf5")
+
+[node name="GroundR" type="Sprite2D" parent="Background"]
+z_index = -100
+z_as_relative = false
+position = Vector2(638, 359)
+texture = ExtResource("3_wsu2k")
+
+[node name="Ground" type="Sprite2D" parent="Background"]
+z_index = -100
+z_as_relative = false
+position = Vector2(642, 359)
+texture = ExtResource("1_fdnlq")
+
+[node name="GameManager" type="Node" parent="." groups=["GameManager"]]
+script = ExtResource("1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="Player" parent="." instance=ExtResource("2")]
+z_as_relative = false
+position = Vector2(640, 500)
+speed = 300.0
+
+[node name="Kitchen" type="Node2D" parent="."]
+z_as_relative = false
+
+[node name="KitchenStaff1" parent="Kitchen" node_paths=PackedStringArray("food") instance=ExtResource("3")]
+z_as_relative = false
+position = Vector2(1173, 399)
+food = NodePath("../../Foods/Food")
+
+[node name="KitchenStaff2" parent="Kitchen" node_paths=PackedStringArray("food") instance=ExtResource("3")]
+z_as_relative = false
+position = Vector2(1174, 549)
+staff_id = 2
+food = NodePath("../../Foods/Food2")
+
+[node name="Foods" type="Node" parent="."]
+
+[node name="Food" parent="Foods" instance=ExtResource("8_jkdf5")]
+position = Vector2(1016, 407)
+
+[node name="Food2" parent="Foods" instance=ExtResource("8_jkdf5")]
+position = Vector2(1018, 550)
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1055, 511.5)
+shape = SubResource("RectangleShape2D_jkdf5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1319, 343.5)
+shape = SubResource("RectangleShape2D_wsu2k")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(774, 69.5)
+shape = SubResource("RectangleShape2D_k12tt")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(292.5, 421.5)
+shape = SubResource("RectangleShape2D_h1bgf")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(810.5, 758.75)
+shape = SubResource("RectangleShape2D_b3802")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(1204, 669.75)
+shape = SubResource("RectangleShape2D_fevyy")
+
+[node name="QueueManager" type="Node2D" parent="."]
+z_as_relative = false
+script = ExtResource("7")
+customer_scene = ExtResource("6")
+
+[node name="InteractionManager" type="Node" parent="." groups=["interactionManager"]]
+script = ExtResource("8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("4")]
+
+[node name="SanBar" parent="CanvasLayer/UI/TopRightUI" index="0"]
+offset_left = -345.0
+offset_top = 44.0
+offset_right = 79.0
+offset_bottom = 81.0
+
+[node name="SanIcon" parent="CanvasLayer/UI/TopRightUI" index="3"]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 163.0
+offset_top = 378.0
+offset_right = 163.0
+offset_bottom = 378.0
+grow_horizontal = 1
+
+[node name="QTEUI" parent="CanvasLayer" instance=ExtResource("5")]
+
+[node name="Order" parent="CanvasLayer" instance=ExtResource("10_hptm8")]
+
+[node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("12")]
+
+[editable path="CanvasLayer/UI"]

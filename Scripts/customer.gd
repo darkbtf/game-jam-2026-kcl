@@ -25,7 +25,6 @@ var qte_switch_interval: float = 0.5  # 每0.5秒切換一次
 signal order_started(customer_id)
 signal order_completed(customer_id, success: bool)
 signal qte_item_changed(item: String)
-signal get_order()
 
 func _ready():
 	game_manager = get_tree().get_first_node_in_group("game_manager")
@@ -132,11 +131,10 @@ func complete_order(player_expression: GameManager.MaskType) -> bool:
 	var success = false
 	if player_expression == desired_expression:
 		success = true
-		satisfaction = min(max_satisfaction, satisfaction + 20)
+		satisfaction = min(max_satisfaction, satisfaction + 10)
 	else:
-		satisfaction = max(0, satisfaction - 15)
+		satisfaction = max(0, satisfaction - 10)
 	
-	order_completed.emit(customer_id, success)
 	return success
 
 func get_desired_food() -> GameManager.FoodType:
@@ -200,5 +198,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if body.take_status:
 			print("玩家有餐")
-			emit_signal("get_order")
 			body.to_customer()
+			
+			if body.take_food[0] == desired_food_name:
+				order_completed.emit(customer_id, true)
+			else:
+				order_completed.emit(customer_id, false)
