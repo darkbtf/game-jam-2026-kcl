@@ -411,10 +411,10 @@ func calculate_unserved_customers():
 # 處理關卡完成/失敗後的按鍵輸入
 func _input(event: InputEvent):
 	if event is InputEventKey and event.pressed:
-		if current_state == LevelState.COMPLETED:
-			next_level()
-			get_viewport().set_input_as_handled()
-		elif current_state == LevelState.FAILED:
+		if current_state == LevelState.COMPLETED and event.keycode == KEY_N:
+				next_level()
+				get_viewport().set_input_as_handled()
+		elif current_state == LevelState.FAILED and event.keycode == KEY_R:
 			restart_current_level()
 			get_viewport().set_input_as_handled()
 
