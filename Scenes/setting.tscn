@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://lqp17exadnit" path="res://Scripts/setting.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://1ae4vi6pid6i" path="res://Assets/scoreboard/Setting.PNG" id="2"]
 [ext_resource type="Texture2D" uid="uid://daarqr7s84yhj" path="res://Assets/scoreboard/sound_icon.PNG" id="3"]
-[ext_resource type="Texture2D" uid="uid://s17rpn4infxf" path="res://Assets/scoreboard/X.PNG" id="4"]
 [ext_resource type="Texture2D" uid="uid://ctkje7j2njh5t" path="res://Assets/san.png" id="4_1pxt3"]
 [ext_resource type="Texture2D" uid="uid://bsbwfxcikp7qy" path="res://Assets/san_progress.png" id="5_crjqs"]
+[ext_resource type="Texture2D" uid="uid://dfn0wvtel2sg8" path="res://Assets/scoreboard/big_x.png" id="6_1pxt3"]
 
 [node name="Setting" type="Control"]
 visible = false
@@ -80,6 +80,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SoundIcon" type="TextureButton" parent="."]
+visible = false
 z_index = 10
 layout_mode = 1
 anchors_preset = 8
@@ -97,7 +98,6 @@ texture_normal = ExtResource("3")
 stretch_mode = 0
 
 [node name="VolumeControlPanel" type="Control" parent="."]
-visible = false
 z_index = 20
 layout_mode = 1
 anchors_preset = 8
@@ -137,7 +137,7 @@ theme_override_constants/separation = 20
 [node name="TitleLabel" type="Label" parent="VolumeControlPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "音量設置"
+text = "Volume Setting"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="VolumeControlPanel/VBoxContainer"]
@@ -150,13 +150,10 @@ theme_override_constants/separation = 5
 [node name="BGMLabel" type="Label" parent="VolumeControlPanel/VBoxContainer/BGMSection"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "BGM 音量"
+text = "BGM"
 
 [node name="BGMSlider" type="HSlider" parent="VolumeControlPanel/VBoxContainer/BGMSection"]
 layout_mode = 2
-min_value = 0.0
-max_value = 100.0
-step = 1.0
 value = 100.0
 
 [node name="BGMValueLabel" type="Label" parent="VolumeControlPanel/VBoxContainer/BGMSection"]
@@ -172,13 +169,10 @@ theme_override_constants/separation = 5
 [node name="SFXLabel" type="Label" parent="VolumeControlPanel/VBoxContainer/SFXSection"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "SFX 音量"
+text = "SFX"
 
 [node name="SFXSlider" type="HSlider" parent="VolumeControlPanel/VBoxContainer/SFXSection"]
 layout_mode = 2
-min_value = 0.0
-max_value = 100.0
-step = 1.0
 value = 100.0
 
 [node name="SFXValueLabel" type="Label" parent="VolumeControlPanel/VBoxContainer/SFXSection"]
@@ -188,6 +182,7 @@ text = "100%"
 horizontal_alignment = 1
 
 [node name="SoundBar" type="TextureProgressBar" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -207,10 +202,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1284.0
-offset_top = -28.0
-offset_right = -4.0
-offset_bottom = 692.0
+offset_left = -388.0
+offset_top = 32.0
+offset_right = -291.0
+offset_bottom = 130.0
 grow_horizontal = 0
-texture_normal = ExtResource("4")
-stretch_mode = 0
+texture_normal = ExtResource("6_1pxt3")
