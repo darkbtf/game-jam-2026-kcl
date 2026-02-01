@@ -43,12 +43,12 @@ func find_nearby_customer() -> Node:
 	if not queue_manager:
 		return null
 	
-	var min_distance = 110.0
+	var min_distance = 100.0
 	var closest_customer = null
 	
 	for customer in queue_manager.customers:
 		var distance = player.position.distance_to(customer.position)
-		if distance < min_distance:
+		if distance < min_distance and !customer.order_status:
 			min_distance = distance
 			closest_customer = customer
 	
