@@ -364,7 +364,7 @@ func _process(delta):
 	if current_state == LevelState.PLAYING and level_duration > 0:
 		level_timer += delta
 		var remaining_time = max(0.0, level_duration - level_timer)
-		print('fire ', remaining_time)
+
 		level_time_updated.emit(remaining_time)
 		
 		# 檢查時間是否到了

@@ -84,20 +84,7 @@ func prepare_qte_items():
 	desired_food_name = game_manager.get_food_name(desired_food)
 	
 	qte_items = qte_emojis_texture.duplicate()
-	
-	match desired_food_name:
-		"湯麵":
-			qte_items.append("res://Assets/Foods/湯麵.png")
-		"滷肉飯":
-			qte_items.append("res://Assets/Foods/滷肉飯.png")
-		"炒飯":
-			qte_items.append("res://Assets/Foods/炒飯.png")
-		"珍珠奶茶":
-			qte_items.append("res://Assets/Foods/珍珠奶茶.png")
-		"紅茶":
-			qte_items.append("res://Assets/Foods/紅茶.png")
-	
-	qte_items.append(desired_food_name)
+	qte_items.append("res://Assets/Foods/" + desired_food_name + ".png")
 
 func _process(delta):
 	if qte_active:
@@ -128,7 +115,7 @@ func start_qte():
 
 func check_qte_success() -> bool:
 	# 檢查是否在正確的食物上鬆開
-	return qte_current_item == game_manager.get_food_name(desired_food)
+	return qte_current_item.split("/")[-1] == game_manager.get_food_name(desired_food) + ".png"
 
 func complete_order(player_expression: GameManager.MaskType) -> bool:
 	is_ordering = false
@@ -204,7 +191,7 @@ func set_customer_texture():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		if body.take_status:
+		if body.take_status and order_status:
 			print("玩家有餐")
 			body.to_customer()
 			

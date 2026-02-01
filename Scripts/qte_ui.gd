@@ -35,6 +35,3 @@ func hide_qte():
 
 func _on_qte_item_changed(item: String):
 	bubble_emoji.texture = load(item)
-	#
-	#if bubble_label:
-		#bubble_label.text = item
