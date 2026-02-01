@@ -14,7 +14,7 @@ var game_manager: Node
 # 取餐送餐
 var take_status = false
 var take_food = ["", 0]
-signal take_meal_to_customer()
+signal take_meal_to_customer(take_food)
 
 func _ready():
 	game_manager = get_tree().get_first_node_in_group("GameManager")

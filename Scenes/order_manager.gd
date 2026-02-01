@@ -15,6 +15,9 @@ func _ready():
 	var kitchenStaffs = get_tree().get_nodes_in_group("staff")
 	for k in kitchenStaffs:
 		k.order_status_change.connect(update_prepare_status)
+		
+	var player = get_tree().get_first_node_in_group("player")
+	player.take_meal_to_customer.connect(del_meal)
 	
 	clear_orders()
 	
@@ -34,15 +37,17 @@ func add_meal(meal_name):
 	print("餐點已滿")
 	return false
 	
-func del_meal():
-	return
-
-func check_order_cook_status(number):
-	if number >= len(order_text_array):
-		return "no order"
-	return order_text_array[number][1]
-
+func del_meal(del_food):
+	print("刪除訂單", del_food)
+	order_text_array[del_food[1]] = [null, "not meal"]
+	update_prepare_status(del_food[1], "del")
 	
+func check_order_cook_status():
+	for i in range(len(order_text_array)):
+		if order_text_array[i][1] == "not ready":
+			return i
+	return -1
+
 func update_prepare_status(number, status):
 	if make_number >= max_order -1:
 		make_number = max_order - 1
@@ -58,7 +63,9 @@ func update_prepare_status(number, status):
 			Orders_Array[number].get_node("AnimatedSprite2D").play("finish")
 			order_text_array[number][1] = "finish"
 		"del":
+			print("刪除該訂單", number)
 			Orders_Array[number].get_node("AnimatedSprite2D").play("stay")
+			Orders_Array[number].get_node("Meal").texture = null
 			make_number -= 1
 
 # 清空所有訂單

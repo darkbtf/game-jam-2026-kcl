@@ -98,8 +98,7 @@ offset_bottom = 21.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/Order 1"]
 position = Vector2(3, -20)
 sprite_frames = SubResource("SpriteFrames_bj6i8")
-animation = &"stay"
-frame_progress = 0.3871553
+animation = &"finish"
 
 [node name="Order 2" type="Control" parent="HBoxContainer"]
 layout_mode = 2
