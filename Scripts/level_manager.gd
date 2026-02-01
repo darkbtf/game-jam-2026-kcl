@@ -44,10 +44,19 @@ var bgm_player: AudioStreamPlayer
 var active_bgm_path = "res://Assets/BGM/GGJ2026_Snack Bar Active 10.ogg"
 var resting_bgm_path = "res://Assets/BGM/GGJ2026_Snack Bar Resting2.ogg"
 
+# BGM 音量設置（0.0 到 1.0）
+var bgm_volume: float = 1.0
+
 func _ready():
 	# 初始化 BGM 播放器
 	bgm_player = AudioStreamPlayer.new()
 	add_child(bgm_player)
+	
+	# 載入保存的音量設置
+	load_volume_settings()
+	
+	# 應用音量設置
+	apply_bgm_volume()
 	
 	# 初始化時載入所有關卡配置
 	initialize_levels()
@@ -444,3 +453,28 @@ func play_resting_bgm():
 			bgm_player.stream = stream
 			bgm_player.play()
 			print("播放 Resting BGM: ", resting_bgm_path)
+
+# 設置 BGM 音量（0.0 到 1.0）
+func set_bgm_volume(volume: float):
+	bgm_volume = clamp(volume, 0.0, 1.0)
+	apply_bgm_volume()
+	save_volume_settings()
+
+# 應用 BGM 音量
+func apply_bgm_volume():
+	if bgm_player:
+		bgm_player.volume_db = linear_to_db(bgm_volume)
+
+# 保存音量設置
+func save_volume_settings():
+	var config = ConfigFile.new()
+	config.set_value("audio", "bgm_volume", bgm_volume)
+	config.save("user://settings.cfg")
+
+# 載入音量設置
+func load_volume_settings():
+	var config = ConfigFile.new()
+	var err = config.load("user://settings.cfg")
+	if err == OK:
+		if config.has_section_key("audio", "bgm_volume"):
+			bgm_volume = config.get_value("audio", "bgm_volume", 1.0)
