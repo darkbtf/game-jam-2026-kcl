@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://x4omglvt025s"
+path="res://.godot/imported/GGJ2026_Snack Bar Active 10.ogg-6e3245c5482034273399f16250ff8e46.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/BGM/GGJ2026_Snack Bar Active 10.ogg"
+dest_files=["res://.godot/imported/GGJ2026_Snack Bar Active 10.ogg-6e3245c5482034273399f16250ff8e46.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
