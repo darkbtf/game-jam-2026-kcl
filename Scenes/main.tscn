@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://main"]
+[gd_scene format=3 uid="uid://main"]
 
 [ext_resource type="Script" uid="uid://ckxy2xylkxwo8" path="res://Scripts/game_manager.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cce8m6bwh75x7" path="res://Assets/ground.PNG" id="1_fdnlq"]
@@ -13,8 +13,9 @@
 [ext_resource type="Script" uid="uid://dhbhyk1b5myta" path="res://Scripts/interaction_manager.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://updf3qvx4bkt" path="res://Objects/foods.tscn" id="8_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]
-[ext_resource type="Script" path="res://Scripts/main.gd" id="11"]
+[ext_resource type="Script" uid="uid://dyla3ok2qxlpt" path="res://Scripts/main.gd" id="11"]
 [ext_resource type="PackedScene" uid="uid://b0yxxjt12x7bm" path="res://Scenes/scoreboard.tscn" id="12"]
+[ext_resource type="FontFile" uid="uid://bfl00a5udequl" path="res://Assets/Fonts/TaipeiSansTCBeta-Regular.ttf" id="13_k12tt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkdf5"]
 size = Vector2(150, 411)
@@ -34,111 +35,125 @@ size = Vector2(1099, 72.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fevyy"]
 size = Vector2(148, 102.5)
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=290871089]
 script = ExtResource("11")
 
-[node name="Background" type="Node2D" parent="."]
+[node name="Background" type="Node2D" parent="." unique_id=1459512501]
 z_index = -100
 z_as_relative = false
 
-[node name="GroundL" type="Sprite2D" parent="Background"]
+[node name="GroundL" type="Sprite2D" parent="Background" unique_id=336620535]
 z_index = -100
 z_as_relative = false
 position = Vector2(642, 359)
 texture = ExtResource("2_jkdf5")
 
-[node name="GroundR" type="Sprite2D" parent="Background"]
+[node name="GroundR" type="Sprite2D" parent="Background" unique_id=207540668]
 z_index = -100
 z_as_relative = false
 position = Vector2(638, 359)
 texture = ExtResource("3_wsu2k")
 
-[node name="Ground" type="Sprite2D" parent="Background"]
+[node name="Ground" type="Sprite2D" parent="Background" unique_id=1708495297]
 z_index = -100
 z_as_relative = false
 position = Vector2(642, 359)
 texture = ExtResource("1_fdnlq")
 
-[node name="GameManager" type="Node" parent="." groups=["GameManager"]]
+[node name="GameManager" type="Node" parent="." unique_id=194111596 groups=["GameManager"]]
 script = ExtResource("1")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1114360473]
 position = Vector2(640, 360)
 
-[node name="Player" parent="." instance=ExtResource("2")]
+[node name="Player" parent="." unique_id=985704922 instance=ExtResource("2")]
 z_as_relative = false
 position = Vector2(640, 500)
 speed = 300.0
 
-[node name="Kitchen" type="Node2D" parent="."]
+[node name="Kitchen" type="Node2D" parent="." unique_id=1168413815]
 z_as_relative = false
 
-[node name="KitchenStaff1" parent="Kitchen" node_paths=PackedStringArray("food") instance=ExtResource("3")]
+[node name="KitchenStaff1" parent="Kitchen" unique_id=1572384914 node_paths=PackedStringArray("food") instance=ExtResource("3")]
 z_as_relative = false
 position = Vector2(1173, 399)
 food = NodePath("../../Foods/Food")
 
-[node name="KitchenStaff2" parent="Kitchen" node_paths=PackedStringArray("food") instance=ExtResource("3")]
+[node name="KitchenStaff2" parent="Kitchen" unique_id=745108447 node_paths=PackedStringArray("food") instance=ExtResource("3")]
 z_as_relative = false
 position = Vector2(1174, 549)
 staff_id = 2
 food = NodePath("../../Foods/Food2")
 
-[node name="Foods" type="Node" parent="."]
+[node name="Foods" type="Node" parent="." unique_id=822917150]
 
-[node name="Food" parent="Foods" instance=ExtResource("8_jkdf5")]
+[node name="Food" parent="Foods" unique_id=2118264526 instance=ExtResource("8_jkdf5")]
 position = Vector2(1016, 407)
 
-[node name="Food2" parent="Foods" instance=ExtResource("8_jkdf5")]
+[node name="Food2" parent="Foods" unique_id=1992493208 instance=ExtResource("8_jkdf5")]
 position = Vector2(1018, 550)
 
-[node name="Walls" type="Node" parent="."]
+[node name="Walls" type="Node" parent="." unique_id=1658899115]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls" unique_id=1061289033]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=965845477]
 position = Vector2(1055, 511.5)
 shape = SubResource("RectangleShape2D_jkdf5")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=1422713523]
 position = Vector2(1319, 343.5)
 shape = SubResource("RectangleShape2D_wsu2k")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=1253464437]
 position = Vector2(774, 69.5)
 shape = SubResource("RectangleShape2D_k12tt")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=1038574303]
 position = Vector2(292.5, 421.5)
 shape = SubResource("RectangleShape2D_h1bgf")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=59911275]
 position = Vector2(810.5, 758.75)
 shape = SubResource("RectangleShape2D_b3802")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Walls/StaticBody2D" unique_id=257072063]
 position = Vector2(1204, 669.75)
 shape = SubResource("RectangleShape2D_fevyy")
 
-[node name="QueueManager" type="Node2D" parent="."]
+[node name="QueueManager" type="Node2D" parent="." unique_id=334572138]
 z_as_relative = false
 script = ExtResource("7")
 customer_scene = ExtResource("6")
 
-[node name="InteractionManager" type="Node" parent="." groups=["interactionManager"]]
+[node name="InteractionManager" type="Node" parent="." unique_id=1571829919 groups=["interactionManager"]]
 script = ExtResource("8")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=177207613]
 
-[node name="UI" parent="CanvasLayer" instance=ExtResource("4")]
+[node name="UI" parent="CanvasLayer" unique_id=1755058434 instance=ExtResource("4")]
+
+[node name="TitleLabel" parent="CanvasLayer/UI/ControlsPanel/VBoxContainer" index="0"]
+theme_override_fonts/font = ExtResource("13_k12tt")
+
+[node name="MoveLabel" parent="CanvasLayer/UI/ControlsPanel/VBoxContainer" index="2"]
+theme_override_fonts/font = ExtResource("13_k12tt")
+theme_override_font_sizes/font_size = 16
+
+[node name="HappyLabel" parent="CanvasLayer/UI/ControlsPanel/VBoxContainer" index="3"]
+theme_override_fonts/font = ExtResource("13_k12tt")
+
+[node name="NeutralLabel" parent="CanvasLayer/UI/ControlsPanel/VBoxContainer" index="4"]
+theme_override_fonts/font = ExtResource("13_k12tt")
+
+[node name="SadLabel" parent="CanvasLayer/UI/ControlsPanel/VBoxContainer" index="5"]
+theme_override_fonts/font = ExtResource("13_k12tt")
 
 [node name="SanBar" parent="CanvasLayer/UI/TopRightUI" index="0"]
 offset_left = -345.0
 offset_top = 44.0
 offset_right = 79.0
 offset_bottom = 81.0
-
-[node name="PlayerFacePanel" parent="CanvasLayer/UI/TopRightUI" index="2"]
 
 [node name="SanIcon" parent="CanvasLayer/UI/TopRightUI" index="3"]
 layout_mode = 0
@@ -151,10 +166,17 @@ offset_right = 163.0
 offset_bottom = 378.0
 grow_horizontal = 1
 
-[node name="QTEUI" parent="CanvasLayer" instance=ExtResource("5")]
+[node name="DayLabel" parent="CanvasLayer/UI/BottomLeftUI/Date" index="1"]
+theme_override_fonts/font = ExtResource("13_k12tt")
 
-[node name="Order" parent="CanvasLayer" instance=ExtResource("10_hptm8")]
+[node name="LevelLabel" parent="CanvasLayer/UI/BottomLeftUI/Date" index="2"]
+theme_override_fonts/font = ExtResource("13_k12tt")
+theme_override_font_sizes/font_size = 24
 
-[node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("12")]
+[node name="QTEUI" parent="CanvasLayer" unique_id=568975 instance=ExtResource("5")]
+
+[node name="Order" parent="CanvasLayer" unique_id=486673503 instance=ExtResource("10_hptm8")]
+
+[node name="Scoreboard" parent="CanvasLayer" unique_id=381236089 instance=ExtResource("12")]
 
 [editable path="CanvasLayer/UI"]
