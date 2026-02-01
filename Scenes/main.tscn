@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://main"]
+[gd_scene load_steps=26 format=3 uid="uid://main"]
 
 [ext_resource type="Script" uid="uid://ckxy2xylkxwo8" path="res://Scripts/game_manager.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cce8m6bwh75x7" path="res://Assets/ground.PNG" id="1_fdnlq"]
@@ -9,12 +9,40 @@
 [ext_resource type="PackedScene" uid="uid://ui" path="res://Scenes/ui.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://do8o2wcdu4k6r" path="res://Scenes/qte_ui.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://customer" path="res://Objects/customer.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://bmwopu7r4twjt" path="res://Assets/door_close.PNG" id="6_b3802"]
 [ext_resource type="Script" uid="uid://c6okgrq53tosf" path="res://Scripts/queue_manager.gd" id="7"]
 [ext_resource type="Script" uid="uid://dhbhyk1b5myta" path="res://Scripts/interaction_manager.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://updf3qvx4bkt" path="res://Objects/foods.tscn" id="8_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://bu0oduycd6gkm" path="res://Assets/door_open.PNG" id="8_k12tt"]
 [ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="11"]
 [ext_resource type="PackedScene" uid="uid://b0yxxjt12x7bm" path="res://Scenes/scoreboard.tscn" id="12"]
+[ext_resource type="Texture2D" uid="uid://p2yh6e7ohd4h" path="res://Assets/Wall.PNG" id="17_h1bgf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fevyy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_b3802")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_k12tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b3802")
+}],
+"loop": true,
+"name": &"open",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_k12tt")
+}],
+"loop": true,
+"name": &"stay",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkdf5"]
 size = Vector2(150, 411)
@@ -64,6 +92,11 @@ script = ExtResource("1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)
+
+[node name="DoorOpen" type="AnimatedSprite2D" parent="."]
+position = Vector2(641, 360)
+sprite_frames = SubResource("SpriteFrames_fevyy")
+animation = &"stay"
 
 [node name="Player" parent="." instance=ExtResource("2")]
 z_as_relative = false
@@ -138,8 +171,6 @@ offset_top = 44.0
 offset_right = 79.0
 offset_bottom = 81.0
 
-[node name="PlayerFacePanel" parent="CanvasLayer/UI/TopRightUI" index="2"]
-
 [node name="SanIcon" parent="CanvasLayer/UI/TopRightUI" index="3"]
 layout_mode = 0
 anchors_preset = 0
@@ -156,5 +187,9 @@ grow_horizontal = 1
 [node name="Order" parent="CanvasLayer" instance=ExtResource("10_hptm8")]
 
 [node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("12")]
+
+[node name="Wall" type="Sprite2D" parent="."]
+position = Vector2(642, 359)
+texture = ExtResource("17_h1bgf")
 
 [editable path="CanvasLayer/UI"]
