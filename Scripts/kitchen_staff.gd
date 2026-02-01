@@ -85,6 +85,10 @@ func cook_finish():
 	food.texture = load("res://Assets/Foods/" + cook_food_name + ".png")
 	food.food_name = cook_food_name
 	food.order_number = take_order_number
+	
+	# 播放備餐完成音效
+	if SFXManager:
+		SFXManager.play_meal_ready_sfx()
 
 func player_nearby_staff(body: Node2D) -> void:
 	if body.is_in_group("player") and !cooking_status:

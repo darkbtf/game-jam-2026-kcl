@@ -266,7 +266,22 @@ func reset_game_state():
 	if player:
 		player.position = Vector2(640, 500)  # 初始位置
 		player.velocity = Vector2.ZERO  # 重置速度
-		print("已重置玩家位置")
+		# 清空玩家手上的食物
+		player.take_status = false
+		player.take_food = ["", 0]
+		if player.has_node("Tray_left"):
+			player.get_node("Tray_left").visible = false
+		if player.has_node("Tray_right"):
+			player.get_node("Tray_right").visible = false
+		print("已重置玩家位置和手上的食物")
+	
+	# 清空出餐台上的所有食物
+	var foods_node = main_scene.get_node_or_null("Foods")
+	if foods_node:
+		for child in foods_node.get_children():
+			if child.has_method("init_food"):
+				child.init_food()
+		print("已清空出餐台上的食物")
 	
 	# 重置玩家 sanity
 	var game_manager = get_tree().get_first_node_in_group("game_manager")
@@ -309,6 +324,9 @@ func complete_level():
 	print("關卡完成: ", current_level_config.level_name if current_level_config else "未知")
 	# 計算未服務的客人（關卡結束時還在隊列中的客人）
 	calculate_unserved_customers()
+	# 播放關卡完成音效
+	if SFXManager:
+		SFXManager.play_level_cleared_sfx()
 	# 播放 Resting BGM
 	play_resting_bgm()
 
@@ -318,6 +336,9 @@ func fail_level():
 		return  # 已經失敗了，避免重複觸發
 	set_level_state(LevelState.FAILED)
 	print("關卡失敗: ", current_level_config.level_name if current_level_config else "未知")
+	# 播放關卡失敗音效
+	if SFXManager:
+		SFXManager.play_level_failed_sfx()
 	# 播放 Resting BGM
 	play_resting_bgm()
 
