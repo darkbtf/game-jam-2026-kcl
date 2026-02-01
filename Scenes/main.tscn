@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="11"]
 [ext_resource type="PackedScene" uid="uid://b0yxxjt12x7bm" path="res://Scenes/scoreboard.tscn" id="12"]
-[ext_resource type="PackedScene" uid="uid://setting" path="res://Scenes/setting.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://Scenes/setting.tscn" id="13"]
 [ext_resource type="Texture2D" uid="uid://p2yh6e7ohd4h" path="res://Assets/Wall.PNG" id="17_h1bgf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fevyy"]
