@@ -81,7 +81,7 @@ func _physics_process(delta):
 		expression_drain_rate = 10.0
 		is_using_expression = true
 	else:
-		current_expression = GameManager.MaskType.NEUTRAL
+		current_expression = GameManager.MaskType.NO
 		is_using_expression = false
 	
 	# 如果正在使用表情，持續掉 san

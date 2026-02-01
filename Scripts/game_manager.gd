@@ -28,7 +28,8 @@ enum FoodType {
 enum MaskType {
 	HAPPY,    # 開心
 	NEUTRAL,  # 中性
-	SAD       # 難過
+	SAD,      # 難過
+	NO        # 無表情   
 }
 
 # 客人個性類型
@@ -62,7 +63,8 @@ var food_names = {
 var expression_names = {
 	MaskType.HAPPY: "開心",
 	MaskType.NEUTRAL: "中性",
-	MaskType.SAD: "難過"
+	MaskType.SAD: "難過",
+	MaskType.NO: "無表情"
 }
 
 # 食物資料字典（FoodType -> Food 資源）

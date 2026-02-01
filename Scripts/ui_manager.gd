@@ -3,7 +3,6 @@ extends Control
 # UI 管理器
 @onready var san_bar: TextureProgressBar = $TopRightUI/SanBar
 @onready var time_bar: TextureProgressBar = $BottomLeftUI/timeBar
-@onready var player_face_panel: Control = $TopRightUI/PlayerFacePanel
 @onready var player_face: Sprite2D = $TopRightUI/PlayerFacePanel/Face
 @onready var level_label: Label = $BottomLeftUI/Date/LevelLabel
 
@@ -144,7 +143,7 @@ func update_player_face_texture(expr: GameManager.MaskType, is_expressing: bool)
 	
 	# 如果沒做表情，顯示 idle
 	if not is_expressing:
-		texture_path = "res://Assets/face_normal.png"
+		texture_path = ""
 	else:
 		# 根據表情顯示對應的圖片
 		match expr:
@@ -155,14 +154,14 @@ func update_player_face_texture(expr: GameManager.MaskType, is_expressing: bool)
 			GameManager.MaskType.SAD:
 				texture_path = "res://Assets/face_sad.png"
 			_:
-				texture_path = "res://Assets/face_normal.png"
+				texture_path = ""
 	
 	if texture_path != "":
 		var texture = load(texture_path)
 		if texture:
 			player_face.texture = texture
-		else:
-			print("無法載入玩家表情圖片: ", texture_path)
+	else:
+		player_face.texture = null
 
 func find_nearby_target() -> Node:
 	if not player:
