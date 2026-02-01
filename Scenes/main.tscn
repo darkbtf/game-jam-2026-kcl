@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://main"]
+[gd_scene load_steps=28 format=3 uid="uid://main"]
 
 [ext_resource type="Script" uid="uid://ckxy2xylkxwo8" path="res://Scripts/game_manager.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cce8m6bwh75x7" path="res://Assets/ground.PNG" id="1_fdnlq"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bmwopu7r4twjt" path="res://Assets/door_close.PNG" id="6_b3802"]
 [ext_resource type="Script" uid="uid://c6okgrq53tosf" path="res://Scripts/queue_manager.gd" id="7"]
 [ext_resource type="Script" uid="uid://dhbhyk1b5myta" path="res://Scripts/interaction_manager.gd" id="8"]
+[ext_resource type="Script" uid="uid://errwb3hko5jx" path="res://Scenes/door.gd" id="8_fevyy"]
 [ext_resource type="PackedScene" uid="uid://updf3qvx4bkt" path="res://Objects/foods.tscn" id="8_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://bu0oduycd6gkm" path="res://Assets/door_open.PNG" id="8_k12tt"]
 [ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]
@@ -31,18 +32,13 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_b3802")
 }],
-"loop": true,
+"loop": false,
 "name": &"open",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_k12tt")
-}],
-"loop": true,
-"name": &"stay",
-"speed": 5.0
+"speed": 3.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hibaj"]
+size = Vector2(191, 112.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkdf5"]
 size = Vector2(150, 411)
@@ -96,7 +92,14 @@ position = Vector2(640, 360)
 [node name="DoorOpen" type="AnimatedSprite2D" parent="."]
 position = Vector2(641, 360)
 sprite_frames = SubResource("SpriteFrames_fevyy")
-animation = &"stay"
+animation = &"open"
+script = ExtResource("8_fevyy")
+
+[node name="Area2D" type="Area2D" parent="DoorOpen"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpen/Area2D"]
+position = Vector2(421.5, -163.75)
+shape = SubResource("RectangleShape2D_hibaj")
 
 [node name="Player" parent="." instance=ExtResource("2")]
 z_as_relative = false
@@ -185,11 +188,17 @@ grow_horizontal = 1
 [node name="QTEUI" parent="CanvasLayer" instance=ExtResource("5")]
 
 [node name="Order" parent="CanvasLayer" instance=ExtResource("10_hptm8")]
+offset_left = 11.0
+offset_top = 17.0
+offset_right = 11.0
+offset_bottom = 17.0
 
 [node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("12")]
 
 [node name="Wall" type="Sprite2D" parent="."]
 position = Vector2(642, 359)
 texture = ExtResource("17_h1bgf")
+
+[connection signal="body_entered" from="DoorOpen/Area2D" to="DoorOpen" method="_on_area_2d_body_entered"]
 
 [editable path="CanvasLayer/UI"]
