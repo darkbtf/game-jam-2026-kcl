@@ -9,3 +9,7 @@ func take_food(body: Node2D):
 			# 之後換成空盤子
 			texture = null
 			body.take_it(food_name, order_number)
+
+func init_food():
+	food_name = ""
+	texture = null
