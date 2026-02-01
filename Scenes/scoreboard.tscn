@@ -38,6 +38,44 @@ grow_vertical = 2
 texture = ExtResource("2")
 stretch_mode = 5
 
+[node name="LevelDigit1Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.526
+anchor_top = 0.5
+anchor_right = 0.526
+anchor_bottom = 0.5
+offset_left = -8.280029
+offset_top = -304.0
+offset_right = 21.71997
+offset_bottom = -249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelDigit2Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.584
+anchor_top = 0.5
+anchor_right = 0.584
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -302.5
+offset_right = 50.0
+offset_bottom = -247.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
+theme_override_font_sizes/font_size = 40
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="WinContent" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -123,44 +161,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_d7tm3")
 stretch_mode = 5
-
-[node name="LevelDigit1Label" type="Label" parent="WinContent"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.526
-anchor_top = 0.5
-anchor_right = 0.526
-anchor_bottom = 0.5
-offset_left = -8.280029
-offset_top = -304.0
-offset_right = 21.71997
-offset_bottom = -249.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
-theme_override_font_sizes/font_size = 40
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LevelDigit2Label" type="Label" parent="WinContent"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.584
-anchor_top = 0.5
-anchor_right = 0.584
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -300.0
-offset_right = 50.0
-offset_bottom = -250.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 1)
-theme_override_font_sizes/font_size = 40
-text = "1"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="NextLabel" type="Label" parent="WinContent"]
 layout_mode = 1
