@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://customer"]
+[gd_scene load_steps=6 format=3 uid="uid://customer"]
 
 [ext_resource type="Script" uid="uid://b0pvbksoqukj8" path="res://Scripts/customer.gd" id="1"]
 [ext_resource type="SpriteFrames" uid="uid://dbgbt0ortkvai" path="res://Assets/SpriteFrames/一般.tres" id="2_7mhha"]
 [ext_resource type="Texture2D" uid="uid://dyku6ljnlmsqe" path="res://Assets/cloud.png" id="2_q7x7l"]
+[ext_resource type="FontFile" uid="uid://klnuu1ct1vx4" path="res://Assets/Font/TaipeiSansTCBeta-Regular.ttf" id="4_7mhha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dj6k5"]
 size = Vector2(135.5, 72)
@@ -57,6 +58,7 @@ offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.15307656, 0.15307653, 0.15307653, 1)
+theme_override_fonts/font = ExtResource("4_7mhha")
 theme_override_font_sizes/font_size = 30
 text = "😊"
 horizontal_alignment = 1

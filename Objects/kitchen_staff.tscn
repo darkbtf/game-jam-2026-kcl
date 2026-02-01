@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddtjcxw0mdh0e"]
+[gd_scene load_steps=8 format=3 uid="uid://ddtjcxw0mdh0e"]
 
 [ext_resource type="Script" uid="uid://ddlexjuqv2ta0" path="res://Scripts/kitchen_staff.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://0hmslmu0opki" path="res://Assets/Role/cooker.png" id="2_cbj7r"]
 [ext_resource type="Texture2D" uid="uid://dyku6ljnlmsqe" path="res://Assets/cloud.png" id="3_cbj7r"]
+[ext_resource type="FontFile" uid="uid://klnuu1ct1vx4" path="res://Assets/Font/TaipeiSansTCBeta-Regular.ttf" id="4_51xnq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6ici8"]
 animations = [{
@@ -68,6 +69,7 @@ offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.15307656, 0.15307653, 0.15307653, 1)
+theme_override_fonts/font = ExtResource("4_51xnq")
 theme_override_font_sizes/font_size = 30
 text = "😊"
 horizontal_alignment = 1

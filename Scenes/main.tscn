@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bmwopu7r4twjt" path="res://Assets/door_close.PNG" id="6_b3802"]
 [ext_resource type="Script" uid="uid://c6okgrq53tosf" path="res://Scripts/queue_manager.gd" id="7"]
 [ext_resource type="Script" uid="uid://dhbhyk1b5myta" path="res://Scripts/interaction_manager.gd" id="8"]
-[ext_resource type="Script" uid="uid://errwb3hko5jx" path="res://Scenes/door.gd" id="8_fevyy"]
+[ext_resource type="Script" uid="uid://errwb3hko5jx" path="res://Scripts/door.gd" id="8_fevyy"]
 [ext_resource type="PackedScene" uid="uid://updf3qvx4bkt" path="res://Objects/foods.tscn" id="8_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://bu0oduycd6gkm" path="res://Assets/door_open.PNG" id="8_k12tt"]
 [ext_resource type="PackedScene" uid="uid://b2h0hj5weqvw1" path="res://Scenes/order.tscn" id="10_hptm8"]

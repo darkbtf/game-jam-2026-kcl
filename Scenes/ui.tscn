@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ui"]
+[gd_scene load_steps=12 format=3 uid="uid://ui"]
 
 [ext_resource type="Script" uid="uid://dge7yvkxru2xr" path="res://Scripts/ui_manager.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://klnuu1ct1vx4" path="res://Assets/Font/TaipeiSansTCBeta-Regular.ttf" id="2_g0wmg"]
 [ext_resource type="Texture2D" uid="uid://ctkje7j2njh5t" path="res://Assets/san.png" id="2_smcll"]
 [ext_resource type="Texture2D" uid="uid://bsbwfxcikp7qy" path="res://Assets/san_progress.png" id="3_nt8jn"]
 [ext_resource type="Texture2D" uid="uid://bcmyrob25k7l6" path="res://Assets/time.png" id="3_ryf15"]
@@ -35,6 +36,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1, 0.1, 0.1, 0.8)
@@ -47,13 +49,14 @@ anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
-offset_bottom = -10.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
 [node name="TitleLabel" type="Label" parent="ControlsPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_g0wmg")
 text = "操作說明"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -63,18 +66,22 @@ layout_mode = 2
 
 [node name="MoveLabel" type="Label" parent="ControlsPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_g0wmg")
 text = "移動: WASD / 方向鍵"
 
 [node name="HappyLabel" type="Label" parent="ControlsPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_g0wmg")
 text = "開心表情: J"
 
 [node name="NeutralLabel" type="Label" parent="ControlsPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_g0wmg")
 text = "中性表情: K"
 
 [node name="SadLabel" type="Label" parent="ControlsPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_g0wmg")
 text = "難過表情: L"
 
 [node name="TopRightUI" type="Control" parent="."]
@@ -180,6 +187,7 @@ offset_top = 119.0
 offset_right = 132.0
 offset_bottom = 142.0
 theme_override_colors/font_color = Color(0.103743516, 0.10374353, 0.103743516, 1)
+theme_override_fonts/font = ExtResource("2_g0wmg")
 text = "Day"
 
 [node name="LevelLabel" type="Label" parent="BottomLeftUI/Date"]
@@ -196,6 +204,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.101867564, 0.10186755, 0.10186755, 1)
+theme_override_fonts/font = ExtResource("2_g0wmg")
 theme_override_font_sizes/font_size = 32
 text = "Level 1"
 horizontal_alignment = 1

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Game Jam 2026"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="uid://bd5jmibl2uhho"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
