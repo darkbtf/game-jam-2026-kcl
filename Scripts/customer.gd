@@ -201,6 +201,7 @@ func set_customer_texture():
 		_:
 			# 其他 personality 類型保持默認（不設置圖片或使用默認圖片）
 			sprite.sprite_frames = load("res://Assets/SpriteFrames/一般.tres")
+			sprite.play("Right")
 			print("personality")
 
 
