@@ -246,6 +246,7 @@ func _input(event: InputEvent):
 	# 處理 ESC 鍵關閉設定視窗
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_ESCAPE:
+			print('what the hell')
 			if setting_window and setting_window.visible:
 				hide_setting_window()
 				get_viewport().set_input_as_handled()

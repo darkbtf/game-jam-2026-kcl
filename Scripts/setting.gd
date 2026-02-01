@@ -14,7 +14,15 @@ extends Control
 @onready var sfx_slider: HSlider = $VolumeControlPanel/VBoxContainer/SFXSection/SFXSlider
 @onready var sfx_value_label: Label = $VolumeControlPanel/VBoxContainer/SFXSection/SFXValueLabel
 
+var is_standalone_scene: bool = false
+
 func _ready():
+	# 檢查是否作為獨立場景運行
+	var current_scene = get_tree().current_scene
+	if current_scene and current_scene.scene_file_path == "res://Scenes/setting.tscn":
+		is_standalone_scene = true
+		visible = true  # 獨立場景時自動顯示
+	
 	# 設置 UI 在暫停時仍能處理輸入
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
@@ -49,6 +57,13 @@ func _ready():
 	update_volume_display()
 
 func _input(event: InputEvent):
+	# 處理 ESC 鍵返回（獨立場景模式）
+	if is_standalone_scene and event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ESCAPE:
+			_on_x_button_pressed()
+			get_viewport().set_input_as_handled()
+			return
+	
 	# 處理點擊背景關閉設定視窗
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if not visible:
@@ -87,16 +102,6 @@ func _input(event: InputEvent):
 			var level2_rect = Rect2(level_digit2_label.global_position, level_digit2_label.size)
 			if level2_rect.has_point(mouse_pos):
 				clicked_on_ui = true
-		
-		# 如果沒有點擊在任何 UI 元素上，且點擊在背景上，則關閉設定視窗
-		if not clicked_on_ui:
-			var background = get_node_or_null("Background")
-			if background:
-				var bg_local_pos = background.get_local_mouse_position()
-				var bg_rect = Rect2(Vector2.ZERO, background.size)
-				if bg_rect.has_point(bg_local_pos):
-					hide_setting()
-					get_viewport().set_input_as_handled()
 
 func show_setting():
 	visible = true
@@ -128,8 +133,11 @@ func update_level_display():
 				level_digit2_label.text = "0"
 
 func _on_x_button_pressed():
-	# 關閉設定視窗
-	hide_setting()
+	# 如果是獨立場景，返回 Start Scene；否則隱藏設定視窗
+	if is_standalone_scene:
+		get_tree().change_scene_to_file("res://Scenes/Start.tscn")
+	else:
+		hide_setting()
 
 func _on_sound_icon_pressed():
 	# 切換音量控制面板的顯示
