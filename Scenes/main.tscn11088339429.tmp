@@ -29,7 +29,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_b3802")
 }],
-"loop": false,
+"loop": true,
 "name": &"close",
 "speed": 3.0
 }, {
@@ -97,7 +97,7 @@ position = Vector2(640, 360)
 [node name="DoorOpen" type="AnimatedSprite2D" parent="."]
 position = Vector2(641, 360)
 sprite_frames = SubResource("SpriteFrames_fevyy")
-animation = &"open"
+animation = &"close"
 script = ExtResource("8_fevyy")
 
 [node name="Area2D" type="Area2D" parent="DoorOpen"]
