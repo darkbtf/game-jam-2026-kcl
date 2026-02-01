@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxv4f3vg63g34"
-path="res://.godot/imported/normal_sign.PNG-f58414fd2a8b28136c04141ac334e138.ctex"
+uid="uid://ctswdkmnihsep"
+path="res://.godot/imported/normal_sign.png-323fd33bfc8ccb5ed9524bdc37838e18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Emoji/normal_sign.PNG"
-dest_files=["res://.godot/imported/normal_sign.PNG-f58414fd2a8b28136c04141ac334e138.ctex"]
+source_file="res://Assets/Emoji/normal_sign.png"
+dest_files=["res://.godot/imported/normal_sign.png-323fd33bfc8ccb5ed9524bdc37838e18.ctex"]
 
 [params]
 

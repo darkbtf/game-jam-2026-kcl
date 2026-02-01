@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cagjem38kheb8"
-path="res://.godot/imported/crazy_sign.PNG-ddde487852ea9691dc686e1b382ba849.ctex"
+uid="uid://2nxjmcoimxem"
+path="res://.godot/imported/crazy_sign.png-e6be4fe977d25eec8a04018a16be60d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Emoji/crazy_sign.PNG"
-dest_files=["res://.godot/imported/crazy_sign.PNG-ddde487852ea9691dc686e1b382ba849.ctex"]
+source_file="res://Assets/Emoji/crazy_sign.png"
+dest_files=["res://.godot/imported/crazy_sign.png-e6be4fe977d25eec8a04018a16be60d9.ctex"]
 
 [params]
 

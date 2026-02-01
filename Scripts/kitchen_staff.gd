@@ -65,13 +65,13 @@ func receive_expression(expression: GameManager.MaskType):
 func random_personality():
 	personality = personalities[randi() % personalities.size()]
 	match personality:
-		GameManager.CustomerPersonality.FRIENDLY:
+		GameManager.CustomerPersonality.RUSHED_OFFICE:
 			desired_mask = GameManager.MaskType.HAPPY
 			$Bubble/emoji.texture = load("res://Assets/Emoji/crazy_sign.PNG")
-		GameManager.CustomerPersonality.NEUTRAL:
+		GameManager.CustomerPersonality.LOCAL_AUNTIE:
 			desired_mask = GameManager.MaskType.NEUTRAL
 			$Bubble/emoji.texture = load("res://Assets/Emoji/normal_sign.PNG")
-		GameManager.CustomerPersonality.GRUMPY:
+		GameManager.CustomerPersonality.SHY_STUDENT:
 			desired_mask = GameManager.MaskType.SAD
 			$Bubble/emoji.texture = load("res://Assets/Emoji/shy_sign.PNG")
 	mood = max(0, mood - 5)

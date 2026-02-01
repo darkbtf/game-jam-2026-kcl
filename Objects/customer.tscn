@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0pvbksoqukj8" path="res://Scripts/customer.gd" id="1"]
 [ext_resource type="SpriteFrames" uid="uid://dbgbt0ortkvai" path="res://Assets/SpriteFrames/一般.tres" id="2_7mhha"]
-[ext_resource type="Texture2D" uid="uid://cagjem38kheb8" path="res://Assets/Emoji/crazy_sign.PNG" id="2_k7d5e"]
+[ext_resource type="Texture2D" uid="uid://2nxjmcoimxem" path="res://Assets/Emoji/crazy_sign.PNG" id="2_k7d5e"]
 [ext_resource type="Texture2D" uid="uid://dyku6ljnlmsqe" path="res://Assets/cloud.png" id="2_q7x7l"]
 [ext_resource type="FontFile" uid="uid://klnuu1ct1vx4" path="res://Assets/Font/TaipeiSansTCBeta-Regular.ttf" id="4_7mhha"]
 

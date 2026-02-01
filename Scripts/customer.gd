@@ -49,18 +49,15 @@ func _ready():
 	
 	# 根據個性決定喜歡的表情
 	match personality:
-		GameManager.CustomerPersonality.FRIENDLY:
+		GameManager.CustomerPersonality.RUSHED_OFFICE:
 			desired_expression = GameManager.MaskType.HAPPY
-			if has_node("Bubble/Label"):
-				$Bubble/emoji.texture = load("res://Assets/Emoji/crazy_sign.PNG")
-		GameManager.CustomerPersonality.NEUTRAL:
+			$Bubble/emoji.texture = load("res://Assets/Emoji/crazy_sign.PNG")
+		GameManager.CustomerPersonality.LOCAL_AUNTIE:
 			desired_expression = GameManager.MaskType.NEUTRAL
-			if has_node("Bubble/Label"):
-				$Bubble/emoji.texture = load("res://Assets/Emoji/normal_sign.PNG")
-		GameManager.CustomerPersonality.GRUMPY:
+			$Bubble/emoji.texture = load("res://Assets/Emoji/normal_sign.PNG")
+		GameManager.CustomerPersonality.SHY_STUDENT:
 			desired_expression = GameManager.MaskType.SAD
-			if has_node("Bubble/Label"):
-				$Bubble/emoji.texture = load("res://Assets/Emoji/shy_sign.PNG")
+			$Bubble/emoji.texture = load("res://Assets/Emoji/shy_sign.PNG")
 	
 	# 隨機選擇想要的食物（每個客人只會想要一種食物，在生成時決定）
 	var all_foods = [

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bd5jmibl2uhho"]
 
-[ext_resource type="Script" uid="uid://vo10880j25br" path="res://Scenes/start.gd" id="1_lmkek"]
+[ext_resource type="Script" path="res://Scenes/start.gd" id="1_lmkek"]
 [ext_resource type="Texture2D" uid="uid://cm2l8x0ovobh2" path="res://Assets/StartMenu/start.png" id="2_37b1d"]
 [ext_resource type="Texture2D" uid="uid://y6wd7amk0dys" path="res://Assets/StartMenu/參考.JPG" id="2_y4ycm"]
 [ext_resource type="Script" uid="uid://bhsy11tyhx1oh" path="res://Scripts/buttons.gd" id="4_1lxxj"]
@@ -11,30 +11,30 @@
 script = ExtResource("1_lmkek")
 
 [node name="Cover" type="Sprite2D" parent="."]
-position = Vector2(644, 363)
+position = Vector2(641, 360)
 texture = ExtResource("2_y4ycm")
 
 [node name="StartButton" type="TextureButton" parent="."]
-offset_left = 192.0
-offset_top = 399.0
-offset_right = 558.0
-offset_bottom = 523.0
+offset_left = 189.0
+offset_top = 398.0
+offset_right = 555.0
+offset_bottom = 522.0
 texture_normal = ExtResource("2_37b1d")
 script = ExtResource("4_1lxxj")
 
 [node name="SettingButton" type="TextureButton" parent="."]
-offset_left = 132.0
+offset_left = 129.0
 offset_top = 545.0
-offset_right = 367.0
+offset_right = 364.0
 offset_bottom = 633.0
 texture_normal = ExtResource("4_lmkek")
 script = ExtResource("4_1lxxj")
 
 [node name="ExitButton" type="TextureButton" parent="."]
-offset_left = 370.0
-offset_top = 545.0
-offset_right = 596.0
-offset_bottom = 638.0
+offset_left = 369.0
+offset_top = 544.0
+offset_right = 595.0
+offset_bottom = 637.0
 texture_normal = ExtResource("5_035le")
 script = ExtResource("4_1lxxj")
 
