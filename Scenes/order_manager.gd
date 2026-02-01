@@ -15,14 +15,25 @@ func _ready():
 	var kitchenStaffs = get_tree().get_nodes_in_group("staff")
 	for k in kitchenStaffs:
 		k.order_status_change.connect(update_prepare_status)
+	
+	clear_orders()
+	
+func check_empty_meal():
+	# 都是空的
+	if order_text_array.count([null, "not meal"]) >= max_order:
+		return false
+	else:
+		return true
 
 func add_meal(meal_name):
-	order_text_array.append([meal_name, "not ready"])
 	for i in range(len(order_text_array)):
-		if i >= max_order:
-			break
-		Orders_Array[i].get_node("Meal").texture = load("res://Assets/Foods/" + order_text_array[i][0] + ".png")
-
+		if order_text_array[i][0] == null:
+			order_text_array[i] = [meal_name, "not ready"]
+			Orders_Array[i].get_node("Meal").texture = load("res://Assets/Foods/" + order_text_array[i][0] + ".png")
+			return true
+	print("餐點已滿")
+	return false
+	
 func del_meal():
 	return
 
@@ -53,6 +64,9 @@ func update_prepare_status(number, status):
 # 清空所有訂單
 func clear_orders():
 	order_text_array.clear()
+	for i in range(max_order):
+		order_text_array.append([null, "not meal"])
+		
 	order_number = 0
 	make_number = 0
 	# 重置所有訂單顯示

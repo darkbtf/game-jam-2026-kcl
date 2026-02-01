@@ -43,7 +43,7 @@ func start_preparing():
 
 func receive_expression(expression: GameManager.MaskType):
 	# 確認有無餐點
-	if len(order_manager.order_text_array) == 0:
+	if !order_manager.check_empty_meal():
 		print("沒有餐點")
 		return
 	
@@ -60,7 +60,6 @@ func receive_expression(expression: GameManager.MaskType):
 		return
 	else:
 		cook_food_name = order_manager.order_text_array[take_order_number][0]
-	
 	start_preparing()
 
 func random_personality():
@@ -85,6 +84,7 @@ func cook_finish():
 
 	food.texture = load("res://Assets/Foods/" + cook_food_name + ".png")
 	food.food_name = cook_food_name
+	food.order_number = take_order_number
 
 func player_nearby_staff(body: Node2D) -> void:
 	if body.is_in_group("player") and !cooking_status:
