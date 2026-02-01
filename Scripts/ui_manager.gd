@@ -5,11 +5,13 @@ extends Control
 @onready var time_bar: TextureProgressBar = $BottomLeftUI/timeBar
 @onready var player_face: Sprite2D = $TopRightUI/PlayerFacePanel/Face
 @onready var level_label: Label = $BottomLeftUI/Date/LevelLabel
+@onready var setting_button: TextureButton = $Setting
 
 var show_viewport_border: bool = true
 
 var game_manager: Node
 var player: Node
+var setting_window: Node
 
 func _ready():
 	# 設置 UI 在暫停時仍能處理輸入
@@ -30,6 +32,12 @@ func _ready():
 	
 	# 延遲獲取 game_manager，確保場景已載入
 	call_deferred("find_game_manager")
+	
+	# 獲取 Setting 視窗（在 CanvasLayer 下）
+	call_deferred("find_setting_window")
+	
+	# 手動連接 Setting 按鈕信號（確保連接成功）
+	call_deferred("connect_setting_button_manually")
 
 func find_game_manager():
 	game_manager = get_tree().get_first_node_in_group("game_manager")
@@ -204,3 +212,52 @@ func update_level_display():
 			level_label.text = str(current_level + 1)
 		else:
 			level_label.text = ""
+
+func find_setting_window():
+	# Setting 視窗在 CanvasLayer 下，與 UI 同級
+	setting_window = get_node_or_null("../Setting")
+	if not setting_window:
+		# 如果找不到，嘗試其他路徑
+		setting_window = get_tree().get_first_node_in_group("setting")
+	if not setting_window:
+		# 最後嘗試從根節點查找
+		var canvas_layer = get_parent()
+		if canvas_layer:
+			setting_window = canvas_layer.get_node_or_null("Setting")
+
+func _on_setting_button_pressed():
+	# 顯示設定視窗
+	if setting_window:
+		if setting_window.has_method("show_setting"):
+			setting_window.show_setting()
+		else:
+			setting_window.visible = true
+
+func _input(event: InputEvent):
+	# 處理 Setting 按鈕點擊（手動檢測，作為備用方案）
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var mouse_pos = get_global_mouse_position()
+		if setting_button and setting_button.visible:
+			var button_rect = Rect2(setting_button.global_position, setting_button.size)
+			if button_rect.has_point(mouse_pos):
+				# 手動觸發按鈕點擊事件
+				_on_setting_button_pressed()
+				get_viewport().set_input_as_handled()
+				return
+	
+	# 處理 ESC 鍵關閉設定視窗
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ESCAPE:
+			if setting_window and setting_window.visible:
+				hide_setting_window()
+				get_viewport().set_input_as_handled()
+	# 處理點擊背景關閉設定視窗（現在由 setting.gd 自己處理）
+	# 移除這裡的邏輯，避免與 setting.gd 中的處理衝突
+
+func hide_setting_window():
+	# 隱藏設定視窗
+	if setting_window:
+		if setting_window.has_method("hide_setting"):
+			setting_window.hide_setting()
+		else:
+			setting_window.visible = false

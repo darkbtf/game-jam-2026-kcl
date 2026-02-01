@@ -248,4 +248,5 @@ offset_right = 287.0
 offset_bottom = 86.0
 grow_horizontal = 0
 grow_vertical = 0
+z_index = 1000
 texture_normal = ExtResource("8_ryf15")
