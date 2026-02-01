@@ -25,7 +25,7 @@ var cook_food_name
 @export var food: Sprite2D
 
 func _ready():
-	game_manager = get_tree().get_first_node_in_group("game_manager")
+	game_manager = GameManager
 
 	order_manager = get_tree().get_first_node_in_group("orderManager")
 	personalities = [

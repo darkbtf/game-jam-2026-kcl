@@ -19,11 +19,13 @@ config/icon="res://icon.svg"
 
 LevelManager="*res://Scripts/level_manager.gd"
 SFXManager="*res://Scripts/sfx_manager.gd"
+GameManager="*res://Scripts/game_manager.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=2
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"

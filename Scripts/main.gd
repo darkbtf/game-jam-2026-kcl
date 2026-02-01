@@ -8,7 +8,7 @@ var queue_manager: Node
 
 func _ready():
 	# 獲取 GameManager 和 QueueManager
-	game_manager = get_tree().get_first_node_in_group("game_manager")
+	game_manager = GameManager
 	queue_manager = get_node("QueueManager")
 	
 	# 連接 LevelManager 的信號

@@ -29,10 +29,7 @@ signal order_completed(customer_id, success: bool)
 signal qte_item_changed(item: String)
 
 func _ready():
-	game_manager = get_tree().get_first_node_in_group("game_manager")
-	if not game_manager:
-		# 如果找不到，也嘗試大寫的 group 名稱（兼容性）
-		game_manager = get_tree().get_first_node_in_group("GameManager")
+	game_manager = GameManager
 	
 	# 設置客戶圖片
 	set_customer_texture()

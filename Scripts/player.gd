@@ -17,7 +17,7 @@ var take_food = ["", 0]
 signal take_meal_to_customer(take_food)
 
 func _ready():
-	game_manager = get_tree().get_first_node_in_group("GameManager")
+	game_manager = GameManager
 
 func _physics_process(delta):
 	# 檢查遊戲結束

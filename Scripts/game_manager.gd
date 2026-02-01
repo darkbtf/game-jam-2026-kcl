@@ -1,4 +1,3 @@
-class_name GameManager
 extends Node
 
 # 遊戲管理器
@@ -83,7 +82,6 @@ var kitchen_staff_data: Dictionary = {}
 var current_level_config: LevelConfig = null
 
 func _ready():
-	add_to_group("game_manager")
 	# 初始化三種表情
 	initialize_masks()
 	# 初始化三種客人

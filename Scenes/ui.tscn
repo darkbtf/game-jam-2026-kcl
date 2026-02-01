@@ -148,7 +148,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.101867564, 0.10186755, 0.10186755, 1)
 theme_override_fonts/font = ExtResource("2_g0wmg")
 theme_override_font_sizes/font_size = 32
-text = "Level 1"
+text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 

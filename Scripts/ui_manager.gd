@@ -40,7 +40,7 @@ func _ready():
 	call_deferred("connect_setting_button_manually")
 
 func find_game_manager():
-	game_manager = get_tree().get_first_node_in_group("game_manager")
+	game_manager = GameManager
 	
 	if game_manager:
 		# 連接信號（如果還沒連接）
@@ -69,8 +69,6 @@ func find_player():
 
 
 func _process(delta):
-	# 更新當前時間（秒數）
-	
 	# 如果需要顯示 viewport 邊界，每幀重繪
 	if show_viewport_border:
 		queue_redraw()
@@ -211,7 +209,7 @@ func update_level_display():
 		if current_level >= 0:
 			level_label.text = str(current_level + 1)
 		else:
-			level_label.text = ""
+			level_label.text = "1"
 
 func find_setting_window():
 	# Setting 視窗在 CanvasLayer 下，與 UI 同級

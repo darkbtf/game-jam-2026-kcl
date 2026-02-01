@@ -172,21 +172,12 @@ func initialize_levels():
 
 # 連接 game_manager 的信號
 func connect_game_manager_signals():
-	var game_manager = get_tree().get_first_node_in_group("game_manager")
+	var game_manager = GameManager
 	if game_manager:
 		if not game_manager.san_changed.is_connected(_on_san_changed):
 			game_manager.san_changed.connect(_on_san_changed)
 		print("已連接 game_manager 的 san_changed 信號")
 	else:
-		# 如果 game_manager 還沒載入，延遲重試（最多重試 10 次）
-		for i in range(10):
-			await get_tree().process_frame
-			game_manager = get_tree().get_first_node_in_group("game_manager")
-			if game_manager:
-				if not game_manager.san_changed.is_connected(_on_san_changed):
-					game_manager.san_changed.connect(_on_san_changed)
-				print("已連接 game_manager 的 san_changed 信號")
-				return
 		print("警告: 無法找到 game_manager，san_changed 信號未連接")
 
 # 處理 san 值變更
@@ -293,7 +284,7 @@ func reset_game_state():
 		print("已清空出餐台上的食物")
 	
 	# 重置玩家 sanity
-	var game_manager = get_tree().get_first_node_in_group("game_manager")
+	var game_manager = GameManager
 	if game_manager:
 		game_manager.player_san = game_manager.max_san
 		game_manager.san_changed.emit(game_manager.player_san)
@@ -322,7 +313,6 @@ func restart_current_level():
 
 # 設置關卡狀態
 func set_level_state(new_state: LevelState):
-	print(new_state)
 	if current_state != new_state:
 		current_state = new_state
 		level_state_changed.emit(current_state)
@@ -374,6 +364,7 @@ func _process(delta):
 	if current_state == LevelState.PLAYING and level_duration > 0:
 		level_timer += delta
 		var remaining_time = max(0.0, level_duration - level_timer)
+		print('fire ', remaining_time)
 		level_time_updated.emit(remaining_time)
 		
 		# 檢查時間是否到了

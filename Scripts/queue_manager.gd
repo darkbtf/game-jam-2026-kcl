@@ -16,7 +16,7 @@ var game_manager: Node
 
 func _ready():
 	# 獲取遊戲管理器
-	game_manager = get_tree().get_first_node_in_group("game_manager")
+	game_manager = GameManager
 	
 	# 應用關卡配置（如果有的話）
 	apply_level_config()
@@ -67,8 +67,8 @@ func spawn_customer():
 	else:
 		# 如果沒有關卡配置，使用默認的隨機分配
 		if not game_manager:
-			# 如果 game_manager 還沒初始化，延遲獲取
-			game_manager = get_tree().get_first_node_in_group("game_manager")
+			# 如果 game_manager 還沒初始化，重新獲取
+			game_manager = GameManager
 		
 		if game_manager:
 			var personalities = [
