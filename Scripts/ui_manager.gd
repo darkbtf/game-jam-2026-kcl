@@ -35,9 +35,6 @@ func _ready():
 	
 	# 獲取 Setting 視窗（在 CanvasLayer 下）
 	call_deferred("find_setting_window")
-	
-	# 手動連接 Setting 按鈕信號（確保連接成功）
-	call_deferred("connect_setting_button_manually")
 
 func find_game_manager():
 	game_manager = GameManager

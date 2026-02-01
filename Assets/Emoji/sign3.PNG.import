@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cemb36pibsuk6"
-path="res://.godot/imported/sign3.PNG-433190fe6361cc42c20bc68b3455ded5.ctex"
+path="res://.godot/imported/sign3.png-83ae9c867857bf90d9f3f4fbd32bbd4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Emoji/sign3.PNG"
-dest_files=["res://.godot/imported/sign3.PNG-433190fe6361cc42c20bc68b3455ded5.ctex"]
+source_file="res://Assets/Emoji/sign3.png"
+dest_files=["res://.godot/imported/sign3.png-83ae9c867857bf90d9f3f4fbd32bbd4d.ctex"]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bd5jmibl2uhho"]
 
+[ext_resource type="Texture2D" uid="uid://c10vb7vbiraux" path="res://Assets/StartMenu/cover.PNG" id="1_1lxxj"]
 [ext_resource type="Script" path="res://Scenes/start.gd" id="1_lmkek"]
 [ext_resource type="Texture2D" uid="uid://cm2l8x0ovobh2" path="res://Assets/StartMenu/start.png" id="2_37b1d"]
-[ext_resource type="Texture2D" uid="uid://y6wd7amk0dys" path="res://Assets/StartMenu/參考.JPG" id="2_y4ycm"]
 [ext_resource type="Script" uid="uid://bhsy11tyhx1oh" path="res://Scripts/buttons.gd" id="4_1lxxj"]
 [ext_resource type="Texture2D" uid="uid://bel7a6vlvcrqu" path="res://Assets/StartMenu/setting.png" id="4_lmkek"]
 [ext_resource type="Texture2D" uid="uid://dl5kyx4ifensm" path="res://Assets/StartMenu/leave.png" id="5_035le"]
@@ -12,7 +12,7 @@ script = ExtResource("1_lmkek")
 
 [node name="Cover" type="Sprite2D" parent="."]
 position = Vector2(641, 360)
-texture = ExtResource("2_y4ycm")
+texture = ExtResource("1_1lxxj")
 
 [node name="StartButton" type="TextureButton" parent="."]
 offset_left = 189.0

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ddlexjuqv2ta0" path="res://Scripts/kitchen_staff.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://0hmslmu0opki" path="res://Assets/Role/cooker.png" id="2_cbj7r"]
 [ext_resource type="Texture2D" uid="uid://dyku6ljnlmsqe" path="res://Assets/cloud.png" id="3_cbj7r"]
-[ext_resource type="Texture2D" uid="uid://2nxjmcoimxem" path="res://Assets/Emoji/crazy_sign.PNG" id="4_51xnq"]
+[ext_resource type="Texture2D" uid="uid://2nxjmcoimxem" path="res://Assets/Emoji/crazy_sign.png" id="4_51xnq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6ici8"]
 animations = [{

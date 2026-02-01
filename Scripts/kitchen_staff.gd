@@ -67,13 +67,13 @@ func random_personality():
 	match personality:
 		GameManager.CustomerPersonality.RUSHED_OFFICE:
 			desired_mask = GameManager.MaskType.HAPPY
-			$Bubble/emoji.texture = load("res://Assets/Emoji/crazy_sign.PNG")
+			$Bubble/emoji.texture = load("res://Assets/Emoji/crazy_sign.png")
 		GameManager.CustomerPersonality.LOCAL_AUNTIE:
 			desired_mask = GameManager.MaskType.NEUTRAL
-			$Bubble/emoji.texture = load("res://Assets/Emoji/normal_sign.PNG")
+			$Bubble/emoji.texture = load("res://Assets/Emoji/normal_sign.png")
 		GameManager.CustomerPersonality.SHY_STUDENT:
 			desired_mask = GameManager.MaskType.SAD
-			$Bubble/emoji.texture = load("res://Assets/Emoji/shy_sign.PNG")
+			$Bubble/emoji.texture = load("res://Assets/Emoji/shy_sign.png")
 	mood = max(0, mood - 5)
 			
 func cook_finish():

@@ -51,13 +51,13 @@ func _ready():
 	match personality:
 		GameManager.CustomerPersonality.RUSHED_OFFICE:
 			desired_expression = GameManager.MaskType.HAPPY
-			$Bubble/emoji.texture = load("res://Assets/Emoji/crazy_sign.PNG")
+			$Bubble/emoji.texture = load("res://Assets/Emoji/crazy_sign.png")
 		GameManager.CustomerPersonality.LOCAL_AUNTIE:
 			desired_expression = GameManager.MaskType.NEUTRAL
-			$Bubble/emoji.texture = load("res://Assets/Emoji/normal_sign.PNG")
+			$Bubble/emoji.texture = load("res://Assets/Emoji/normal_sign.png")
 		GameManager.CustomerPersonality.SHY_STUDENT:
 			desired_expression = GameManager.MaskType.SAD
-			$Bubble/emoji.texture = load("res://Assets/Emoji/shy_sign.PNG")
+			$Bubble/emoji.texture = load("res://Assets/Emoji/shy_sign.png")
 	
 	# 隨機選擇想要的食物（每個客人只會想要一種食物，在生成時決定）
 	var all_foods = [
