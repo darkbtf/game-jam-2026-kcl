@@ -97,7 +97,7 @@ func initialize_levels():
 	level1.level_name = "基礎關卡"
 	level1.spawn_interval = 5.0
 	level1.max_customers = 3
-	level1.duration = 120.0
+	level1.duration = 80.0
 	
 	var shy_student_config = CustomerSpawnConfig.new(
 		GameManager.CustomerPersonality.SHY_STUDENT,
@@ -119,18 +119,16 @@ func initialize_levels():
 	level1.customer_spawn_configs.append(shy_student_config)
 	levels.append(level1)
 	
-	# Level 2: 進階關卡（包含所有客人類型，不同頻率）- 120秒
+	# Level 2: 進階關卡（包含所有客人類型，不同頻率）- 60秒
 	var level2 = LevelConfig.new()
 	level2.level_name = "進階關卡"
 	level2.spawn_interval = 4.0
 	level2.max_customers = 4
-	level2.duration = 120.0
+	level2.duration = 80.0
 	
 	level2.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.LOCAL_AUNTIE, 2.0))
 	level2.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.SHY_STUDENT, 1.5))
 	level2.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.RUSHED_OFFICE, 1.0))
-	level2.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.VLOGGER, 0.8))
-	level2.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.RUSHED_DELIVERY, 0.5))
 	levels.append(level2)
 	
 	# Level 3: 高級關卡 - 120秒
@@ -138,35 +136,11 @@ func initialize_levels():
 	level3.level_name = "高級關卡"
 	level3.spawn_interval = 3.5
 	level3.max_customers = 5
-	level3.duration = 120.0
+	level3.duration = 80.0
 	
 	level3.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.SHY_STUDENT, 2.0))
 	level3.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.RUSHED_OFFICE, 1.5))
-	level3.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.VLOGGER, 1.2))
-	level3.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.RUSHED_DELIVERY, 1.0))
 	levels.append(level3)
-	
-	# Level 4: 專家關卡 - 180秒（Level 4 以後都是 180秒）
-	var level4 = LevelConfig.new()
-	level4.level_name = "專家關卡"
-	level4.spawn_interval = 3.0
-	level4.max_customers = 6
-	level4.duration = 180.0
-	
-	level4.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.RUSHED_OFFICE, 2.0))
-	level4.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.VLOGGER, 1.5))
-	level4.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.RUSHED_DELIVERY, 1.2))
-	level4.customer_spawn_configs.append(CustomerSpawnConfig.new(GameManager.CustomerPersonality.SHY_STUDENT, 1.0))
-	levels.append(level4)
-	
-	# Level 5 以後的關卡可以在這裡繼續添加
-	# 使用 create_level_with_duration 輔助函數可以自動設置 180 秒的 duration
-	
-	# Level 4 以後的關卡可以在這裡添加
-	# 它們會自動使用 180 秒的 duration（通過 create_level_with_duration 函數）
-	# 例如：
-	# var level4 = create_level_with_duration(4, "關卡4", ...)
-	# levels.append(level4)
 	
 	print("已初始化 ", levels.size(), " 個關卡配置")
 
@@ -290,6 +264,37 @@ func reset_game_state():
 		game_manager.san_changed.emit(game_manager.player_san)
 		print("已重置玩家 sanity")
 
+# 生成隨機關卡（當到達最後一個預定義關卡後使用）
+func generate_random_level(level_index: int) -> LevelConfig:
+	var level = LevelConfig.new()
+	level.level_name = "無限關卡 " + str(level_index + 1)
+	level.duration = 180.0  # Level 4 以後都是 180秒
+	
+	# 根據關卡索引計算難度（關卡越高，生成速度越快，客人越多）
+	# 基礎關卡索引（從預定義關卡數量開始計算）
+	var base_level_index = levels.size()
+	var difficulty_level = level_index - base_level_index + 1  # 從1開始
+	
+	# 生成間隔隨關卡增加而減少（最小2.0秒）
+	# Level 4 (index 4) 是 3.0秒，之後每關減少0.2秒，最低2.0秒
+	level.spawn_interval = max(1.0, 3.0 - (difficulty_level - 1) * 0.2)
+	
+	# 最大客人數量隨關卡增加而增加（從6開始，每關+1，最高10）
+	level.max_customers = min(10, 6 + difficulty_level - 1)
+	
+	var all_personalities = [
+		GameManager.CustomerPersonality.LOCAL_AUNTIE,
+		GameManager.CustomerPersonality.SHY_STUDENT,
+		GameManager.CustomerPersonality.RUSHED_OFFICE,
+	]
+	
+	# 為每種客人類型分配隨機權重（0.5 到 2.5）
+	for personality in all_personalities:
+		var weight = randf_range(0.5, 2.5)
+		level.customer_spawn_configs.append(CustomerSpawnConfig.new(personality, weight))
+	
+	return level
+
 # 切換到下一個關卡
 func next_level():
 	if current_level_index < 0:
@@ -299,9 +304,14 @@ func next_level():
 		return start_level(1)
 	
 	var next_index = current_level_index + 1
+	
+	# 如果超過預定義關卡，生成隨機關卡
 	if next_index >= levels.size():
-		print("已到達最後一個關卡")
-		return false
+		print("已到達最後一個預定義關卡，生成隨機關卡")
+		var random_level = generate_random_level(next_index)
+		# 將生成的關卡添加到列表中（但不永久保存）
+		levels.append(random_level)
+		return start_level(next_index)
 	
 	return start_level(next_index)
 
