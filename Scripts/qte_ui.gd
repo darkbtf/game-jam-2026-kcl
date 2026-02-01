@@ -32,7 +32,7 @@ func show_qte(target_customer: Node):
 func hide_qte():
 	is_active = false
 	bubble.visible = false
-	if customer:
+	if customer and !customer.order_status:
 		customer.show_customer_bubble()
 		customer.qte_item_changed.disconnect(_on_qte_item_changed)
 	customer = null
