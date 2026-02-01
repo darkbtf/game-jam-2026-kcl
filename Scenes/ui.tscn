@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ui"]
+[gd_scene load_steps=13 format=3 uid="uid://ui"]
 
 [ext_resource type="Script" uid="uid://dge7yvkxru2xr" path="res://Scripts/ui_manager.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://klnuu1ct1vx4" path="res://Assets/Font/TaipeiSansTCBeta-Regular.ttf" id="2_g0wmg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsbwfxcikp7qy" path="res://Assets/san_progress.png" id="3_nt8jn"]
 [ext_resource type="Texture2D" uid="uid://bcmyrob25k7l6" path="res://Assets/time.png" id="3_ryf15"]
 [ext_resource type="Texture2D" uid="uid://cwv7ivyi1xl70" path="res://Assets/timer_high.png" id="5_g0wmg"]
+[ext_resource type="Texture2D" uid="uid://3vslttbchwlw" path="res://Assets/表情按鍵說明.PNG" id="6_4vbiv"]
 [ext_resource type="Texture2D" uid="uid://18u0cjfrgryl" path="res://Assets/date.PNG" id="6_mmixe"]
 [ext_resource type="Texture2D" uid="uid://du6guwl63u351" path="res://Assets/face_player.PNG" id="7_smcll"]
 [ext_resource type="Texture2D" uid="uid://ces1crln8frug" path="res://Assets/san_icon.PNG" id="8_mmixe"]
@@ -92,6 +93,10 @@ grow_horizontal = 0
 [node name="Sprite2D" type="Sprite2D" parent="TopRightUI/SanIcon"]
 position = Vector2(2, 2)
 texture = ExtResource("8_mmixe")
+
+[node name="表情按鍵說明" type="Sprite2D" parent="TopRightUI"]
+position = Vector2(151, 360)
+texture = ExtResource("6_4vbiv")
 
 [node name="BottomLeftUI" type="Control" parent="."]
 layout_mode = 1
