@@ -69,6 +69,10 @@ func start_interaction(customer: Node):
 	customer.start_qte()
 	if qte_ui:
 		qte_ui.show_qte(customer)
+	
+	# 播放 QTE 音效
+	if SFXManager:
+		SFXManager.play_qte_gibberish_sfx()
 
 func complete_interaction():
 	if not is_interacting or not current_customer:
@@ -89,6 +93,10 @@ func complete_interaction():
 	# 結束交互
 	is_interacting = false
 	current_customer = null
+	
+	# 停止 QTE 音效
+	if SFXManager:
+		SFXManager.stop_qte_gibberish_sfx()
 	
 	if qte_ui:
 		qte_ui.hide_qte()

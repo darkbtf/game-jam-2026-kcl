@@ -106,3 +106,6 @@ func to_customer():
 	take_status = false
 	$Tray_left.visible = false
 	$Tray_right.visible = false
+	# 播放送餐完成音效
+	if SFXManager:
+		SFXManager.play_sold_sfx()
