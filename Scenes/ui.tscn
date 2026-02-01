@@ -1,14 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://ui"]
+[gd_scene load_steps=11 format=3 uid="uid://ui"]
 
 [ext_resource type="Script" uid="uid://dge7yvkxru2xr" path="res://Scripts/ui_manager.gd" id="1"]
-[ext_resource type="Script" path="res://Scripts/face_panel.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://ctkje7j2njh5t" path="res://Assets/san.png" id="2_smcll"]
 [ext_resource type="Texture2D" uid="uid://bsbwfxcikp7qy" path="res://Assets/san_progress.png" id="3_nt8jn"]
 [ext_resource type="Texture2D" uid="uid://bcmyrob25k7l6" path="res://Assets/time.png" id="3_ryf15"]
 [ext_resource type="Texture2D" uid="uid://cwv7ivyi1xl70" path="res://Assets/timer_high.png" id="5_g0wmg"]
 [ext_resource type="Texture2D" uid="uid://18u0cjfrgryl" path="res://Assets/date.PNG" id="6_mmixe"]
 [ext_resource type="Texture2D" uid="uid://du6guwl63u351" path="res://Assets/face_player.PNG" id="7_smcll"]
-[ext_resource type="Texture2D" uid="uid://b8rbh2j6dbdur" path="res://Assets/face_normal.png" id="8_4vbiv"]
 [ext_resource type="Texture2D" uid="uid://ces1crln8frug" path="res://Assets/san_icon.PNG" id="8_mmixe"]
 [ext_resource type="Texture2D" uid="uid://dr7owlh4waayc" path="res://Assets/setting.png" id="8_ryf15"]
 [ext_resource type="Texture2D" uid="uid://doesrvdyg6ygh" path="res://Assets/time_icon.PNG" id="9_mmixe"]
@@ -132,11 +130,9 @@ offset_top = -2.0
 offset_right = 297.0
 offset_bottom = 178.0
 grow_horizontal = 0
-script = ExtResource("2")
 
 [node name="Face" type="Sprite2D" parent="TopRightUI/PlayerFacePanel"]
 position = Vector2(100, 90)
-texture = ExtResource("8_4vbiv")
 
 [node name="SanIcon" type="Control" parent="TopRightUI"]
 layout_mode = 1

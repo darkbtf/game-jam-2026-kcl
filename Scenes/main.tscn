@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://main"]
+[gd_scene load_steps=23 format=3 uid="uid://main"]
 
 [ext_resource type="Script" uid="uid://ckxy2xylkxwo8" path="res://Scripts/game_manager.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cce8m6bwh75x7" path="res://Assets/ground.PNG" id="1_fdnlq"]
@@ -33,6 +33,17 @@ size = Vector2(1099, 72.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fevyy"]
 size = Vector2(148, 102.5)
+
+[sub_resource type="GDScript" id="GDScript_wsu2k"]
+script/source = "extends Control
+
+# 表情面板腳本 - 用於繪製框線
+func _draw():
+	# 繪製白色框線
+	var border_width = 2.0
+	var rect = Rect2(Vector2.ZERO, size)
+	draw_rect(rect, Color.WHITE, false, border_width)
+"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("11")
@@ -137,6 +148,9 @@ offset_left = -345.0
 offset_top = 44.0
 offset_right = 79.0
 offset_bottom = 81.0
+
+[node name="PlayerFacePanel" parent="CanvasLayer/UI/TopRightUI" index="2"]
+script = SubResource("GDScript_wsu2k")
 
 [node name="SanIcon" parent="CanvasLayer/UI/TopRightUI" index="3"]
 layout_mode = 0

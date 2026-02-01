@@ -22,6 +22,8 @@ var qte_current_item: String = ""
 var qte_timer: float = 0.0
 var qte_switch_interval: float = 0.5  # 每0.5秒切換一次
 
+var order_status = false # 確認是否點餐完畢
+
 signal order_started(customer_id)
 signal order_completed(customer_id, success: bool)
 signal qte_item_changed(item: String)
@@ -37,14 +39,9 @@ func _ready():
 	
 	# 確保所有視覺元素可見並設置正確的 z_index
 	
-	if has_node("Sprite2D"):
-		var sprite = $Sprite2D
-		sprite.z_index = 3
-		sprite.z_as_relative = false
-	
 	if has_node("Bubble"):
 		var bubble = $Bubble
-		bubble.visible = false  # 默認隱藏，需要時再顯示
+		bubble.visible = true
 		bubble.z_index = 10
 		bubble.z_as_relative = false
 	
@@ -127,6 +124,7 @@ func check_qte_success() -> bool:
 func complete_order(player_expression: GameManager.MaskType) -> bool:
 	is_ordering = false
 	qte_active = false
+	order_status = true
 	
 	var success = false
 	if player_expression == desired_expression:

@@ -5,8 +5,8 @@ extends Control
 
 @onready var win_content: Control = $WinContent
 @onready var lose_content: Control = $LoseContent
-@onready var level_digit1_label: Label = $WinContent/LevelDigit1Label
-@onready var level_digit2_label: Label = $WinContent/LevelDigit2Label
+@onready var level_digit1_label: Label = $LevelDigit1Label
+@onready var level_digit2_label: Label = $LevelDigit2Label
 @onready var good_count_label: Label = $WinContent/GoodCountLabel
 @onready var bad_count_label: Label = $WinContent/BadCountLabel
 
