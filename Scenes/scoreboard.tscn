@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0yxxjt12x7bm"]
+[gd_scene load_steps=8 format=3 uid="uid://b0yxxjt12x7bm"]
 
 [ext_resource type="Script" uid="uid://7dwkht3nun7x" path="res://Scripts/scoreboard.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://1ae4vi6pid6i" path="res://Assets/scoreboard/Setting.PNG" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dwjlqydsq32rp" path="res://Assets/scoreboard/good.PNG" id="4_3nr3b"]
 [ext_resource type="Texture2D" uid="uid://cjlhdp3dgtfjd" path="res://Assets/scoreboard/bad list.PNG" id="5_mohfg"]
 [ext_resource type="Texture2D" uid="uid://cselggd1vp5ut" path="res://Assets/scoreboard/Next.PNG" id="6_d7tm3"]
+[ext_resource type="Texture2D" uid="uid://e40jj8olc0se" path="res://Assets/scoreboard/leave.PNG" id="7_3nr3b"]
 
 [node name="Scoreboard" type="Control"]
 visible = false
@@ -236,3 +237,14 @@ theme_override_colors/font_color = Color(0.072842635, 0.072842635, 0.072842635, 
 theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RetryIcon" type="TextureRect" parent="LoseContent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_3nr3b")
+stretch_mode = 5
