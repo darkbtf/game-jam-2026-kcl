@@ -9,6 +9,7 @@ extends Control
 @onready var level_digit2_label: Label = $LevelDigit2Label
 @onready var good_count_label: Label = $WinContent/GoodCountLabel
 @onready var bad_count_label: Label = $WinContent/BadCountLabel
+@onready var next_icon: TextureRect = $WinContent/NextIcon
 
 func _ready():
 	# 設置 UI 在暫停時仍能處理輸入
@@ -82,3 +83,18 @@ func update_customer_counts():
 			good_count_label.text = str(LevelManager.customers_served_successfully)
 		if bad_count_label:
 			bad_count_label.text = str(LevelManager.customers_unserved)
+
+func _input(event: InputEvent):
+	# 處理滑鼠點擊事件
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# 只在關卡完成時處理 NextIcon 的點擊
+		if LevelManager and LevelManager.current_state == LevelManager.LevelState.COMPLETED:
+			if next_icon and next_icon.visible:
+				# 獲取滑鼠在 NextIcon 中的本地座標
+				var local_mouse_pos = next_icon.get_local_mouse_position()
+				# 獲取 NextIcon 的本地矩形範圍（從原點開始）
+				var icon_rect = Rect2(Vector2.ZERO, next_icon.size)
+				# 檢查點擊是否在 NextIcon 範圍內
+				if icon_rect.has_point(local_mouse_pos):
+					LevelManager.next_level()
+					get_viewport().set_input_as_handled()

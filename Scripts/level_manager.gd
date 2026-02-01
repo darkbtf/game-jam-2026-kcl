@@ -39,7 +39,16 @@ var level_duration: float = 0.0
 var customers_served_successfully: int = 0  # 成功服務的客人數量
 var customers_unserved: int = 0  # 未服務的客人數量
 
+# BGM 播放器
+var bgm_player: AudioStreamPlayer
+var active_bgm_path = "res://Assets/BGM/GGJ2026_Snack Bar Active 10.ogg"
+var resting_bgm_path = "res://Assets/BGM/GGJ2026_Snack Bar Resting2.ogg"
+
 func _ready():
+	# 初始化 BGM 播放器
+	bgm_player = AudioStreamPlayer.new()
+	add_child(bgm_player)
+	
 	# 初始化時載入所有關卡配置
 	initialize_levels()
 	
@@ -229,6 +238,9 @@ func start_level(level_index: int):
 	current_state = LevelState.PLAYING
 	level_state_changed.emit(current_state)
 	
+	# 播放 Active BGM
+	play_active_bgm()
+	
 	return true
 
 # 重設遊戲狀態（清空隊列和訂單）
@@ -297,6 +309,8 @@ func complete_level():
 	print("關卡完成: ", current_level_config.level_name if current_level_config else "未知")
 	# 計算未服務的客人（關卡結束時還在隊列中的客人）
 	calculate_unserved_customers()
+	# 播放 Resting BGM
+	play_resting_bgm()
 
 # 失敗當前關卡
 func fail_level():
@@ -304,6 +318,8 @@ func fail_level():
 		return  # 已經失敗了，避免重複觸發
 	set_level_state(LevelState.FAILED)
 	print("關卡失敗: ", current_level_config.level_name if current_level_config else "未知")
+	# 播放 Resting BGM
+	play_resting_bgm()
 
 # 獲取當前關卡配置
 func get_current_level_config() -> LevelConfig:
@@ -374,12 +390,36 @@ func calculate_unserved_customers():
 # 處理關卡完成/失敗後的按鍵輸入
 func _input(event: InputEvent):
 	if event is InputEventKey and event.pressed:
-		if current_state == LevelState.COMPLETED and event.keycode == KEY_N:
+		if current_state == LevelState.COMPLETED:
 			next_level()
 			get_viewport().set_input_as_handled()
-		elif current_state == LevelState.FAILED and event.keycode == KEY_R:
+		elif current_state == LevelState.FAILED:
 			restart_current_level()
 			get_viewport().set_input_as_handled()
 
 func is_ended():
 	return current_state in [LevelState.COMPLETED, LevelState.FAILED]
+
+# 播放 Active BGM
+func play_active_bgm():
+	if bgm_player:
+		var stream = load(active_bgm_path)
+		if stream:
+			# 設置循環播放
+			if stream is AudioStreamOggVorbis:
+				stream.loop = true
+			bgm_player.stream = stream
+			bgm_player.play()
+			print("播放 Active BGM: ", active_bgm_path)
+
+# 播放 Resting BGM
+func play_resting_bgm():
+	if bgm_player:
+		var stream = load(resting_bgm_path)
+		if stream:
+			# 設置循環播放
+			if stream is AudioStreamOggVorbis:
+				stream.loop = true
+			bgm_player.stream = stream
+			bgm_player.play()
+			print("播放 Resting BGM: ", resting_bgm_path)
